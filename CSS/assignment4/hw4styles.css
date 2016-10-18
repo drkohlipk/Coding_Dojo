@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,14 +7,10 @@
 }
 
 header {
-    background: linear-gradient(rgb(200, 200, 200),rgb(255, 255, 255),rgb(245, 245, 245));
+    background: linear-gradient(rgb(230, 230, 230),rgb(255, 255, 255),rgb(245, 245, 245));
     width: 970px;
     height: 130px;
     margin: 0 auto;
-}
-
-a {
-
 }
 
 header article a img {
@@ -32,15 +28,136 @@ header article span {
 nav {
     height: 30px;
     background: linear-gradient(rgb(240, 240, 240),rgb(197, 205, 208),rgb(248, 248, 248));
-    border-top: 1px solid rgb(94, 93, 93);
+    border-top: 1px solid rgb(115, 112, 112);
 }
 
 nav ul li {
     display: inline-block;
+    border-left: 1px solid rgb(208, 208, 208);
+    padding: 7px 20px;
+}
+
+nav ul li:first-child {
+    margin-left: 35px;
+}
+
+nav ul li:last-child {
+    border-right: 1px solid rgb(208, 208, 208);
 }
 
 nav ul li a {
     text-decoration: none;
     color: rgb(96, 96, 96);
     font-weight: bold;
+    font-size: 11px;
+}
+
+section {
+    background: radial-gradient(ellipse farthest-side at 450px 100px, rgb(112, 112, 112) 0%, rgb(83, 83, 83) 20%, rgb(10, 10, 10) 100%);
+    padding: 15px 30px;
+    width: 970px;
+    margin: 0 auto;
+}
+
+#topContent img {
+    border: 5px solid white;
+    display: inline-block;
+}
+
+#topContent article {
+    vertical-align: top;
+    display: inline-block;
+    width: 504px;
+    height: 265px;
+    margin: 0 0 0 15px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+#topContent article h1 {
+    background: linear-gradient(rgb(242, 226, 110), rgb(255, 214, 41));
+    height: 30px;
+    padding: 8px;
+    color: rgb(55, 55, 55);
+}
+
+#aboutCntnt {
+    padding: 0 20px;
+}
+
+#aboutCntnt h3 {
+    font-size: 13px;
+    padding: 13px 0;
+}
+
+#aboutCntnt p:last-child {
+    margin-top: 12px;
+}
+
+#smallBlurb {
+    padding: 7px 0 10px 10px;
+}
+
+#smallBlurb img, #smallBlurb p {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#smallBlurb img {
+    height: 15px;
+    border-radius: 2px;
+}
+
+#smallBlurb p {
+    font-size: 11px;
+    padding: 1px 0 0 15px;
+    color: rgba(252, 231, 80, 0.7);
+    font-weight: normal;
+}
+
+.bottomDesc {
+    display: inline-block;
+    width: 210px;
+    height: 250px;
+    vertical-align: top;
+    margin: 0 20px 0 0;
+    background-color: rgb(230, 230, 230);
+    border: 1px solid rgb(45, 44, 44);
+    font-size:
+}
+
+.bottomDesc img {
+    width: 208px;
+}
+
+.bottomDesc:last-child {
+    margin-right: 0;
+}
+
+.bottomDesc h2 {
+    background: linear-gradient(rgb(242, 226, 110), rgb(255, 214, 41));
+    height: 30px;
+    padding: 8px;
+    color: rgb(48, 47, 47);
+}
+
+.bottomDesc p {
+    font-size: 10px;
+    padding: 11px 10px 0px 15px;
+    color: rgb(48, 47, 47);
+}
+
+.readMore {
+    background: url("images/read_more.svg") no-repeat;
+    display: inline-block;
+    height: 30px;
+    width: 100px;
+    color: rgb(48, 47, 47);
+    padding: 12px 0 0 15px;
+    font-size: 9.5px;
+    margin: 10px 15px 15px 90px;
+}
+
+#bottomContent article:nth-child(2) .readMore {
+    margin-top: 20px;
 }
