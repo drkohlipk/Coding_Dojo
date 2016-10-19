@@ -1,3 +1,4 @@
+/***********start reset************/
 * {
 	margin: 0;
 	padding: 0;
@@ -6,21 +7,32 @@
 	font-family: 'Open Sans', sans-serif;
 }
 
+a {
+	color: #1195cd;
+}
+
 body {
 	width: 1200px;
 	margin: 0 auto;
-	background-color: #fcfcfc;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+/***********end reset************/
+
+
+/***********start header***********/
 header {
 	width: 100%;
-	height: 250px;
+	height: 200px;
 }
 
 #logo {
 	margin: 20px 0 20px 0;
 	width: 50%;
 	display: inline-block;
+	padding-left: 15px;
 }
 
 #logo img {
@@ -32,13 +44,13 @@ header {
 #logo h1 {
 	display: inline-block;
 	vertical-align: top;
-	color: rgb(130, 130, 130);
+	color: rgb(132, 132, 134);
 	font-size: 45px;
 	padding: 13px 15px;
 }
 
 #logo h1 span {
-	color: rgb(59, 128, 177);
+	color: rgb(0, 129, 168);
 	font-size: 45px;
 }
 
@@ -49,24 +61,24 @@ header {
 }
 
 #rightTop nav {
-	width: 440px;
+	width: 460px;
 	display: inline-block;
-	background-color: rgb(240, 240, 240);
-	height: 40px;
+	background-color: rgb(249, 249, 249);
+	height: 35px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	border: 1px solid rgb(198, 196, 196);
+	border: 1px solid rgb(219, 219, 219);
 }
 
 #rightTop nav ul li {
 	display: inline-block;
-	margin-top: 5px;
+	margin-top: 2px;
 	padding: 0 10px 0 9px;
-	border-right: 1px solid rgb(97, 97, 97);
+	border-right: 1px solid rgb(151, 151, 151);
 }
 
 #rightTop nav ul li:first-child {
-	padding-left: 10px;
+	padding-left: 20px;
 }
 
 #rightTop nav ul li:last-child {
@@ -75,9 +87,313 @@ header {
 
 #rightTop nav ul li a {
 	text-decoration: none;
-	color: rgb(144, 144, 144);
+	color: rgb(153, 151, 162);
 }
 
 #rightTop button {
 	display: inline-block;
+	width: 80px;
+	height: 30px;
+	margin: 0 0 0 30px;
+	vertical-align: top;
+	border-radius: 5px;
+	border: none;
+	background: linear-gradient(rgb(59,196,251), rgb(0,125,183));
+	color: white;
+	font-size: 16px;
+	padding: 0 0 5px 0;
 }
+
+header h2 {
+	height: 70px;
+	width: 100%;
+	background: linear-gradient(rgb(0,111,167), rgb(0, 125, 191) 20%, rgb(0, 125, 191) 80%, rgb(0,111,167) 100%);
+	color: white;
+	font-size: 32px;
+	padding: 0 0 0 15px;
+	line-height: 70px;
+	box-shadow: 0px -50px 50px #fafafa;
+}
+
+header hr {
+	box-shadow: 0 0 150px 1px black;
+}
+/*************end header**************/
+
+
+/*************start main content*************/
+section {
+	padding: 15px 30px 0px 15px;
+}
+
+/*************start left ad**************/
+section > article {
+	display: inline-block;
+	width: 25%;
+	vertical-align: top;
+	margin: 35px 0 0 0;
+	padding: 0 25px 0 0;
+}
+
+section article hr {
+	border: 1px solid #cccccc;
+}
+
+#topLeft h4 {
+	font-size: 25px;
+	color: #2172b1;
+	padding: 15px 0;
+}
+
+#topLeft h6 {
+	font-size: 16px;
+	color: #f23611;
+	font-weight: bolder;
+	padding: 0 0 5px;
+}
+
+#topLeft p a {
+	text-decoration: none;
+}
+
+#buttons {
+	margin: 20px 0 0 0;
+}
+
+#buttons button {
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	margin: 4px 0;
+	border: none;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#buttons button:first-child {
+	background: linear-gradient(#22a2df, #047bbf);
+}
+
+#buttons button:nth-child(2) {
+	background: linear-gradient(#ffa242, #e74403);
+}
+
+#buttons span {
+	display: block;
+	text-align: center;
+	margin: 5px 0 10px;
+}
+
+#leftAd {
+	background: url("images/left_content_ad1.png") no-repeat;
+	background-size: contain;
+	width: 100%;
+	height: 300px;
+	margin: 30px 0 0 0;
+	padding: 18px;
+	font-weight: bold;
+}
+
+#leftAd h4 {
+	font-size: 19px;
+	font-weight: bold;
+	color: #0071ad;
+	text-shadow: 0 1px 1px white;
+}
+
+#leftAd p {
+	color: #4c4c4c;
+	margin: 10px 0;
+	line-height: 1.6;
+}
+
+#leftAd button {
+	width: 93%;
+	height: 30px;
+	border-radius: 5px;
+	border: none;
+	background: linear-gradient(#247fb6, #1a3852);
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0 0 2px;
+}
+
+#leftAd button span:first-child {
+	opacity: .5;
+}
+
+#leftAd button span:nth-child(2) {
+	opacity: .75;
+}
+/**************end left ad*************/
+
+
+/**************start rt content***********/
+/**************start rt header***********/
+#mainWrapper {
+	display: inline-block;
+	width: 73.5%;
+	vertical-align: top;
+	margin: 0 0 0 10px;
+}
+
+#mainWrapper header {
+	height: auto;
+}
+
+#homePPC {
+	display: inline-block;
+	vertical-align: top;
+	width: 69.5%;
+}
+
+#homePPC img {
+	width: 60px;
+}
+
+#homePPC span {
+	display: inline-block;
+	vertical-align: top;
+	margin: 8px 0 0;
+}
+
+#homePPC span a {
+	font-size: 16px;
+	text-decoration: none;
+}
+
+#contactTop {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#contactTop img {
+	display: inline-block;
+	vertical-align: top;
+	width: 30px;
+	margin: 0 10px;
+}
+
+#contactInner {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+
+#contactInner span {
+	display: block;
+}
+
+#contactInner span:nth-child(2) {
+	font-size: 32px;
+	font-weight: bold;
+	color: #25c2fc;
+	height: 35px;
+	margin: -5px 0 5px;
+}
+
+#contactInner span:nth-child(2) span {
+	display: inline;
+	font-size: 32px;
+	font-weight: bold;
+	font-family: "Cantarell", sans-serif;
+	height: 20px;
+}
+
+#mainWrapper hr {
+	border: 1px solid #cccccc;
+	margin: 15px 0;
+}
+/**************end rt header*************/
+
+
+/**************start right p************/
+#topParagraph h3 {
+	color: #0e77b1;
+	font-size: 25px;
+	font-weight: bold;
+	margin: -10px 0 10px;
+}
+
+#topParagraph p {
+	margin: 15px 0;
+}
+
+#topParagraph ul {
+	margin: 0 0 30px 20px;
+	list-style: none;
+}
+
+#topParagraph ul li::before {
+	content: "\25AA";
+	color: #027fb7;
+	font-size: 18px;
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
+}
+
+#topParagraph li {
+	margin: 10px 0;
+}
+/**************end right p****************/
+
+
+/**************start right ad***************/
+#contentAd {
+	border: 5px solid #82bee0;
+	margin: 20px 0 15px;
+	padding: 5px;
+	width: 90%;
+}
+
+#contentAd img {
+	display: inline-block;
+}
+
+#adCntnt {
+	display: inline-block;
+	vertical-align: top;
+	width: 90%;
+}
+
+#adCntnt h3 {
+	color: #0675bd;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0 0 0 5px;
+}
+
+#adCntnt p, #adCntnt p strong {
+	font-size: 16px;
+}
+
+#adCntnt p, #adCntnt button {
+	margin: 10px 0 0 10px;
+}
+
+#adCntnt button {
+	width: 220px;
+	height: 45px;
+	border-radius: 5px;
+	border: 1px solid #657956;
+	color: white;
+	font-size: 20px;
+	background: linear-gradient(#c4df80, #90b241, #bed73b);
+	box-shadow: inset 1px 1px 1px #657956;
+}
+/**************end right ad*****************/
+
+
+/**************start rt btm p***************/
+#botParagraph h5 {
+	color: #0675bd;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0 0 15px;
+}
+/**************end rt btm p*****************/
+/**************end rt content**************/
+/**************end main content*************/
