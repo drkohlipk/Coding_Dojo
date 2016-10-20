@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#square {
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+	margin: 15px;
+}
+
+#circle {
+	width: 200px;
+	height: 200px;
+	background-color: red;
+	border-radius: 100%;
+	margin: 15px;
+}
+
+#upTriangle {
+	width: 0;
+	height: 0;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-bottom: 200px solid green;
+	margin: 15px;
+}
+
+#pacman {
+	width: 0;
+	height: 0;
+	border-right: 100px solid transparent;
+	border-top: 100px solid yellow;
+	border-left: 100px solid yellow;
+	border-bottom: 100px solid yellow;
+	border-top-right-radius: 100px;
+	border-top-left-radius: 100px;
+	border-bottom-right-radius: 100px;
+	border-bottom-left-radius: 100px;
+	margin: 15px;
+}
