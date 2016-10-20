@@ -1,0 +1,124 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+	font-size: 13px;
+}
+
+main {
+	width: 970px;
+	margin: 50px auto 0;
+	background-color: #eeeeee;
+}
+
+span {
+	display: block;
+	font-size: 11px;
+}
+
+.element {
+	font-size: 16px;
+	color: #19139f;
+	font-weight: bold;
+}
+
+div.label {
+	color: #fc0000;
+	padding: 10px 0 0 0;
+	border: none;
+}
+
+div.row1 {
+	margin-bottom: 2px;
+}
+
+.box {
+	width: 46px;
+	height: 46px;
+	text-align: center;
+	border: 1px solid #808080;
+	vertical-align: top;
+	display: inline-block;
+	margin: 0 -1px 1px 0;
+}
+
+figure.box {
+	transition: all .2s ease-in-out;
+}
+
+figure.box:hover {
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
+#leftBoxes {
+	display: inline-block;
+	vertical-align: top;
+	width: 145px;
+}
+
+#leftBoxes figure:nth-child(5) {
+	margin-right: 45px;
+}
+
+.blue {
+	background-color: #689bff;
+}
+
+#middleTop {
+	display: inline-block;
+	vertical-align: top;
+	width: 483px;
+	margin-left: 12px;
+}
+
+#middleTop .label {
+	margin-bottom: 143px;
+}
+
+.pink {
+	background-color: #fd9a98;
+}
+
+#rightBoxes {
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+}
+
+#rightBoxes figure:nth-child(7) {
+	margin-left: 243px;
+}
+
+.yellow {
+	background-color: #fecb00;
+}
+
+#bottomBoxes {
+	width: 100%;
+	padding: 25px 70px 15px 0;
+}
+
+.bottomLabel {
+	color: #fc0000;
+	display: inline-block;
+	width: 149px;
+	text-align: center;
+	padding-top: 15px;
+}
+
+#act {
+	width: 144px;
+}
+
+.ast{
+	display: inline;
+	text-align: right;
+	font-size: 13px;
+	color: #fc0000;
+}
+
+.green {
+	background-color: #1fca21;
+}
