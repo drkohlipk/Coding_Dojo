@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$('document').ready(function(){
+			$('button').click(function(){
+				var $check = $('#check');
+				$('h1').html(".attr('checked'):" + $check.attr("checked"));
+				$check.attr('checked', null);
+			})
+		})
+	</script>
+</head>
+<body>
+	<input id="check" type="checkbox" name="name" checked="checked">
+	<label for="check">Check me out!</label>
+	<h1>Yo Momma!</h1>
+	<button type="button" name="button">I'm a button yo!</button>
+</body>
+</html>

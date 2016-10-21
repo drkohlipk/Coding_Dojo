@@ -1,0 +1,57 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+main {
+	width: 800px;
+	margin: 0 auto;
+	padding: 50px 0;
+	text-align: center;
+}
+
+h1, h2 {
+	padding: 0 0 50px;
+	font-size: 50px;
+	color: #5c7095;
+}
+
+button {
+	width: 150px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #424242;
+	border: 1px solid #5c7095;
+	border-radius: 7px;
+	background-color: white;
+	box-shadow: inset 1px 1px 5px #5c7095;
+	transition: all .2s ease-in-out;
+}
+
+p {
+	padding: 50px 0;
+	font-size: 18px;
+	color: #424242;
+}
+
+button:hover {
+	color: white;
+	border: none;
+	background-color: #175da6;
+	box-shadow: inset 1px 1px 5px white;
+	cursor: pointer;
+}
+
+.gone {
+	display: none;
+}
+
+#mainCard {
+	height: 400px;
+	padding: 20px 0;
+	text-align: center;
+	box-shadow: 0 3px 20px  #5c7095;
+}
