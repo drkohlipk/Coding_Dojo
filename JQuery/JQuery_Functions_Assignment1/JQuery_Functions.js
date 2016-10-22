@@ -22,6 +22,18 @@ $(document).ready(function() {
 			$mainP.text(
 				"Alright, enough of the child's play, let's do something awesome...");
 		} else if (counter == 2) {
+			$('body').css({
+				'background': 'url("http://wallpapercave.com/wp/ERTfo8W.jpg")',
+				'background-size': 'contain',
+				'background-position': 'center'
+			});
+			$('#mainCard').css({
+				'background': 'url("http://wallpapercave.com/wp/ERTfo8W.jpg")',
+				'background-size': 'contain',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat',
+				'box-shadow': 'none'
+			});
 			$('#mainCard').html(
 				"<h1>BACON!!!</h1><img src='http://big.assets.huffingtonpost.com/slide_297900_2459978_free.gif' alt='Sizzling Bacon' /><button>Next</button>"
 			);
