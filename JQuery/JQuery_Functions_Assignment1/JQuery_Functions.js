@@ -31,7 +31,7 @@ $(document).ready(function() {
 		text: 'Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.',
 		toggle: 'Display or hide the matched elements./Bind two or more handlers to the matched elements, to be executed on alternate clicks.',
 		val: 'Get the current value of the first element in the set of matched elements or set the value of every matched element.'
-	});
+	}); //.data
 
 	function liHover(item) { //function for when an li is hovered over
 		switch (item) { //add a p tag based on the item overed over
@@ -107,8 +107,8 @@ $(document).ready(function() {
 				$('#val').append("<p class='endList'>" + $('body').data('info').val +
 					"</p>");
 				break;
-		}
-	}
+		} //switch
+	} //liHover
 
 	/*********once timer is up for bacon...********/
 	function timer() {
@@ -122,15 +122,15 @@ $(document).ready(function() {
 				$('span').text('Are you trippin?');
 			} else { //if not, add one after the radio buttons
 				$('form').after('<span>Are you trippin?</span>');
-			}
-		});
+			} //hungryN if/else
+		}); //hungryN.focus
 		$('#hungryY').focus(function() { //if the hungry radio button is focused on...
 			if ($('span').text()) { //is there already a span tag?
 				$('span').text('Yessssss, Me too!!');
 			} else { //if not, add one before the button (see what I did there??)
 				$('button').before('<span>Yessssss, Me too!!</span>');
-			}
-		});
+			} //hungryY if/else
+		}); //hungryY.focus
 		$('input').click(function() { //if one of the radio buttons is clicked...
 			value = $('input:radio[name=hungry]:checked').val(); //store the value of that radio button in value
 			if (value == 'hungry') { //if value is hungry......
@@ -150,38 +150,38 @@ $(document).ready(function() {
 						liHover(idAttr); //run the liHover function with the given id
 					}, function() { //when the mouse is no longer hovered over that given span
 						$('.endList').remove(); //remove the appended p tag
-					});
-				});
+					}); //span.hover
+				}); //hungry button.click
 			} else { //if value is NOT hungry!
 				$('#firstP').text('Really??????'); //change the text of the first p tag
 				$('#secondP').text('Click the next button to proceed'); //change the text of the second p tag
-				$('button').click(function() {
-					$('body').html(lastHTML);
-					$('#styles').attr('href', 'baconStyles.css');
-					$('#hungryCard, button, p').toggle();
-					window.setTimeout(function() {
-						$('button, p').slideDown();
+				$('button').click(function() { //if you are not hungry and you click on the button...
+					$('body').html(lastHTML); //load the last page HTML
+					$('#styles').attr('href', 'baconStyles.css'); //apply baconStyles
+					$('#hungryCard, button, p').toggle(); //toggle the last slide, button, and p tag to be hidden
+					window.setTimeout(function() { //after 2 seconds...
+						$('button, p').slideDown(); //apply the slideDown method to the button and p tags
 					}, 2000);
-					$('button').css({
+					$('button').css({ //top margin 50px for the button!
 						'margin-top': '50px'
 					});
-					$('button').click(function() {
-						$('#styles').attr('href', 'defaultStyles.css');
-						$('#hungryCard, #notHungryCard').slideToggle();
-						$('button').click(function() {
-							location.reload();
+					$('button').click(function() { //upon clicking the button...
+						$('#styles').attr('href', 'defaultStyles.css'); //apply defaultStyles again
+						$('#hungryCard, #notHungryCard').slideToggle(); //slideToggle the notHungryCard to the last slide
+						$('button').click(function() { //if the start again button is clicked...
+							location.reload(); //reload the page to start over
 						});
-						$('span').hover(function() {
-							idAttr = $(this).parent().attr('id');
-							liHover(idAttr);
-						}, function() {
-							$('.endList').remove();
-						});
-					});
-				});
-			}
-		});
-	}
+						$('span').hover(function() { //if one of the li span elements is hovered over...
+							idAttr = $(this).parent().attr('id'); //define idAttr as the parent's id
+							liHover(idAttr); //call the liHover function
+						}, function() { //when no longer hovered over...
+							$('.endList').remove(); //remove the appended p tag
+						}); //.hover
+					}); //hell button.click
+				}); //not hungry button.click
+			} //hungry/not hungry if/else
+		}); //radio button.click
+	} //timer function
 
 	/********Moves to the 2nd slide********/
 	$('#start').click(function() {
@@ -208,5 +208,5 @@ $(document).ready(function() {
 			window.setTimeout(timer, 3000); //execute the timer function after 3 seconds
 		}
 		counter++; //every time the main button is clicked, add 1 to counter
-	});
-});
+	}); //mainBtn.click
+}); //page load function
