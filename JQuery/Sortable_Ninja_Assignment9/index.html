@@ -1,0 +1,56 @@
+<!doctype html />
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Sortable Ninja</title>
+		<link rel="stylesheet" href="jquery-ui.min.css" />
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="jquery-ui.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#sortable").sortable();
+				var array = [1,2,3,4,5], //starting array
+					randoArr = []; //empty array
+				function shuffle(arr) { //function to shuffle contents of array
+					var currentIndex = arr.length, //initializes currentIndex as the length of the passed array
+						temporaryValue, //declares temporaryValue
+						randomIndex; //declares randomIndex
+					while (0 !== currentIndex) { //as long as 0 does not equal the currentIndex
+						randomIndex = Math.floor(Math.random() * currentIndex); //generates a randomIndex
+						currentIndex -= 1; //decreases the currentIndex by 1
+						temporaryValue = arr[currentIndex]; //sets temporaryValue to the array value at currentIndex
+						arr[currentIndex] = arr[randomIndex]; //sets the value at currentIndex to the value at randomIndex
+						arr[randomIndex] = temporaryValue; //sets the value at randomIndex to the value that was at currentIndex
+					} //while
+					return arr;
+				} //shuffle
+				function randoPic(arr) { //generates a random pic order
+					for(var i = 0; i < arr.length; i++) { //iterate through the generated random array
+						$('ul li:nth-child('+(i+1)+') img').attr('src', 'images/ninja_man'+arr[i]+'.jpg'); //set the appropriate src to the randomized pic
+					} //for loop
+				} //randoPic
+				randoArr = shuffle(array);
+				randoPic(randoArr);
+			});
+		</script>
+		<style>
+			ul {
+				width: 700px;
+				margin: 100px auto 0;
+				list-style-type: none;
+			}
+			img:hover {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="sortable">
+			<li><img src="images/ninja_man1.jpg" alt="Ninja Man pic" /></li>
+			<li><img src="images/ninja_man2.jpg" alt="Ninja Man pic" /></li>
+			<li><img src="images/ninja_man3.jpg" alt="Ninja Man pic" /></li>
+			<li><img src="images/ninja_man4.jpg" alt="Ninja Man pic" /></li>
+			<li><img src="images/ninja_man5.jpg" alt="Ninja Man pic" /></li>
+		</ul>
+	</body>
+</html>
