@@ -1,32 +1,28 @@
-function countPositives(arr) {
-    var count = 0;
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] > 0) {
-            count++;
-        }
-    }
-    arr[arr.length-1] = count;
-    console.log(arr);
+var coins = {
+	quarter: 0.25,
+	dime: 0.10,
+	nickel: 0.5,
+	penny: 0.01
+};
+
+function dec(num) {
+	num = Math.round(num * 100) / 100;
+	return num;
 }
 
-function keepLastFew(arr, Y) {
-    var newArr = [];
-    for (var i = arr.length-Y; i < arr.length; i++) {
-        newArr.push(arr[i]);
-    }
-    console.log(newArr);
+function minCoins(amount) {
+	var quarters = Math.round(amount / coins.quarter),
+		quartered = (amount % coins.quarter),
+		dimes = Math.round(dec(quartered) / coins.dime),
+		dimed = (dec(quartered) % coins.dime),
+		nickels = Math.round(dec(dimed) / coins.nickel),
+		nickeled = (dec(dimed) % coins.nickel),
+		pennies = Math.round(dec(nickeled) / coins.penny),
+		pennied = (dec(nickeled) / coins.penny);
+	console.log(dec(quartered));
+	console.log('The total coins you need are ' + quarters + ' quarter(s), ' +
+		dimes + ' dime(s), ' + nickels + ' nickel(s), and ' + pennies +
+		' penny(ies)');
 }
 
-function keepLastFewInPlace(arr, Y) {
-    var j = 0;
-    for (var i = Y-1; i < arr.length; i++) {
-        arr[j] = arr[i];
-        j++;
-    }
-    arr.length = Y;
-    console.log(arr);
-}
-
-countPositives([-1,1,1,1]);
-keepLastFew([2,4,6,8,10], 3);
-keepLastFewInPlace([2,4,6,8,10], 3);
+minCoins(3.27);
