@@ -1,0 +1,40 @@
+Daniels-MacBook-Pro-2:~ pj$ cd Desktop
+Daniels-MacBook-Pro-2:Desktop pj$ mkdir test
+Daniels-MacBook-Pro-2:Desktop pj$ ls
+test
+Daniels-MacBook-Pro-2:Desktop pj$ cd test
+Daniels-MacBook-Pro-2:test pj$ touch index.html
+Daniels-MacBook-Pro-2:test pj$ touch styles.css
+Daniels-MacBook-Pro-2:test pj$ touch commands.txt
+Daniels-MacBook-Pro-2:test pj$ ls
+commands.txt	index.html	styles.css
+Daniels-MacBook-Pro-2:test pj$ cp index.html index_2.html
+Daniels-MacBook-Pro-2:test pj$ ls
+commands.txt	index.html	index_2.html	styles.css
+Daniels-MacBook-Pro-2:test pj$ cd ..
+Daniels-MacBook-Pro-2:Desktop pj$ mkdir destination
+Daniels-MacBook-Pro-2:Desktop pj$ ls
+destination	test
+Daniels-MacBook-Pro-2:Desktop pj$ mv test/index_2.html destination/
+Daniels-MacBook-Pro-2:Desktop pj$ ls
+destination	test
+Daniels-MacBook-Pro-2:Desktop pj$ cd destination
+Daniels-MacBook-Pro-2:destination pj$ ls
+index_2.html
+Daniels-MacBook-Pro-2:destination pj$ cd ../test
+Daniels-MacBook-Pro-2:test pj$ ls
+commands.txt	index.html	styles.css
+Daniels-MacBook-Pro-2:test pj$ rm styles.css
+Daniels-MacBook-Pro-2:test pj$ ls
+commands.txt	index.html
+Daniels-MacBook-Pro-2:test pj$ cd ../destination
+Daniels-MacBook-Pro-2:destination pj$ ls
+index_2.html
+Daniels-MacBook-Pro-2:destination pj$ cd ..
+Daniels-MacBook-Pro-2:Desktop pj$ ls
+destination	test
+Daniels-MacBook-Pro-2:Desktop pj$ rm -r destination
+Daniels-MacBook-Pro-2:Desktop pj$ ls
+test
+Daniels-MacBook-Pro-2:Desktop pj$ nano commands.txt
+
