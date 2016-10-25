@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<meta name="description" content="Coding Dojo JQuery/Javascript Assignment to Explore Other JS/JQuery libraries" />
+	<title>Explore Libraries and Plug-ins!</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="jquery.event.move.js" type="text/javascript"></script>
+	<script src="jquery.twentytwenty.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="twentytwenty.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="jInvertScroll.css" type="text/css" media="screen" />
+	<script src="jquery.jInvertScroll.min.js" type="text/javascript"></script>
+	<script src="typeahead.bundle.min.js" type="text/javascript"></script>
+	<script src="anime.min.js" type="text/javascript"></script>
+	<script src="main.js" type="text/javascript"></script>
+</head>
+<body>
+	<main>
+		<article id="hdg">
+			<h1>Welcome to my playground!</h1>
+		</article>
+		<article id="container" class="twentytwenty-container">
+			<img src="images/ninja.jpg" alt="Ninja Pic" />
+			<img src="images/cat.jpg" alt="Cat Pic" />
+		</article>
+		<article id="p2">
+			<p>The ninja/cat pic to the right uses the twentytwenty JQuery plugin, use the slider to change pics!  The parallax inverted scrolling is due to the jInvertScroll Jquery plugin.  If you scroll up and down, you'll see what I mean!  If you go all the way to the right, you'll see a search bar with an animated entrance, this is all thanks to anime.js. Lastly, I've used Twitter's typeahead.js for autocomplete in the search bar.  Have fun!</p>
+		</article>
+		<form>
+			<label for="words" id="lab" class="hidden">
+				What is your favorite football team?<input type="text" id="words" class="typeahead" placeholder="team">
+			</label>
+		</form>
+		<img id="bg" src="images/background.jpg" alt="Watchdog Background" />
+	</main>
+</body>
+</html>

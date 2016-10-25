@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<meta name="description" content="Coding Dojo Date Validations JQuery Assignment" />
+	<title>Date Validations</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('#from, #to').datepicker({ //enable datepicker on #from and #to
+				onClose: function() { //when a date is picked and the date window is closed...
+					$(this).next().focus(); //move to the next input field
+				} //onClose function
+			}); //datepicker
+
+			$('form').submit(function() { //when the form is submitted
+				var fromDate = $('#from').val(), //shortcut variables
+					toDate = $('#to').val(),
+					name = $('#name').val();
+				if (fromDate === "" || toDate === "" || name === "") { //if any of the fields are left blank
+					if($('#wrapper span').text()) { //if the #wrapper span is present...
+						return false; //do nothing
+					} else { //if it isn't!
+						$('#wrapper').append('<span>All Fields must be filled out to continue!</span>'); //add this span
+						$('button').css('background', 'linear-gradient(#fcb5b5, #ff0000)'); //make the button red
+					} //else
+				} else if (fromDate >= toDate) { //if the dates don't make sense
+					alert('Please fix your dates!'); //alert!
+					$('#from').focus(); //put focus back on from
+				} else { //else if everything is correct...
+					alert('Congratulations ' + name + '! Your cruise dates are from ' + fromDate + ' to ' + toDate +  '.'); //congrats alert
+					$('input').val(''); //reset all fields
+					$('button').css('background', 'linear-gradient(#6ccfff, #134bf2)'); //reset the button color if it was red
+					if($('#wrapper span').text()) { //if the span is present...
+						$('#wrapper span').remove(); //remove it!
+					} //wrapper span present if
+				} //everything is correct else
+				return false; //don't submit!
+			}); //form.submit
+
+			$('input').keydown(function(k) { //if a key is pressed inside of an input element...
+				if (k.keyCode === 13) { //and it's the enter key!
+					$('form').submit(); //submit the form!
+				} //if enter key...
+			}); //keydown function
+
+			$('button').click(function() { //if the button is clicked...
+				$('form').submit(); //submit the form!
+			}); //clicking on the button submits the form
+
+		}); //ready function
+
+	</script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: sans-serif;
+		}
+
+		main {
+			width: 700px;
+			margin: 100px auto 0;
+			padding: 15px;
+			border: 1px solid gray;
+			border-radius: 10px;
+			box-shadow: 1px 1px 5px gray;
+		}
+
+		#wrapper {
+			width: 300px;
+			margin: 20px auto;
+		}
+
+		input {
+			display: block;
+			margin: 0 0 15px;
+		}
+
+		button {
+			width: 80px;
+			height: 20px;
+			border: none;
+			border-radius: 5px;
+			color: white;
+			background: linear-gradient(#6ccfff, #134bf2);
+		}
+
+		#wrapper span {
+			display: block;
+			margin: 10px 0;
+			font-size: 14px;
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Welcome to the Coding Dojo Plan-A-Cruise!</h1>
+		<div id="wrapper">
+			<form>
+				<input id="from" type="text" name="from" placeholder="From">
+				<input id="to" type="text" name="to" placeholder="To">
+				<input id="name" type="text" name="name" placeholder="Name">
+			</form>
+			<button type="button" name="check">Check Dates!</button>
+		</div><!-- end_of_wrapper-->
+	</main>
+</body>
+</html>
