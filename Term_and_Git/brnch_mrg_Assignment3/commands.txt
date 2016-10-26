@@ -1,0 +1,64 @@
+Daniels-MacBook-Pro-2:Brnch_Mrg_Assignment3 pj$ touch index.html
+Daniels-MacBook-Pro-2:Brnch_Mrg_Assignment3 pj$ touch styles.css
+Daniels-MacBook-Pro-2:Brnch_Mrg_Assignment3 pj$ mkdir images/
+Daniels-MacBook-Pro-2:Brnch_Mrg_Assignment3 pj$ ls
+images		index.html	styles.css
+Daniels-MacBook-Pro-2:Brnch_Mrg_Assignment3 pj$ cd ..
+Daniels-MacBook-Pro-2:Desktop pj$ ls
+Brnch_Mrg_Assignment3
+Daniels-MacBook-Pro-2:Desktop pj$ mv Brnch_Mrg_Assignment3 branching_merging
+Daniels-MacBook-Pro-2:Desktop pj$ ls
+branching_merging
+Daniels-MacBook-Pro-2:Desktop pj$ cd branching_merging
+Daniels-MacBook-Pro-2:branching_merging pj$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	images/
+	index.html
+	styles.css
+
+nothing added to commit but untracked files present (use "git add" to track)
+Daniels-MacBook-Pro-2:branching_merging pj$ git add .
+Daniels-MacBook-Pro-2:branching_merging pj$ git commit -m "Initialized, basic index.html, styles.css"
+[master (root-commit) bfceed0] Initialized, basic index.html, styles.css
+ 6 files changed, 37 insertions(+)
+ create mode 100644 images/bear.jpg
+ create mode 100644 images/cat.png
+ create mode 100644 images/cityscene.jpg
+ create mode 100644 images/ducks.jpg
+ create mode 100644 index.html
+ create mode 100644 styles.css
+Daniels-MacBook-Pro-2:branching_merging pj$ git checkout -b add-css
+Switched to a new branch 'add-css'
+Daniels-MacBook-Pro-2:branching_merging pj$ git branch
+* add-css
+  master
+Daniels-MacBook-Pro-2:branching_merging pj$ git status
+On branch add-css
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   styles.css
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Daniels-MacBook-Pro-2:branching_merging pj$ git add .
+Daniels-MacBook-Pro-2:branching_merging pj$ git commit -am "Added some styling"
+[add-css c1f2e98] Added some styling
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+Daniels-MacBook-Pro-2:branching_merging pj$ git checkout master
+Switched to branch 'master'
+Daniels-MacBook-Pro-2:branching_merging pj$ git merge add-css
+Updating bfceed0..c1f2e98
+Fast-forward
+ styles.css | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+Daniels-MacBook-Pro-2:branching_merging pj$ git status
+On branch master
+nothing to commit, working tree clean
+
