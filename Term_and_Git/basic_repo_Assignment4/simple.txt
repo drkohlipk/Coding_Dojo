@@ -1,0 +1,110 @@
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub$ git init basic_repo
+Initialized empty Git repository in /Users/pj/Documents/Computer_Geekery/gitHub/basic_repo/.git/
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub$ cd basic repo
+-bash: cd: basic: No such file or directory
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub$ ls
+Coding_Dojo/                Fullive/                    SDFCC/                      basic_repo/                 first-attempt/              fullstack-course4/          my-jekyll-site-coding-dojo/ resume/
+FreeCodeCamp/               Project-1/                  SDVC/                       coursera-test/              frontend-nanodegree-resume/ module_3_solution/          patchwork/
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub$ cd basic_repo
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ touch index.html
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ touch styles.css
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ touch main.js
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ nano index.html
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ nano styles.css
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ nano main.js
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git remote add origin https://github.com/drkohlipk/basic_repo.git
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	index.html
+	main.js
+	styles.css
+
+nothing added to commit but untracked files present (use "git add" to track)
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git add .
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   index.html
+	new file:   main.js
+	new file:   styles.css
+
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git commit -m "Initialize and first add: index.html, main.js, styles.css"
+[master (root-commit) 3d23599] Initialize and first add: index.html, main.js, styles.css
+ 3 files changed, 16 insertions(+)
+ create mode 100644 index.html
+ create mode 100644 main.js
+ create mode 100644 styles.css
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git status
+On branch master
+nothing to commit, working tree clean
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git push -u origin master
+Counting objects: 5, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 489 bytes | 0 bytes/s, done.
+Total 5 (delta 0), reused 0 (delta 0)
+To https://github.com/drkohlipk/basic_repo.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ touch simple.txt
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ nano simple.txt
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ nano index.html
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ nano styles.css
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ nano main.js
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   index.html
+	modified:   main.js
+	modified:   styles.css
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	simple.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git add .
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   index.html
+	modified:   main.js
+	new file:   simple.txt
+	modified:   styles.css
+
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git commit -m "Added more to head of index.html, styling to styles.css, and css to main.js"
+[master 2332c8e] Added more to head of index.html, styling to styles.css, and css to main.js
+ 4 files changed, 8 insertions(+), 2 deletions(-)
+ create mode 100644 simple.txt
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git push origin master
+Counting objects: 6, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 751 bytes | 0 bytes/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To https://github.com/drkohlipk/basic_repo.git
+   3d23599..2332c8e  master -> master
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working tree clean
+pj@Daniels-MacBook-Pro-2:~/Documents/Computer_Geekery/gitHub/basic_repo$ 
