@@ -1,0 +1,186 @@
+Daniels-MacBook-Pro-2:Coding_Dojo pj$ cd ~/Desktop
+Daniels-MacBook-Pro-2:Desktop pj$ touch Lrn_Commit.txt
+Daniels-MacBook-Pro-2:Desktop pj$ mkdir test
+Daniels-MacBook-Pro-2:Desktop pj$ cd test
+Daniels-MacBook-Pro-2:test pj$ touch index.html
+Daniels-MacBook-Pro-2:test pj$ touch styles.css
+Daniels-MacBook-Pro-2:test pj$ git init
+Initialized empty Git repository in /Users/pj/Desktop/test/.git/
+Daniels-MacBook-Pro-2:test pj$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	index.html
+	styles.css
+
+nothing added to commit but untracked files present (use "git add" to track)
+Daniels-MacBook-Pro-2:test pj$ git commit -m "index.html and styles.css in test/"
+On branch master
+
+Initial commit
+
+Untracked files:
+	index.html
+	styles.css
+
+nothing added to commit but untracked files present
+Daniels-MacBook-Pro-2:test pj$ git add .
+Daniels-MacBook-Pro-2:test pj$ git commit -m "index.html and styles.css in test/"
+[master (root-commit) 414d8bb] index.html and styles.css in test/
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 index.html
+ create mode 100644 styles.css
+Daniels-MacBook-Pro-2:test pj$ nano index.html
+Daniels-MacBook-Pro-2:test pj$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Daniels-MacBook-Pro-2:test pj$ git add .
+Daniels-MacBook-Pro-2:test pj$ git commit -m "Added tags to index.html"
+[master 2eace65] Added tags to index.html
+ 1 file changed, 9 insertions(+)
+Daniels-MacBook-Pro-2:test pj$ nano styles.css
+Daniels-MacBook-Pro-2:test pj$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   styles.css
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Daniels-MacBook-Pro-2:test pj$ git add .
+Daniels-MacBook-Pro-2:test pj$ git commit -m "update css"
+[master 0f0ba99] update css
+ 1 file changed, 5 insertions(+)
+Daniels-MacBook-Pro-2:test pj$ git log
+commit 0f0ba99a3ce4f2b4fb3dfac43847eb13cc1736aa
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:53:58 2016 -0700
+
+    update css
+
+commit 2eace6560ef2bc1380139ba3f595bd87b9781b3d
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:52:35 2016 -0700
+
+    Added tags to index.html
+
+commit 414d8bbe5c161588e5aa888d1d24e17d3904c76d
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:51:04 2016 -0700
+
+    index.html and styles.css in test/
+Daniels-MacBook-Pro-2:test pj$ git revert 2eace6560ef2bc1380139ba3f595bd87b9781b3d
+error: There was a problem with the editor 'vi'.
+Please supply the message using either -m or -F option.
+Daniels-MacBook-Pro-2:test pj$ git revert 2eace6560ef2bc1380139ba3f595bd87b9781b3d -m "Reverting"
+error: switch `m' expects a numerical value
+usage: git revert [<options>] <commit-ish>...
+   or: git revert <subcommand>
+
+    --quit                end revert or cherry-pick sequence
+    --continue            resume revert or cherry-pick sequence
+    --abort               cancel revert or cherry-pick sequence
+    -n, --no-commit       don't automatically commit
+    -e, --edit            edit the commit message
+    -s, --signoff         add Signed-off-by:
+    -m, --mainline <n>    parent number
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --strategy <strategy>
+                          merge strategy
+    -X, --strategy-option <option>
+                          option for merge strategy
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+Daniels-MacBook-Pro-2:test pj$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   index.html
+
+Daniels-MacBook-Pro-2:test pj$ git log
+commit 0f0ba99a3ce4f2b4fb3dfac43847eb13cc1736aa
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:53:58 2016 -0700
+
+    update css
+
+commit 2eace6560ef2bc1380139ba3f595bd87b9781b3d
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:52:35 2016 -0700
+
+    Added tags to index.html
+
+commit 414d8bbe5c161588e5aa888d1d24e17d3904c76d
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:51:04 2016 -0700
+
+    index.html and styles.css in test/
+Daniels-MacBook-Pro-2:test pj$ git revert HEAD
+error: Your local changes would be overwritten by revert.
+hint: Commit your changes or stash them to proceed.
+fatal: revert failed
+Daniels-MacBook-Pro-2:test pj$ nano index.html
+Daniels-MacBook-Pro-2:test pj$ nano styles.css
+Daniels-MacBook-Pro-2:test pj$ nano index.html
+Daniels-MacBook-Pro-2:test pj$ nano index.html
+Daniels-MacBook-Pro-2:test pj$ git add .
+Daniels-MacBook-Pro-2:test pj$ git commit -m "update html"
+[master ad16ff8] update html
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+Daniels-MacBook-Pro-2:test pj$ git status
+On branch master
+nothing to commit, working tree clean
+Daniels-MacBook-Pro-2:test pj$ git log
+commit ad16ff8c9327d27ad66c173720111c18a6bf2364
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 17:00:12 2016 -0700
+
+    update html
+
+commit 0f0ba99a3ce4f2b4fb3dfac43847eb13cc1736aa
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:53:58 2016 -0700
+
+    update css
+
+commit 2eace6560ef2bc1380139ba3f595bd87b9781b3d
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:52:35 2016 -0700
+
+    Added tags to index.html
+
+commit 414d8bbe5c161588e5aa888d1d24e17d3904c76d
+Author: drkohlipk <drkohlipk@yahoo.com>
+Date:   Tue Oct 25 16:51:04 2016 -0700
+
+    index.html and styles.css in test/
+Daniels-MacBook-Pro-2:test pj$ git revert HEAD
+[master 46a9a5b] Revert "update html"
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+Daniels-MacBook-Pro-2:test pj$ nano index.html
+Daniels-MacBook-Pro-2:test pj$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Daniels-MacBook-Pro-2:test pj$ git add .
+Daniels-MacBook-Pro-2:test pj$ git commit -m "new changes to revert"
+[master 73e4d2f] new changes to revert
+ 1 file changed, 2 insertions(+), 1 deletion(-)
