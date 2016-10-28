@@ -1,0 +1,96 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	transition: all .3s;
+	font-family: sans-serif;
+	color: rgb(48, 48, 48);
+}
+
+main {
+	width: 26%;
+	margin: 100px auto;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 5px gray;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+#header {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+h1 {
+	width: 100%;
+	margin: 0 auto 20px;
+	text-shadow: 1px 1px 2px gray;
+}
+
+form {
+	margin-bottom: 10px;
+}
+
+#display {
+	display: none;
+	width: 95%;
+	margin: 0 auto;
+	overflow-y: scroll;
+}
+
+input {
+	border-radius: 4px;
+}
+
+button {
+	width: 70px;
+	height: 17px;
+	margin: 0 0 0 10px;
+	background: linear-gradient(lightblue, blue);
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+.displayBox {
+	width: 97%;
+	height: 160px;
+	margin: 20px 0 0;
+	padding: 10px;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.imgWrapper {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	width: 45%;
+}
+
+.imgWrapper h3 {
+	margin: 0 0 10px;
+}
+
+.imgWrapper img {
+	width: 60%;
+	height: auto;
+}
+
+.wrapper {
+	width: 52%;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0 0 10px;
+	padding: 10px;
+}
+
+.wrapper h4 {
+	margin: 3px 0 10px;
+}
+
+main p:last-child {
+	font-size: 14px;
+	margin: 15px 0 0;
+}
