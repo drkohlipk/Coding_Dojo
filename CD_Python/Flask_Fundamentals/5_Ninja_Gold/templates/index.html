@@ -10,36 +10,57 @@
 </head>
 <body>
 	<main>
-		<header>
-			<h1>Your Gold:</h1>
-			<span>{{ session['gold'] }}</span>
+		<header class="col col-m-12 row">
+			<h1>Your Gold: <span class="{{ session['goldColor'] }}">${{ session['gold'] }}</span></h1>
+
 		</header>
-		<section>
-			<article>
+		<section class="row">
+			<article class="col col-m-3 mdlBox col-sm-12">
 				<h2>Farm</h2>
 				<p>(earns 10-20 golds)</p>
-				<button type="button" name="button">Find Gold!</button>
+				<form action="/makeGold" method="post">
+					<input type="hidden" name="place" value="farm">
+					<input class="goldBtn" type="submit" name="submit" value="Find Gold!">
+				</form>
 			</article>
-			<article>
+			<article class="col col-m-3 mdlBox col-sm-12">
 				<h2>Cave</h2>
 				<p>(earns 5-10 golds)</p>
-				<button type="button" name="button">Find Gold!</button>
+				<form action="/makeGold" method="post">
+					<input type="hidden" name="place" value="cave">
+					<input class="goldBtn" type="submit" name="submit" value="Find Gold!">
+				</form>
 			</article>
-			<article>
+			<article class="col col-m-3 mdlBox col-sm-12">
 				<h2>House</h2>
 				<p>(earns 2-5 golds)</p>
-				<button type="button" name="button">Find Gold!</button>
+				<form action="/makeGold" method="post">
+					<input type="hidden" name="place" value="house">
+					<input class="goldBtn" type="submit" name="submit" value="Find Gold!">
+				</form>
 			</article>
-			<article>
+			<article class="col col-m-3 mdlBox col-sm-12">
 				<h2>Casino</h2>
 				<p>(earns/takes 0-50 golds)</p>
-				<button type="button" name="button">Find Gold!</button>
+				<form action="/makeGold" method="post">
+					<input type="hidden" name="place" value="casino">
+					<input class="goldBtn" type="submit" name="submit" value="Find Gold!">
+				</form>
 			</article>
 		</section>
-		<section>
+		<section class="col col-m-12 row">
 			<h3>Activities:</h3>
-			<div id="activities"></div><!-- end_of_activities-->
+			<div id="activities">
+				{% if session['activities'] == []: %} <!--If there is no session['activities']yet...-->
+					<p>Currently, you have no activity...</p>
+				{% else: %} <!--If there is!-->
+					{% for activity in session['activities']: %} <!--For every appended value in activities...-->
+						<p class="{{ activity['class'] }}">{{ activity['activity'] }} ({{ activity['time'] }})</p> <!--Create a p tage displaying the activity-->
+					{% endfor %}
+				{% endif %}
+			</div><!-- end_of_activities-->
 		</section>
+		<a href="/reset"><button type="restart" name="restart">Restart Game</button></a>
 	</main>
 </body>
 </html>
