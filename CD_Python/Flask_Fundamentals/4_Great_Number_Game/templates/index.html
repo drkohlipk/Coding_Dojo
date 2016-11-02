@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Flask Great Number Game assignment">
+	<title>Great Number Game</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" media="screen">
+</head>
+<body>
+	<main>
+		<h1>Welcome to the Great Number Game!</h1>
+		<h2>I'm thinking of a number between 1 and 100</h2>
+		<h2>Take a guess!</h2>
+		<form action="/guess" method="post" id="form">
+			<input type="text" name="guess" id="guess">
+			<input type="submit" name="submit" value="Submit">
+			<a href="/reset"><button type="button" name="reset">Restart</button></a>
+		</form>
+	</main>
+	<script type="text/javascript">
+	function checkIfRight() { //function to check if the number guessed is correct
+		var guess = {{ session['guess'] }},
+			rando = {{ session['rando'] }},
+			form = document.getElementById('form'),
+			newP = document.createElement('p'),
+			textBox = document.getElementById('guess');
+		if (guess > rando) { //if the guess is higher than the randomly generated number...
+			newP.innerHTML = 'Too high!'; //create a new element and insert the text 'Too high!'
+			form.insertBefore(newP, form.firstChild); //prepend a p element to the form element
+			form.style.backgroundColor = 'red'; //set the form's background color to red
+			form.style.border = '1px solid black'; //give the form a black border
+		} else if (guess < rando) { //if the guess is lower than the randomly generated number...
+			newP.innerHTML = 'Too low!';
+			form.insertBefore(newP, form.firstChild);
+			form.style.backgroundColor = 'red';
+			form.style.border = '1px solid black';
+		} else { //if the guess is correct...
+			newP.innerHTML = rando + ' was the number!'; //create a new element and insert the random number plus 'was the number!'
+			form.insertBefore(newP, form.firstChild);
+			form.style.backgroundColor = 'green';
+			form.style.border = '1px solid black';
+		}
+		textBox.focus(); //at the end of every guess, put the focus back on the text box
+	}
+	var counter = {{ session['counter'] }}
+	if (counter != 1) { //if the game is not fresh or restarted...
+		checkIfRight(); //run the checkIfRight function
+	}
+	</script>
+</body>
+</html>

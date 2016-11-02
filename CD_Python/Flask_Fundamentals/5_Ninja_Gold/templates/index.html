@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Flask Ninja Gold App assignment">
+	<title>Ninja Gold</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" media="screen">
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Your Gold:</h1>
+			<span>{{ session['gold'] }}</span>
+		</header>
+		<section>
+			<article>
+				<h2>Farm</h2>
+				<p>(earns 10-20 golds)</p>
+				<button type="button" name="button">Find Gold!</button>
+			</article>
+			<article>
+				<h2>Cave</h2>
+				<p>(earns 5-10 golds)</p>
+				<button type="button" name="button">Find Gold!</button>
+			</article>
+			<article>
+				<h2>House</h2>
+				<p>(earns 2-5 golds)</p>
+				<button type="button" name="button">Find Gold!</button>
+			</article>
+			<article>
+				<h2>Casino</h2>
+				<p>(earns/takes 0-50 golds)</p>
+				<button type="button" name="button">Find Gold!</button>
+			</article>
+		</section>
+		<section>
+			<h3>Activities:</h3>
+			<div id="activities"></div><!-- end_of_activities-->
+		</section>
+	</main>
+</body>
+</html>
