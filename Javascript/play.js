@@ -38,15 +38,27 @@
 // var newString2 = removeSpaces2(myString);
 //
 // console.log(newString2);
-
-var given = "there's no free lunch - gotta pay yer way.";
-
-function acronymify(str) {
-    var acronym = str.match(/\s./gi);
-    var newAcronym = acronym.join('').toUpperCase();
-    return newAcronym;
+//
+function reverseString(str) {
+	newString = "";
+	for (var i = str.length - 1; i >= 0; i--) {
+		newString += str[i];
+	}
+	return newString;
 }
 
-var result = acronymify(given);
+console.log(reverseString("Reverse Me!"));
 
-console.log(result);
+newArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function reverseArray(arr) {
+	temp = 0;
+	for (var i = 0; i < Math.floor(arr.length / 2); i++) {
+		temp = arr[i];
+		arr[i] = arr[arr.length - 1 - i];
+		arr[arr.length - 1 - i] = temp;
+	}
+}
+
+reverseArray(newArray);
+console.log(newArray);
