@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="description" content="Coding Dojo Survey Flask Assignment">
+	    <title>Coding Dojo Survey</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}" />
+	</head>
+	<body>
+		<main>
+			<div id="leftWrap">
+				<h1>Submitted Info:</h1>
+				<p>Name:</p>
+				<p>Dojo Location:</p>
+				<p>Favorite Language:</p>
+				<p>Comment:</p>
+			</div><!-- end_of_leftWrap-->
+			<div id="rightWrap">
+				<span>{{ name }}</span>
+				<span>{{ location }}</span>
+				<span>{{ language }}</span>
+				<span>{{ comment }}</span>
+			</div><!-- end_of_rightWrap-->
+			<a href="/"><button class="btn">Go Back</button></a>
+		</main>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #2d2d2d;
+}
+
+main {
+	width: 50%;
+	margin: 10rem auto;
+	padding: 40px 30px 30px 30px;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 5px gray;
+}
+
+label {
+	display: inline-block;
+	width: 40%;
+	margin: 15px 0 0 15%;
+	font-size: 1.3em;
+}
+
+input, select, textarea {
+	display: inline-block;
+	width: 25%;
+	height: 2.0em;
+	vertical-align: top;
+	margin: 5px 15% 0 0;
+	font-size: 1.0em
+}
+
+input {
+	padding: 5px;
+}
+
+#comment {
+	width: 66%;
+	height: 4em;
+	margin: 10px 0 0 15%;
+}
+
+.btn {
+	font-size: 1.0em;
+	width: 105px;
+	height: 2em;
+	margin: 20px 0 0 42%;
+	background: linear-gradient(lightblue, blue);
+	border: none;
+	border-radius: 5px;
+	color: white;
+	text-decoration: none;
+}
+
+.btn:hover {
+	cursor: pointer;
+}
+
+#leftWrap, #rightWrap {
+	display: inline-block;
+	font-size: 1.3em;
+	width: 49%;
+	margin: 0 0 20px;
+}
+
+#leftWrap h1 {
+	text-decoration: underline;
+	font-size: 1.3em;
+}
+
+form p {
+	text-align: center;
+	width: 95%;
+	margin: 10px 0;
+}
+
+p {
+	font-weight: bold;
+}
+
+p, span {
+	display: block;
+	margin: 10px 0 0 0;
+	padding: 0 0 0 50px;
+}
+
+.red {
+	color: red;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="description" content="Coding Dojo Survey Flask Assignment">
+	    <title>Coding Dojo Survey</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}" />
+	</head>
+	<body>
+		<main>
+			<form action="/result" method="post" >
+				<label for="name">Your Name: </label>
+				<input type="text" name="name" id="name" placeholder="Bob Thebuilder" />
+				<label for="location">Dojo Location: </label>
+				<select name="location" id="location">
+					<option value="Seattle" selected>Seattle</option>
+					<option value="Silicon Valley">Silicon Valley</option>
+					<option value="Los Angeles">Los Angeles</option>
+					<option value="Dallas">Dallas</option>
+					<option value="Washington DC">Washington DC</option>
+					<option value="Chicago">Chicago</option>
+				</select>
+				<label for="language">Favorite Language: </label>
+				<select name="language" id="language">
+					<option value="HTML">HTML</option>
+					<option value="CSS">CSS</option>
+					<option value="JavaScript" selected>JavaScript</option>
+					<option value="Python">Python</option>
+					<option value="Ruby">Ruby</option>
+					<option value="C#">C#</option>
+					<option value="Swift">Swift</option>
+					<option value="PHP">PHP</option>
+				</select>
+				<label for="comment">Comment: </label>
+				<textarea name="comment" id="comment" rows="8" cols="40" placeholder="This place rocks!"></textarea>
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+							<p class="red">{{ message }}</p>
+						{% endfor %}
+					{% endif %}
+				{% endwith %}
+				<input type="submit" value="Create User" class="btn">
+			</form>
+			<script type="text/javascript">
+			function foc() {
+				var name = document.getElementById('name'),
+				comment = document.getElementById('comment');
+				if (name.value === "" || comment.value === "") {
+					name.focus();
+				}
+			}
+			foc();
+			</script>
+		</main>
+    </body>
+</html>
