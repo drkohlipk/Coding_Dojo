@@ -1,0 +1,11 @@
+USE mydb;
+USE twitter;
+SELECT * 
+FROM users;
+SELECT users.first_name, users.last_name, tweets.tweet
+FROM users
+LEFT JOIN tweets ON users.id = tweets.user_id;
+SELECT users.first_name, COUNT(tweets.tweet) AS number_of_tweets
+FROM users
+JOIN tweets ON users.id = tweets.user_id
+GROUP BY users.first_name;
