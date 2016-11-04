@@ -1,0 +1,26 @@
+* {
+	font-family: sans-serif;
+	box-sizing: border-box;
+}
+
+h1 {
+	text-align: center;
+	width: 100%;
+}
+
+.std {
+	font-size: 4em;
+	margin: 300px auto;
+}
+
+.ninja_hdg {
+	font-size: 3em;
+	margin: 50px auto;
+}
+
+img {
+	display: block;
+	width: 70%;
+	height: auto;
+	margin: 50px auto;
+}
