@@ -4,37 +4,45 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Basic Validations</title>
+	<title>Login</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" media="screen">
 </head>
 <body>
 	<main>
-		<h1>Please enter information to register:</h1>
+		<h1>Registration</h1>
 		<p id="pwordError" class="hidden red"></p>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
 		{% for message in messages %}
-		<p class="{{ session['class'] }}">{{ message }}</p>
+		<p class="red">{{ message }}</p>
 		{% endfor %}
 		{% endif %}
 		{% endwith %}
-		<form action="/process" method="post">
-			<label for="email">E-mail: </label>
-			<input type="text" name="email" id="email">
-			<label for="first_name">First Name: </label>
-			<input type="text" name="first_name">
-			<label for="last_name">Last Name: </label>
+		<form action="/register" method="post">
+			<label>First name: </label>
+			<input type="text" name="first_name" id="first_name">
+			<label>Last name: </label>
 			<input type="text" name="last_name">
-			<label for="password">Password: </label>
+			<label>E-mail: </label>
+			<input type="text" name="email">
+			<label>Password: </label>
 			<input type="password" name="password" id="password" onkeyup="checkPword()" onkeydown="checkPword()">
-			<label for="confirm">Confirm Password: </label>
+			<label>Confirm Password: </label>
 			<input type="password" name="confirm" id="confirm" onkeyup="checkConf()" onkeydown="checkConf()">
-			<input type="submit" name="submit" value="Submit">
+			<input type="submit" value="Register">
+		</form>
+		<h1>Login</h1>
+		<form action="/login" method="post">
+			<label>E-mail: </label>
+			<input type="text" name="email">
+			<label>Password: </label>
+			<input type="password" name="password">
+			<input type="submit" value="Login">
 		</form>
 	</main>
 	<script type="text/javascript">
 		var pwordError = document.getElementById('pwordError'),
-			email = document.getElementById('email'),
+			fname = document.getElementById('first_name'),
 			pword = document.getElementById('password'),
 			conf = document.getElementById('confirm'),
 			pwordReg = /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{:;'?/><.;,])(?!.*\s).*$/;
@@ -49,13 +57,13 @@
 			}
 		}
 		function checkConf() {
-			if (conf.value != pword.value) {
-				conf.style.border = "3px solid red";
-			} else {
+			if (conf.value == pword.value && conf.value.match(pwordReg)) {
 				conf.style.border = "3px solid green";
+			} else {
+				conf.style.border = "3px solid red";
 			}
 		}
-		email.focus();
+		fname.focus();
 	</script>
 </body>
 </html>

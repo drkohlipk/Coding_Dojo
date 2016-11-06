@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Login</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" media="screen">
+</head>
+<body>
+	<main>
+		<h1>Registration</h1>
+		<p id="pwordError" class="hidden red"></p>
+		{% with messages = get_flashed_messages() %} <!--store flashed messages as messages-->
+		{% if messages %} <!--if there are any flashed messages...-->
+		{% for message in messages %} <!--for every flashed message...-->
+		<p class="red">{{ message }}</p>
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+		<form action="/register" method="post">
+			<label>First name: </label>
+			<input type="text" name="first_name" id="first_name">
+			<label>Last name: </label>
+			<input type="text" name="last_name">
+			<label>E-mail: </label>
+			<input type="text" name="email">
+			<label>Password: </label>
+			<input type="password" name="password" id="password" onkeyup="checkPword()" onkeydown="checkPword()">
+			<label>Confirm Password: </label>
+			<input type="password" name="confirm" id="confirm" onkeyup="checkConf()" onkeydown="checkConf()">
+			<input type="submit" value="Register">
+		</form>
+		<h1>Login</h1>
+		<form action="/login" method="post">
+			<label>E-mail: </label>
+			<input type="text" name="email">
+			<label>Password: </label>
+			<input type="password" name="password">
+			<input type="submit" value="Login">
+		</form>
+	</main>
+	<script type="text/javascript">
+		var pwordError = document.getElementById('pwordError'),
+			fname = document.getElementById('first_name'),
+			pword = document.getElementById('password'),
+			conf = document.getElementById('confirm'),
+			pwordReg = /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{:;'?/><.;,])(?!.*\s).*$/;
+		function checkPword() { //checks to see if password meets min requirements
+			if (pword.value.match(pwordReg)) { //if it does...
+				pwordError.className = "hidden"; //hide the error message
+				pword.style.border = "3px solid green"; //make the border of the input green
+			} else { //if it doesn't meet min reqs
+				pwordError.innerHTML = "Password must be at least 8 characters and include one uppercase letter, one lowercase letter, and one special character"; //flash the error message...
+				pwordError.className = "red"; //make the error message red
+				pword.style.border = "3px solid red"; //make the border of the input red
+			} //checkPword else
+		} //checkPword
+		function checkConf() { //checks to see if the password and comfirmation inputs match and meet min reqs
+			if (conf.value == pword.value && conf.value.match(pwordReg)) { //if they match and min reqs are met...
+				conf.style.border = "3px solid green"; //turn the border of the comfirmation input green
+			} else { //otherwise...
+				conf.style.border = "3px solid red"; //turn the border of the confirmation input red
+			} //checkConf else
+		} //checkConf
+		fname.focus(); //on page load, put focus on the first_name input
+	</script>
+</body>
+</html>

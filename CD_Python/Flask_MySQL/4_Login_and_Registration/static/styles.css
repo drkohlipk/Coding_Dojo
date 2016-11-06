@@ -1,0 +1,54 @@
+* {
+	font-family: sans-serif;
+}
+
+main {
+	width: 30%;
+	margin: 80px auto;
+	padding: 0 30px 30px;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 5px gray;
+}
+
+form {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 40px;
+}
+
+label {
+	display: inline-block;
+	width: 40%;
+	margin: 10px 10px 0 0;
+}
+
+input {
+	width: 35%;
+}
+
+form > input:last-child {
+	display: block;
+	width: 4em;
+	margin: 20px 0 10px 30%;
+	font-size: 1.3em;
+}
+
+.red {
+	color: red;
+}
+
+.hidden {
+	display: none;
+}
+
+#sucMain {
+	text-align: center;
+}
+
+#pwordError {
+	font-size: 1em;
+}
+
+a > button:hover {
+	cursor: pointer;
+}

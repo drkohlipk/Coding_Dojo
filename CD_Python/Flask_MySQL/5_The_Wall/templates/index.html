@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Flask/MySQL assignment">
+	<title>The Wall</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" media="screen">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<h1>Coding Dojo Wall</h1>
+		<div id="rightHdr">
+			<h2>Welcome Back {{ user['first_name'] }}!</h2>
+			<a href="/logoff"><button type="button" name="logoff">Log Off</button></a>
+		</div><!-- end_of_rightHdr-->
+	</header>
+	<section id="mainSxn">
+		<article id="postMessage">
+			<h3>Post a message:</h3>
+			<form id="message" action="/message" method="post">
+				<textarea name="message" rows="8" cols="40"></textarea>
+				<input type="submit" name="postmessage" value="Post A Message">
+			</form>
+		</article>
+		<section id="messageRow">
+			<hr>
+			{% if messages %} <!--if there are any messages in the database...-->
+			{% for message in messages %} <!--for every message stored...-->
+			<article class="message">
+				<h3>{{ message['user_name'] }} <span>{{ message['created_at'] }}</span></h3>
+				<p>{{ message['message'] }}</p>
+				{% if comments %} <!--if there are any comments in the database...-->
+					{% for comment in comments %} <!--for every comment stored...-->
+						{% if comment['message_id'] == message['id'] %} <!--if the comment's stored message_id is the same as the message's id-->
+							<article class="comment">
+								<h3>&gt; {{ comment['user_name'] }} <span>{{ comment['created_at'] }}</span></h3>
+								<p>{{ comment['comment'] }}</p>
+							</article>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+				<span class="clickToCmnt">Leave a comment</span>
+				<form class="cmntForm hidden" action="/comment" method="post">
+					<textarea name="comment" rows="8" cols="80"></textarea>
+					<input type="hidden" name="message_id" value="{{ message['id'] }}"> <!--when a comment is submitted, the message commented on's associated message_id is also submitted-->
+					<input type="submit" name="postcomment" value="Post A Comment">
+				</form>
+				<hr>
+			</article>
+			{% endfor %}
+			{% endif %}
+		</section>
+	</section>
+	<script type="text/javascript">
+		$('.clickToCmnt').click(function() { //if the leave a comment span is clicked on...
+			$(this).siblings('.cmntForm').slideToggle(); //hide or unhide the comment field
+		});
+	</script>
+</body>
+</html>
