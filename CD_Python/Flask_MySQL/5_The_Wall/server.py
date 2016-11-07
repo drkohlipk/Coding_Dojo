@@ -1,5 +1,5 @@
-import re
-
+import re, datetime
+from datetime import timedelta
 from flask import Flask, render_template, request, redirect, session, flash
 from flask_bcrypt import Bcrypt
 from mysqlconnection import MySQLConnector
@@ -93,7 +93,7 @@ def wall(): #if the user is able to log in...
 	data1 = {'id' : session['user_id']} #id is defined as the stored user id
 	user = mysql.query_db(query1, data1)[0] #retrieve the user info and store it as user
 
-	query2 = "SELECT concat(users.first_name, ' ', users.last_name) AS user_name, messages.message, messages.created_at, messages.id FROM users LEFT JOIN messages ON users.id = messages.user_id LEFT JOIN comments ON messages.id = comments.message_id GROUP BY messages.message ORDER BY messages.created_at DESC;" #request the messages and have them return with the newest first
+	query2 = "SELECT concat(users.first_name, ' ', users.last_name) AS user_name, messages.message, messages.created_at, messages.id, messages.user_id FROM users JOIN messages ON users.id = messages.user_id GROUP BY messages.message ORDER BY messages.created_at DESC;" #request the messages and have them return with the newest first
 	messages = mysql.query_db(query2) #store the retrieved messages in messages
 
 	query3 = "SELECT concat(users.first_name, ' ', users.last_name) AS user_name, comments.comment, comments.created_at, comments.message_id FROM comments LEFT JOIN users ON comments.user_id = users.id LEFT JOIN messages ON comments.message_id = messages.id;" #retrieve the stored comments
@@ -108,7 +108,7 @@ def message(): #if a user posts a message...
 		'message' : request.form['message'], #the message entered into the input field will be stored as message
 		'user_id' : session['user_id'] #the user id will be set to the session user id
 	}
-	user = mysql.query_db(query, data) #submit query and store the retrieved info as user
+	mysql.query_db(query, data) #submit query and store the retrieved info as user
 	return redirect('/wall') #redirect the user to the wall
 
 @app.route('/comment', methods=['POST'])
@@ -119,8 +119,26 @@ def comment(): #if a user posts a comment
 		'user_id' : session['user_id'], #store the session user id as user id
 		'message_id' : request.form['message_id'] #store the message id for the message commented on as message_id (this comes from the hidden input on index.html)
 	}
-	user = mysql.query_db(query, data) #submit query and store the retrieved info as user
+	mysql.query_db(query, data) #submit query and store the retrieved info as user
 	return redirect('/wall') #redirect the user to the wall
+
+@app.route('/delete/<id>')
+def delete(id): #function to delete a message
+	query1 = "SELECT messages.created_at, messages.id, messages.user_id FROM messages WHERE messages.id = :message_id;" #query to pull required message info
+	data = {
+		'message_id' : id #based on the selected message id
+	}
+	messageQuery = mysql.query_db(query1, data)[0] #set the returned info to messageQuery
+
+	created_at = messageQuery['created_at'] #set created_at variable to be the time/date the message was created
+	now = datetime.datetime.now() #create a new variable with the current time
+	diff = now - created_at #create variable 'diff' and set equal to the difference between the time now and the message created_at time/date
+
+	if diff < datetime.timedelta(minutes = 30) and messageQuery['user_id'] == session['user_id']: #if it's been less than 30 mins since the message was created and the user_id for the message matches the user_id for the logged in user...
+		query2 = 'DELETE FROM comments WHERE comments.message_id = :message_id; DELETE FROM messages WHERE messages.id = :message_id;' #delete the comments and then appropriate message from the database
+		mysql.query_db(query2, data) #run the query (data was set above with query1)
+		
+	return redirect('/wall')
 
 @app.route('/logoff')
 def logoff(): #if the user hits the logoff button...

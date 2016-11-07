@@ -109,23 +109,67 @@
 //
 // console.log(joinByPet_id(people, pets));
 
-function coinChange(cents) {
-	var change = {
-			quarter: 25,
-			dime: 10,
-			nickel: 5,
-			penny: 1
-		},
-		result = [];
-	for (var coin in change) {
-		var value = {
-			type: coin,
-			amount: Math.floor(cents / change[coin])
-		};
-		cents %= change[coin];
-		result.push(value);
-	}
-	return result;
+// function coinChange(cents) {
+// 	var change = {
+// 			quarter: 25,
+// 			dime: 10,
+// 			nickel: 5,
+// 			penny: 1
+// 		},
+// 		result = [];
+// 	for (var coin in change) {
+// 		var value = {
+// 			type: coin,
+// 			amount: Math.floor(cents / change[coin])
+// 		};
+// 		cents %= change[coin];
+// 		result.push(value);
+// 	}
+// 	return result;
+// }
+//
+// console.log(coinChange(97));
+// };
+
+function Node(val) {
+	this.val = val;
+	this.next = null;
 }
 
-console.log(coinChange(97));
+function List() {
+	this.head = null;
+}
+
+List.prototype.addFront = function(val) {
+	var node = new Node(val);
+
+	if (this.head) {
+		node.next = this.head;
+	}
+
+	this.head = node;
+
+	return this;
+};
+
+List.prototype.contains = function(val) {
+	var current = this.head;
+
+	while (current) {
+		if (current.val === val) {
+			return true;
+		}
+		current = current.next;
+	}
+	return false;
+};
+
+let list = new List();
+
+for (let i = 0; i < 10; i++) {
+	list.addFront(i);
+}
+
+var contain = list.contains(1);
+
+console.log(contain);

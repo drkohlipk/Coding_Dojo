@@ -34,9 +34,9 @@ input {
 
 form > input:last-child {
 	display: block;
-	width: 4em;
+	width: 5rem;
 	margin: 20px 0 10px 30%;
-	font-size: 1.3em;
+	font-size: 1.0em;
 }
 
 .red {
@@ -141,10 +141,10 @@ hr {
 }
 
 .clickToCmnt {
-	display: block;
+	display: inline-block;
 	color: blue;
 	text-decoration: underline;
-	font-size: .6em;
+	font-size: .7em;
 	margin: 10px 0 15px 15px;
 }
 
@@ -159,6 +159,12 @@ hr {
 
 .comment {
 	margin-left: 15px;
+}
+
+.delete {
+	display: inline-block;
+	font-size: .7em;
+	margin-left: 10px;
 }
 
 .message hr {

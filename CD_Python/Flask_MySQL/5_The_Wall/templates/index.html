@@ -28,29 +28,57 @@
 		<section id="messageRow">
 			<hr>
 			{% if messages %} <!--if there are any messages in the database...-->
-			{% for message in messages %} <!--for every message stored...-->
-			<article class="message">
-				<h3>{{ message['user_name'] }} <span>{{ message['created_at'] }}</span></h3>
-				<p>{{ message['message'] }}</p>
-				{% if comments %} <!--if there are any comments in the database...-->
-					{% for comment in comments %} <!--for every comment stored...-->
-						{% if comment['message_id'] == message['id'] %} <!--if the comment's stored message_id is the same as the message's id-->
-							<article class="comment">
-								<h3>&gt; {{ comment['user_name'] }} <span>{{ comment['created_at'] }}</span></h3>
-								<p>{{ comment['comment'] }}</p>
-							</article>
-						{% endif %}
-					{% endfor %}
-				{% endif %}
-				<span class="clickToCmnt">Leave a comment</span>
-				<form class="cmntForm hidden" action="/comment" method="post">
-					<textarea name="comment" rows="8" cols="80"></textarea>
-					<input type="hidden" name="message_id" value="{{ message['id'] }}"> <!--when a comment is submitted, the message commented on's associated message_id is also submitted-->
-					<input type="submit" name="postcomment" value="Post A Comment">
-				</form>
-				<hr>
-			</article>
-			{% endfor %}
+				{% for message in messages %} <!--for every message stored...-->
+				<article class="message">
+					<h3>{{ message['user_name'] }} <span>{{ message['created_at'] }}</span></h3>
+					<p>{{ message['message'] }}</p>
+					{% if comments %} <!--if there are any comments in the database...-->
+						{% for comment in comments %} <!--for every comment stored...-->
+							{% if comment['message_id'] == message['id'] %} <!--if the comment's stored message_id is the same as the message's id-->
+								<article class="comment">
+									<h3>&gt; {{ comment['user_name'] }} <span>{{ comment['created_at'] }}</span></h3>
+									<p>{{ comment['comment'] }}</p>
+								</article>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+					<span class="clickToCmnt">&lt;Leave a comment&gt;</span>
+					{% if session['user_id'] == message['user_id'] %}
+						<a href="/delete/{{ message['id'] }}" id="delete{{ message['id'] }}" class="delete">&lt;Delete message&gt;</a>
+					{% endif %}
+					<form class="cmntForm hidden" action="/comment" method="post">
+						<textarea name="comment" rows="8" cols="80"></textarea>
+						<input type="hidden" name="message_id" value="{{ message['id'] }}"> <!--when a comment is submitted, the message commented on's associated message_id is also submitted-->
+						<input type="submit" name="postcomment" value="Post A Comment">
+					</form>
+					<hr>
+					<script type="text/javascript">
+						setInterval(function(){ //run this function every 30 secs...
+							created = '{{ message['created_at'] }}'; //set created to the particular message created_at time/date
+							current = new Date(); //set current to the current time/date
+							offset = new Date().getTimezoneOffset(); //set offset to the local timezone zulu offset (in minutes)
+							current.setMinutes(current.getMinutes() - offset); //apply the zulu offset to current
+							current = current.toISOString().replace(/T/, ' ').replace(/Z/, ''); //convert current to a string containing the ISO 8601 date/time and remove the capital T and Z
+							d1 = Date.parse(current); //parse current's date/time into milliseconds
+							d2 = Date.parse(created); //parse created's date/time into milliseconds
+							if (d1 - d2 > 1800000) { //if the difference between the two parsed dates is greater than 30 mins (in milliseconds)
+								$("#delete{{ message['id'] }}").hide(); //hide the delete anchor tag
+							} //end if
+						}, 30000); //setInterval function
+						/*do the same thing as above once on page load*/
+						var created = '{{ message['created_at'] }}';
+						var current = new Date();
+						var offset = new Date().getTimezoneOffset();
+						current.setMinutes(current.getMinutes() - offset);
+						current = current.toISOString().replace(/T/, ' ').replace(/Z/, '');
+						var d1 = Date.parse(current);
+						var d2 = Date.parse(created);
+						if (d1 - d2 > 1800000) {
+							$("#delete{{ message['id'] }}").hide();
+						}
+					</script>
+				</article>
+				{% endfor %}
 			{% endif %}
 		</section>
 	</section>
