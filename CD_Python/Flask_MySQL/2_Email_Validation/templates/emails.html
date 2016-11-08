@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Email Validation assignment for Coding Dojo as part of the Python track">
+	<title>Email Validation</title>
+	<style media="screen">
+		* {
+			box-sizing: border-box;
+		}
+		main {
+			width: 50%;
+			margin: 100px auto;
+			padding: 50px;
+			border: 1px solid gray;
+			box-shadow: 1px 1px 5px gray;
+		}
+		#topBox {
+			display: inline-block;
+			padding: 5px;
+			background-color: green;
+			border: 1px solid black;
+			box-shadow: 1px 1px 5px gray;
+		}
+		h1 {
+			text-decoration: underline;
+		}
+		.emails {
+			margin-left: 30px;
+			font-size: 1.2em;
+		}
+		.emails span:first-child {
+			font-weight: bold;
+		}
+		.emails span:last-child {
+			margin-left: 10px;
+		}
+		.emails a {
+			font-size: .8em;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		{% if addies %}
+			<span id="topBox">The email address you entered ({{ addies[0]['email'] }}) is a valid email address!  Thank you!</span>
+		{% endif %}
+		<h1>Email Addresses Entered</h1>
+		{% if addies %}
+			{% for addy in addies %}
+			<div class="emails">
+				<span>- {{ addy['email'] }}</span>
+				<span>{{ addy['created_at'] }}</span>
+				<a href="/delete/{{ addy['id'] }}">&lt;delete&gt;</a>
+			</div><!-- end_of_emails-->
+			{% endfor %}
+		{% endif %}
+	</main>
+</body>
+</html>
