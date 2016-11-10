@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Django Survey Form assignment">
+	{% load staticfiles %}
+	<title>Survey Form</title>
+	<link rel="stylesheet" href="{% static 'surveyform/css/styles.css' %}" media="screen">
+</head>
+<body>
+	<form action="/process" method="post">
+		{% csrf_token %}
+		<label for="name">Your Name: </label>
+		<input type="text" name="name" id="name" placeholder="Bob Thebuilder">
+		<label for="location">Dojo Location: </label>
+		<select name="location" id="location">
+			<option value="Seattle" checked>Seattle</option>
+			<option value="San Jose">San Jose</option>
+			<option value="Los Angeles">Los Angeles</option>
+			<option value="Dallas">Dallas</option>
+			<option value="Washington, DC">Washington, DC</option>
+			<option value="Chicago">Chicago</option>
+		</select>
+		<label for="language">Favorite Language: </label>
+		<select name="language" id="language">
+			<option value="Javascript" checked>Javascript</option>
+			<option value="Python">Python</option>
+			<option value="Ruby">Ruby</option>
+			<option value="Swift">Swift</option>
+			<option value="C#">C#</option>
+			<option value="PHP">PHP</option>
+			<option value="HTML">HTML</option>
+			<option value="CSS">CSS</option>
+			<option value="SQL">SQL</option>
+		</select>
+		<label for="comment">Comment (optional): </label>
+		<textarea name="comment" rows="8" cols="40"></textarea>
+		<input type="submit" id="submit" name="submit" value="Submit">
+	</form>
+	<script type="text/javascript">
+		document.getElementById('name').focus();
+	</script>
+</body>
+</html>
