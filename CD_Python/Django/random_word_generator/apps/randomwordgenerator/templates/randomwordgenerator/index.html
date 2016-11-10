@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Random Word Generator Python/Django Assignment">
+	<title>Random Word Generator</title>
+	<style media="screen">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		main {
+			width: 50%;
+			margin: 100px auto;
+			text-align: center;
+		}
+		h1 {
+			width: 80%;
+			margin: 20px auto;
+			padding: 20px;
+			border: 1px solid gray;
+			box-shadow: 1px 1px 5px gray;
+		}
+		a {
+			display: inline-block;
+			width: 5.5em;
+			height: 2em;
+			padding: 6px;
+			background: linear-gradient(lightgray, gray);
+			border-radius: 5px;
+			text-decoration: none;
+			color: black;
+			font-size: 1.1em;
+		}
+		a:hover {
+			box-shadow: 1px 1px 3px black;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h2>Random Word (attempt #{{request.session.counter}})</h2>
+		<h1>{{rando}}</h1>
+		<a href="/">Generate</a>
+	</main>
+</body>
+</html>
