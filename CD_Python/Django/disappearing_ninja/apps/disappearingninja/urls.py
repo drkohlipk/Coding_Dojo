@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^ninjas/(?P<id>\w)+$', views.processninjas)
+    url(r'^result$', views.result),
+    url(r'^ninjas/(?P<color>\w+)*$', views.processninjas)
 ]
