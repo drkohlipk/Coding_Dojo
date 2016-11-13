@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Django Courses assignment">
+	{% load staticfiles %}
+	<title>Courses</title>
+	<link rel="stylesheet" href="{% static 'courses/css/styles.css' %}" media="screen">
+</head>
+<body>
+	<main>
+		<header>
+			<h2>Add a new course</h2>
+			<form action="/processAdd" method="post">
+				{% csrf_token %}
+				<label for="name">Name:</label>
+				<input type="text" name="name" id="name">
+				<label for="description">Description:</label>
+				<textarea name="description" rows="8" cols="40"></textarea>
+				<input type="submit" name="submit" value="Submit">
+			</form>
+		</header>
+		<section>
+			<h2>Courses</h2>
+			<table>
+				<thead>
+					<th>Course Name</th>
+					<th>Description</th>
+					<th>Date Added</th>
+					<th>Actions</th>
+				</thead>
+				{% for course in courses %}
+					<tr>
+						<td>{{ course.name }}</td>
+						<td>{{ course.description }}</td>
+						<td>{{ course.created_at }}</td>
+						<td><a href="/removecheck/{{ course.id }}">remove</a>, <a href="/comment/{{ course.id }}">add/view comment(s)</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</section>
+	</main>
+	<script type="text/javascript">
+		var nameField = document.getElementById('name');
+		nameField.focus();
+	</script>
+</body>
+</html>
