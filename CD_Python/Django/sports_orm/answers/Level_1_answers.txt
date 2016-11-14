@@ -1,0 +1,18 @@
+Level 1 Answers:
+
+1. League.objects.filter(sport = 'Baseball')
+2. League.objects.filter(name__icontains = 'Womens\'')
+3. League.objects.filter(sport__icontains = 'hockey')
+4. League.objects.exclude(sport = 'Football')
+5. League.objects.filter(name__icontains = 'conference')
+6. League.objects.filter(name__icontains = 'atlantic')
+7. Team.objects.filter(location = 'Dallas')
+8. Team.objects.filter(team_name = 'Raptors')
+9. Team.objects.filter(location__icontains = 'city')
+10. Team.objects.filter(team_name__startswith = 'T')
+11. Team.objects.order_by('location')
+12. Team.objects.order_by('-team_name')
+13. Player.objects.filter(last_name = 'Cooper')
+14. Player.objects.filter(first_name = 'Joshua')
+15. Player.objects.filter(last_name = 'Cooper').exclude(first_name = 'Joshua')
+16. Player.objects.filter(Q(first_name__icontains = 'Alexander') | Q(first_name__icontains = 'Wyatt'))

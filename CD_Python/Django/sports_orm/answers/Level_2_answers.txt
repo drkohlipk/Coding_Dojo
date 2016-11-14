@@ -1,0 +1,10 @@
+Level 2 Answers:
+
+1. Team.objects.filter(league__name = "Atlantic Soccer Conference")
+2. Player.objects.filter(curr_team__location = "Boston", curr_team__team_name = "Penguins")
+3. Player.objects.filter(curr_team__league__name = "International Collegiate Baseball Conference")
+4. Player.objects.filter(last_name = "Lopez", curr_team__league__name = "American Conference of Amateur Football")
+5. Player.objects.filter(curr_team__league__sport = "Football")
+6. Player.objects.filter(curr_team__league__sport = "Football")
+7. Team.objects.filter(curr_players__first_name = 'Sophia')
+8. Player.objects.filter(last_name = 'Anderson').exclude(curr_team__team_name = 'Rays')

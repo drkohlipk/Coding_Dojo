@@ -1,0 +1,27 @@
+Level 3 Answers:
+
+1. sam = Player.objects.get(first_name = 'Samuel', last_name = 'Evans')
+context = {
+	'teams' : sam.all_teams.all(),
+}
+
+2. cats = Team.objects.get(team_name = 'Tiger-Cats', location = 'Manitoba')
+context = {
+	'players' : cats.all_players.all(),
+}
+
+3. vikings = Team.objects.get(team_name = 'Vikings', location = 'Wichita')
+context = {
+	'players' : vikings.all_players.all().exclude(curr_team__team_name = 'Vikings'),
+}
+
+4. jake = Player.objects.get(first_name = 'Jacob', last_name = 'Gray')
+context = {
+	'teams' : jake.all_teams.all().exclude(team_name = 'Colts'),
+}
+
+5. Player.objects.filter(first_name = 'Joshua', all_teams__league__name = 'Atlantic Federation of Amateur Baseball Players')
+
+6. Team.objects.annotate(Count('all_players')).filter(all_players__count__gt = 11)
+
+7. Player.objects.annotate(Count('all_teams')).order_by('all_teams__count')
