@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Django Courses assignment">
+	{% load staticfiles %}
+	<title>Remove Course</title>
+	<link rel="stylesheet" href="{% static 'courses/css/styles.css' %}" media="screen">
+</head>
+<body>
+	<main>
+		<h1>Are you sure you would like to delete the following course?</h1>
+		<div id="removewrapper">
+			<span>Name:</span>
+			<p>{{ course.name }}</p>
+			<span>Description:</span>
+			<p>{{ course.description }}</p>
+			<a href="{% url 'courses:index' %}" class="btn btn-dflt">No</a>
+			<a href="{% url 'courses:remove' id=course.id %}" class="btn" id="yes">Yes! I would like to delete this course.</a>
+		</div><!-- end_of_removewrapper-->
+	</main>
+</body>
+</html>
