@@ -12,13 +12,38 @@
 		.grn {
 			color: green;
 		}
+
+		p {
+			margin: 10px 0 0 5px;
+		}
+
+		#addcourse, #adduser {
+			display: inline-block;
+			vertical-align: top;
+			width: 11em;
+			margin: 20px 0 20px 15%;
+		}
+
+		h2 {
+			margin: 20px 0;
+		}
+
+		a {
+			margin: 10px 0 0 12%;
+		}
 	</style>
 </head>
 <body>
 	<main class="fifty">
+		<a href="{% url 'logreg:logout' %}" class="btn btn-dflt right">Log Out</a>
 		<h1>Success! Welcome, {{request.session.user.first_name}}</h1>
 		<p class="notif grn">Successfully registered (or logged in)!</p>
-		<a href="{% url 'logreg:logout' %}" class="btn btn-pop">Log Out</a>
+		<a id="addcourse" href="{% url 'courses:index' %}" class="btn btn-pop">Add a Course</a>
+		<a id="adduser" href="{% url 'courses:adduser' %}" class="btn btn-pop">Add User to Course</a>
+		<h2>Check Out Some Python/Django Projects:</h2>
+		<a href="{% url 'disappearing_ninja:index' %}">Disappearing Ninja</a>
+		<a href="{% url 'ninjagold:index' %}">Ninja Gold</a>
+		<a href="{% url 'timedisplay:index' %}">Time Display</a>
 	</main>
 </body>
 </html>

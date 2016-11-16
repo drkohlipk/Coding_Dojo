@@ -6,6 +6,8 @@ from pytz import timezone
 from tzlocal import get_localzone
 
 def index(request):
+	if not request.session['loggedin']: #if the user is not logged in...
+		return redirect(reverse('logreg:index'))
 	try: #attempt to add request.session values to the context...if they've been initialized
 		context = {
 			'gold' : request.session['gold'],
@@ -20,6 +22,8 @@ def index(request):
 	return render(request, 'ninjagold/index.html', context) #render the index.html page with context
 
 def processgold(request, place):
+	if not request.session['loggedin']: #if the user is not logged in...
+		return redirect(reverse('logreg:index'))
 	#########get and set local time stamp (django workaround...)#########
 	local_tz = get_localzone()
 	ts = time.time()
@@ -51,8 +55,11 @@ def processgold(request, place):
 	return redirect(reverse('ninjagold:index'))
 
 def reset(request):
+	if not request.session['loggedin']: #if the user is not logged in...
+		return redirect(reverse('logreg:index'))
 	try: #assuming request.session has been at least initalized...clear it!
-		request.session.clear()
+		del request.session['gold']
+		del request.session['activities']
 		return redirect(reverse('ninjagold:index'))
 	except KeyError: #otherwise, just head back to index.html
 		return redirect(reverse('ninjagold:index'))

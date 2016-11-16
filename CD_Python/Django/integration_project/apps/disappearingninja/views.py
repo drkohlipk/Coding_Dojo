@@ -2,9 +2,13 @@ from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 
 def index(request):
+    if not request.session['loggedin']: #if the user is not logged in...
+        return redirect(reverse('logreg:index'))
     return render(request, 'disappearingninja/index.html') #standard page with no ninjas
 
 def result(request): #result page after ninja is processed
+    if not request.session['loggedin']: #if the user is not logged in...
+        return redirect(reverse('logreg:index'))
     try: #if request.session is defined...set context
         context = {
             'label' : request.session['label'],
@@ -20,6 +24,8 @@ def result(request): #result page after ninja is processed
     return render(request, 'disappearingninja/ninjas.html', context) #ninjas page
 
 def processninjas(request, color): #processing of the ninjas
+    if not request.session['loggedin']: #if the user is not logged in...
+        return redirect(reverse('logreg:index'))
     if not color: #if color was left blank...
         try: #try to delete session (assuming it was previously defined)...and redirect to result
             del request.session['label']

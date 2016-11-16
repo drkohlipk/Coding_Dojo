@@ -4,7 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	{% load staticfiles %}
 	<title>Time Display</title>
+	<link rel="stylesheet" href="{% static 'timedisplay/css/css_boilerplate.css' %}" media="screen">
 	<style media="screen">
 		p {
 			width: 200px;
@@ -22,10 +24,14 @@
 			border: 1px solid gray;
 			box-shadow: 1px 1px 5px gray;
 		}
+		.right {
+			margin: 0 100px 0 0;
+		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
 <body>
+	<a class="btn btn-pop right" href="{% url 'logreg:success' %}">Go Back</a>
 	<p>The current date and time is:</p>
 	<h1>{{date}}<br>{{time}}</h1>
 	<script type="text/javascript">

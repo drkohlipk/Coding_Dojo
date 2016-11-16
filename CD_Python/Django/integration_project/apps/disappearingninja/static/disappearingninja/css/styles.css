@@ -9,6 +9,7 @@ h1 {
 	width: 100%;
 	text-align: center;
 	margin: 70px auto 50px;
+	clear: right;
 }
 
 img {
@@ -16,4 +17,8 @@ img {
 	height: auto;
 	margin: 0 50%;
 	transform: translateX(-50%);
+}
+
+.btn {
+	margin: 30px 30px 10px 0;
 }

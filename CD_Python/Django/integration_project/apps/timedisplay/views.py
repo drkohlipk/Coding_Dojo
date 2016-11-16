@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
 from datetime import datetime
 import time, pytz
 from pytz import timezone
 from tzlocal import get_localzone
 
 def index(request):
+	if not request.session['loggedin']: #if the user is not logged in...
+		return redirect(reverse('logreg:index'))
 	local_tz = get_localzone()
 	ts = time.time()
 	utc_now= datetime.utcfromtimestamp(ts)

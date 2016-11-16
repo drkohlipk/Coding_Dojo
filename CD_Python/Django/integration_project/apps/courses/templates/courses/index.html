@@ -7,10 +7,12 @@
 	<meta name="description" content="Coding Dojo Python/Django Courses assignment">
 	{% load staticfiles %}
 	<title>Courses</title>
+	<link rel="stylesheet" href="{% static 'disappearingninja/css/css_boilerplate.css' %}" media="screen">
 	<link rel="stylesheet" href="{% static 'courses/css/styles.css' %}" media="screen">
 </head>
 <body>
 	<main>
+		<a class="btn btn-pop right" href="{% url 'logreg:success' %}">Go Back</a>
 		<header>
 			<h2>Add a new course</h2>
 			<form action="{% url 'courses:processAdd' %}" method="post">
@@ -19,7 +21,7 @@
 				<input type="text" name="name" id="name">
 				<label for="description">Description:</label>
 				<textarea name="description" rows="8" cols="40"></textarea>
-				<input type="submit" name="submit" value="Submit">
+				<input class="btn btn-pop" type="submit" name="submit" value="Submit">
 			</form>
 		</header>
 		<section>

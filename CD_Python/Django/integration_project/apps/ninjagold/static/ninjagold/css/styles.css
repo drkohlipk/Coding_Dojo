@@ -64,6 +64,13 @@ a:hover {
 	box-shadow: 1px 1px 3px gray;
 }
 
+#back {
+	background: linear-gradient(gray, blue 30%);
+	color: white;
+	float: right;
+	margin: 5px 35px 5px 0;
+}
+
 #actbox {
 	height: 400px;
 	margin: 20px 10px;

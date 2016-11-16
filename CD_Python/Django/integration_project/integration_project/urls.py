@@ -16,9 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^courses/', include('apps.courses.urls', namespace='courses')),
+    url(r'^', include('apps.logreg.urls', namespace='logreg')),
+    url(r'^courses', include('apps.courses.urls', namespace='courses')),
 	url(r'^disappearingninja/', include('apps.disappearingninja.urls', namespace='disappearing_ninja')),
-	url(r'^logreg/', include('apps.logreg.urls', namespace='logreg')),
 	url(r'^ninjagold/', include('apps.ninjagold.urls', namespace='ninjagold')),
 	url(r'^timedisplay/', include('apps.timedisplay.urls', namespace='timedisplay')),
 ]

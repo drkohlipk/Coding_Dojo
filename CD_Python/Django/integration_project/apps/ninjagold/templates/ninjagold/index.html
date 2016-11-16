@@ -13,7 +13,8 @@
 	<main>
 		<h1>Your Gold: <span id="gold">${{gold}}</span></h1>
 		<a href="{% url 'ninjagold:reset' %}" id="reset">Reset Game</a>
-		<section id="places">
+		<a id="back" href="{% url 'logreg:success' %}">Go Back</a>
+		<section style="clear:both" id="places">
 			<article class="place">
 				<h2>Farm</h2>
 				<p>(earns 10-20 golds)</p>

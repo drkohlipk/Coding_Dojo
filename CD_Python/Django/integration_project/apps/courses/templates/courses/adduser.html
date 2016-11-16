@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add User to Course</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'courses/css/css_boilerplate.css' %}" media="screen" title="no title">
+    <style media="screen">
+      select, #adduser {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 0 20px;
+      }
+
+      #adduser {
+        width: 11em;
+      }
+
+      form, table {
+        margin: 10px auto;
+      }
+
+      thead {
+        background-color: gray;
+      }
+
+      th, td {
+        padding: 3px 5px;
+      }
+
+      td {
+        text-align: center;
+        border: 1px solid black;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="forty">
+        <form class="ninety" action="{% url 'courses:processuser' %}" method="post">
+          {% csrf_token %}
+          <select name="students">
+            {% for student in students %}
+            <option value="{{student.id}}">{{ student.first_name }}&nbsp;{{ student.last_name }}</option>
+            {% endfor %}
+          </select>
+          <select name="courses">
+            {% for course in courses %}
+            <option value="{{course.id}}">{{ course.name }}</option>
+            {% endfor %}
+          </select>
+          <input id="adduser" class="btn btn-pop" type="submit" name="submit" value="Add User To Course">
+        </form>
+        <table class="ninety">
+          <thead>
+            <th>Course</th>
+            <th>Title</th>
+            <th>Number of Users</th>
+          </thead>
+          {% for course in courses %}
+          <tr>
+            <td>{{ course.id }}</td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.students__count }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <a href="{% url 'logreg:success' %}">Go Back</a>
+    </main>
+  </body>
+</html>
