@@ -44,8 +44,6 @@ def validate(request, typelogin): #route to validate logon/registration
     else: #if they weren't able to successfully log in...
         for regerror in result['errors']['reg']: #create the appropriate errors for the registration/login page...reg(error) is for registration side
             messages.error(request, regerror)
-        for pworderror in result['errors']['pword']: #pword(info) is specifically for the registration password
-            messages.info(request, pworderror)
         for logerror in result['errors']['login']: #login(warning) is for the login side
             messages.warning(request, logerror)
 

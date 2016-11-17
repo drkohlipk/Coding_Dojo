@@ -76,7 +76,12 @@ class SecretManager(models.Manager):
 	def liker(self, secret_id, user_id): #enters a like one a message based on the id of the secret and the id of the user
 		secret = self.get(id = secret_id) #same as Secret.creator...you need the entire secret object for that particular secret to attach it appropriately
 		user = User.objects.get(id = user_id) #^^^^^
-		Like.objects.create(secret_id = secret, user_id = user)
+		if user == secret.person: #if the user who created this secret tries to like the secret...return!
+			return self
+		try: #try to create the like
+			Like.objects.create(secret_id = secret, user_id = user)
+		except: #if it throws a unique_together IntegrityError (or the like...) because you tried to like the secret twice
+			pass #just continue without creating like
 		return self
 
 class User(models.Model):
@@ -105,3 +110,6 @@ class Like(models.Model): #this is the custom through table
 	user_id = models.ForeignKey(User, on_delete = models.CASCADE)
 	created_at = models.DateTimeField(auto_now_add = True)
 	updated_at = models.DateTimeField(auto_now = True)
+
+	class Meta:
+		unique_together = ('secret_id', 'user_id')
