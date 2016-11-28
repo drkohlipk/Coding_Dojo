@@ -1,4 +1,6 @@
-﻿// using System;
+﻿// 
+
+// using System;
 
 // namespace ConsoleApplication
 // {
@@ -6,12 +8,13 @@
 //     {
 //         public static void Main(string[] args)
 //         {
-//             int[] arr1 = new int[10];
-//             string[] arr2 = {"Tim", "Martin", "Nikki", "Sara"};
-//             bool[] arr3 = new bool[10];
-//             for (int i = 0; i < 10; i += 2)
+//             int[,] multTable = new int[10,10];
+//             for (int i = 0; i < 10; i++)
 //             {
-//                 arr3[i] = true;
+//                 for (int j = 0; j < 10; j++)
+//                 {
+//                     multTable[i, j] = (i+1) * (j+1);
+//                 }
 //             }
 //         }
 //     }
