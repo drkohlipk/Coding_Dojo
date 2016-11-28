@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Django Belt Reviewer assignment">
+	{% load staticfiles %}
+	<title>Belt Review</title>
+	<link rel="stylesheet" href="{% static 'beltreview/css/css_boilerplate.css' %}" media="screen">
+	<style media="screen">
+		.sixty {
+			width: 59%
+		}
+		section {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<header class="hundo">
+		<a href="{% url 'beltreview:index' %}">Home</a>
+		<a class="btn btn-pop right" href="{% url 'beltreview:addbook' %}">Add Book and Review</a>
+		<a class="btn btn-dflt right" href="{% url 'beltreview:logout' %}">Logout</a>
+	</header>
+	<main class="ninety">
+		<section class="ninety">
+			<h2>User Alias: {{ user.first_name }}</h2>
+			<p>Name: {{ user.first_name }}&nbsp;{{ user.last_name }}</p>
+			<p>Email: {{ user.email }}</p>
+			<p>Total Reviews: {{ reviews.review__count }}</p>
+		</section>
+		<section class="ninety">
+			<h2>Posted Reviews on the Following Books:</h2>
+			{% for book in books %}
+				<p><a href="{% url 'beltreview:showbook' id=book.id %}">{{ book.title }}</a></p>
+			{% endfor %}
+		</section>
+	</main>
+</body>
+</html>

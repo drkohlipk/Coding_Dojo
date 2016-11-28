@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Django Belt Reviewer assignment">
+	{% load staticfiles %}
+	<title>Belt Review</title>
+	<link rel="stylesheet" href="{% static 'beltreview/css/css_boilerplate.css' %}" media="screen">
+	<style media="screen">
+		.sixty {
+			width: 59%
+		}
+		section {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<header class="hundo">
+		<a class="btn btn-pop right" href="{% url 'beltreview:home' %}">Home</a>
+		<a class="btn btn-dflt right" href="{% url 'beltreview:logout' %}">Logout</a>
+		<h1>{{ book.title }}</h1>
+		<h3>Author: {{ book.authors__name }}</h3>
+	</header>
+	<main class="ninety">
+		<section class="sixty">
+			<h2>Reviews:</h2>
+			<div id="review">
+				{% for review in reviews %}
+					<hr>
+					<div class="stars">
+						<p>Rating:</p>
+					</div><!-- end_of_stars-->
+					<p><a href="{% url 'beltreview:user' id=review.user.id %}">{{ review.user__first_name }}</a>says: <em>{{ review.review }}</em></p>
+					<p><em>Posted on {{review.created_at}}</em></p>
+					{% if user_id == review.user__id %}
+						<a href="{% url 'beltreview:delete' id=review.id page='showbook' %}">Delete this review</a>
+					{% endif %}
+				{% endfor %}
+			</div><!-- end_of_reviews-->
+		</section>
+		<section class="forty">
+			<form class="eighty" action="{% url 'beltreview:processadd' typeadd='review' page='showbook' id=book.id %}" method="post">
+				{% csrf_token %}
+				<label class="hundo" for="review"><strong>Add a Review:</strong></label>
+				<textarea class="hundo" name="review" rows="8" cols="40"></textarea>
+				<label for="rating"><strong>Rating:</strong></label>
+				<input type="number" name="rating" min="1" max="5" value="5">
+				<span><strong>stars</strong></span>
+				<input type="submit" name="addreview" value="Submit Review">
+			</form>
+		</section>
+	</main>
+</body>
+</html>

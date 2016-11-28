@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Django Belt Reviewer assignment">
+	{% load staticfiles %}
+	<title>Belt Review</title>
+	<link rel="stylesheet" href="{% static 'beltreview/css/css_boilerplate.css' %}" media="screen">
+	<style media="screen">
+		.fifty {
+			width: 49%;
+		}
+		.sixty {
+			width: 59%
+		}
+		section {
+			display: inline-block;
+			vertical-align: top;
+		}
+		main section:first-child {
+			border-right: 1px solid gray;
+		}
+	</style>
+</head>
+<body>
+	<main class="eighty">
+		<section class="fifty">
+			{% if messages %}
+				<div class="notif">
+					{% for message in messages %}
+						{% if message.tags == 'error' %}
+							<p class="red">{{ message }}</p>
+						{% endif %}
+					{% endfor %}
+				</div><!-- end_of_notif red-->
+			{% endif %}
+			<form class="hundo" action="{% url 'beltreview:validate' typelogin='register' %}" method="post">
+				{% csrf_token %}
+				<h1>Register</h1>
+				<label id="first_name" class="forty" for="first_name">First Name:</label>
+				<input class="sixty" type="text" name="first_name">
+				<label class="forty" for="last_name">Last Name:</label>
+				<input class="sixty" type="text" name="last_name">
+				<label class="forty" for="email">Email Address:</label>
+				<input class="sixty" type="text" name="email">
+				<label class="forty" for="password">Password:</label>
+				<input class="sixty" type="password" name="password">
+				<label class="forty" for="confirm">Confirm Password:</label>
+				<input class="sixty" type="password" name="confirm">
+				<input class="btn btn-pop" type="submit" name="register" value="Register">
+			</form>
+		</section>
+		<section class="fifty">
+			{% if messages %}
+				<div class="notif">
+					{% for message in messages %}
+						{% if message.tags == 'warning' %}
+							<p class="red">{{ message }}</p>
+						{% endif %}
+					{% endfor %}
+				</div><!-- end_of_notif red-->
+			{% endif %}
+			<form class="hundo" action="{% url 'beltreview:validate' typelogin='login' %}." method="post">
+				{% csrf_token %}
+				<h1>Login</h1>
+				<label class="forty" for="email">Email Address:</label>
+				<input class="sixty" type="text" name="email">
+				<label class="forty" for="password">Password:</label>
+				<input class="sixty" type="password" name="password">
+				<input class="btn btn-pop" type="submit" name="login" value="Login">
+			</form>
+		</section>
+	</main>
+	<script type="text/javascript">
+		var firstname = document.getElementById('first_name');
+		firstname.focus();
+	</script>
+</body>
+</html>

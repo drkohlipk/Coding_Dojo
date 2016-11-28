@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Django Belt Reviewer assignment">
+	{% load staticfiles %}
+	<title>Belt Review</title>
+	<link rel="stylesheet" href="{% static 'beltreview/css/css_boilerplate.css' %}" media="screen">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<style media="screen">
+		.sixty {
+			width: 59%
+		}
+		section {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<header class="hundo">
+		<h1>Welcome, {{ first_name }}!</h1>
+		<a class="btn btn-pop right" href="{% url 'beltreview:addbook' %}">Add Book and Review</a>
+		<a class="btn btn-dflt right" href="{% url 'beltreview:logout' %}">Logout</a>
+	</header>
+	<main class="ninety">
+		<section class="sixty">
+			<h2>Recent Book Reviews:</h2>
+			<div id="recent">
+				{% for review in reviews %}
+					<h3><a href="{% url 'beltreview:showbook' id=review.book.id  %}">{{ review.book.title }}</a></h3>
+					<div class="stars">
+						<p>Rating:</p>
+					</div><!-- end_of_stars-->
+					<p><a href="{% url 'beltreview:showuser' id=review.user.id  %}">{{ review.user.first_name }} </a>says: <em>{{ review.review }}</em></p>
+					<p><em>Posted on {{review.created_at}}</em></p>
+					{% if user_id == review.user__id %}
+						<a href="{% url 'beltreview:delete' id=review.id page='home' %}">Delete this review</a>
+					{% endif %}
+				{% endfor %}
+			</div><!-- end_of_recent-->
+		</section>
+		<section class="forty">
+			<h2>Other Books with Reviews:</h2>
+			<div id="other">
+				{% for book in books %}
+					<a href="{% url 'beltreview:showbook' id=book.id  %}">{{ book.title}}</a>
+				{% endfor %}
+			</div><!-- end_of_other-->
+		</section>
+	</main>
+</body>
+</html>

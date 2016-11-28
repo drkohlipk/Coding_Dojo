@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo Python/Django Belt Reviewer assignment">
+	{% load staticfiles %}
+	<title>Belt Review</title>
+	<link rel="stylesheet" href="{% static 'beltreview/css/css_boilerplate.css' %}" media="screen">
+	<style media="screen">
+		.fifty {
+			width: 49%;
+		}
+		.sixty {
+			width: 59%
+		}
+		section {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<header class="hundo">
+		<a class="btn btn-pop right" href="{% url 'beltreview:home' %}">Home</a>
+		<a class="btn btn-dflt right" href="{% url 'beltreview:logout' %}">Logout</a>
+	</header>
+	<main class="ninety">
+		<h1>Add a New Book Title and a Review:</h1>
+		<form class="hundo" action="{% url 'beltreview:processadd' typeadd='book' page='home' id='' %}" method="post">
+			{% csrf_token %}
+			<label class="twenty" for="title"><strong>Book Title:</strong></label>
+			<input class="fifty" type="text" name="title">
+			<h2>Author:</h2>
+			<label class="forty" for="choose">Choose from the list:</label>
+			{% if authors %}
+				<select class="forty" name="choose" id="choose">
+					{% for author in authors %}
+						<option value="{{ author.id }}">{{ author.name }}</option>
+					{% endfor %}
+				</select>
+			{% endif %}
+			<label class="forty" for="add_author">{% if author %}Or add a new author:{% else %}Author Name:{% endif %}</label>
+			<input class="forty" type="text" name="add_author">
+			<label class="twenty" for="review"><strong>Review:</strong></label>
+			<textarea class="fifty" name="review" rows="8" cols="40"></textarea>
+			<label class="ten" for="rating"><strong>Rating:</strong></label>
+			<input class="ten" type="number" name="rating" min="1" max="5" value="5">
+			<span><strong>stars</strong></span>
+			<input class="btn btn-pop right" id="add_review" type="submit" name="add_review" value="Add Book and Review">
+		</form>
+	</main>
+</body>
+</html>
