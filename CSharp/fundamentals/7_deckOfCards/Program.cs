@@ -105,19 +105,19 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
-            // Deck deck1 = new Deck();
-            // Player player1 = new Player("Bill");
-            // deck1.Shuffle();
-            // Card dealtCard = player1.Draw(ref deck1);
-            // Console.WriteLine(dealtCard.val + ", " + dealtCard.suit + ", " + dealtCard.numerical_value);
-            // // foreach (Card card in deck1.cards)
-            // // {
-            // //     Console.WriteLine(card.val + ", " + card.suit + ", " + card.numerical_value);
-            // // }
-            // Console.WriteLine(deck1.cards.Count);
-            // bool discarded = player1.Discard(ref dealtCard);
-            // Console.WriteLine(discarded);
-            // Console.WriteLine(player1.Discard(ref dealtCard));
+            Deck deck1 = new Deck();
+            Player player1 = new Player("Bill");
+            deck1.Shuffle();
+            Card dealtCard = player1.Draw(ref deck1);
+            Console.WriteLine(dealtCard.val + ", " + dealtCard.suit + ", " + dealtCard.numerical_value);
+            // foreach (Card card in deck1.cards)
+            // {
+            //     Console.WriteLine(card.val + ", " + card.suit + ", " + card.numerical_value);
+            // }
+            Console.WriteLine(deck1.cards.Count);
+            bool discarded = player1.Discard(ref dealtCard);
+            Console.WriteLine(discarded);
+            Console.WriteLine(player1.Discard(ref dealtCard));
         }
     }
 }
