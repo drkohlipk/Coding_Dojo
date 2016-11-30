@@ -14,25 +14,6 @@
 //     }
 // }
 
-// using System;
-
-// namespace ConsoleApplication
-// {
-//     public class Program
-//     {
-//         public static void Main(string[] args)
-//         {
-//             for (int i = 1; i <= 100; i++) 
-//             {
-//                 if ((i % 3 == 0 && i % 5 != 0) || (i % 5 == 0 && i % 3 != 0)) 
-//                 {
-//                     Console.WriteLine(i);
-//                 }
-//             }
-//         }
-//     }
-// }
-
 using System;
 
 namespace ConsoleApplication
@@ -43,11 +24,38 @@ namespace ConsoleApplication
         {
             for (int i = 1; i <= 100; i++) 
             {
-                if ((((i/3.0) - Math.Floor(i/3.0)) == 0.0 && ((i/5.0) - Math.Floor(i/5.0)) != 0.0) || (((i/5.0) - Math.Floor(i/5.0)) == 0.0 && ((i/3.0) - Math.Floor(i/3.0)) != 0.0)) 
+                if (i % 3 == 0 && i % 5 != 0) 
                 {
-                    Console.WriteLine(i);
+                    Console.WriteLine("fizz");
+                }
+                else if (i % 5 == 0 && i % 3 != 0)
+                {
+                    Console.WriteLine("buzz");
+                }
+                else if (i % 5 == 0 && i % 3 == 0)
+                {
+                    Console.WriteLine("fizzbuzz");
                 }
             }
         }
     }
 }
+
+// using System;
+
+// namespace ConsoleApplication
+// {
+//     public class Program
+//     {
+//         public static void Main(string[] args)
+//         {
+//             for (int i = 1; i <= 100; i++) 
+//             {
+//                 if ((((i/3.0) - Math.Floor(i/3.0)) == 0.0 && ((i/5.0) - Math.Floor(i/5.0)) != 0.0) || (((i/5.0) - Math.Floor(i/5.0)) == 0.0 && ((i/3.0) - Math.Floor(i/3.0)) != 0.0)) 
+//                 {
+//                     Console.WriteLine(i);
+//                 }
+//             }
+//         }
+//     }
+// }
