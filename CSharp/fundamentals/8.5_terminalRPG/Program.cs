@@ -112,10 +112,10 @@ namespace ConsoleApplication
             }
         }
 
-        public static void HealthCheck(object fighter)
-        {
-            if (fighter is )
-        }        
+        // public static void HealthCheck(object fighter)
+        // {
+        //     if (fighter is )
+        // }        
 
         public static void Main(string[] args)
         {
