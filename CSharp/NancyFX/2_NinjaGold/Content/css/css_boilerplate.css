@@ -1,0 +1,190 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+h1, h2 {
+	margin-bottom: 20px;
+}
+
+h3 {
+	margin-top: 30px;
+}
+
+h4 {
+	margin: 15px 0;
+}
+
+main {
+	border: 1px solid gray;
+	box-shadow: 1px 1px 5px gray;
+	margin: 50px auto;
+	padding: 50px;
+}
+
+table {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: gray;
+	padding: 3px;
+	border: 1px solid black;
+}
+
+td {
+	border: 1px solid black;
+	padding: 3px;
+	text-align: center;
+}
+
+form {
+	margin: 10px auto;
+	padding: 20px;
+}
+
+label, input {
+	display: inline-block;
+	vertical-align: bottom;;
+	margin: 5px 0;
+}
+
+input {
+	padding: 3px;
+}
+
+article {
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 5px gray;
+	padding: 20px;
+	margin-left: 6%;
+	height: 200px;
+}
+
+section > article:first-child {
+	margin-left: 0;
+}
+
+#activity {
+	border: 1px solid gray;
+	box-shadow: 1px 1px 5px gray;
+	padding: 20px;
+	height: 200px;
+	overflow-y: scroll;
+}
+
+.ten {
+	width: 10%;
+}
+
+.twenty {
+	width: 20%;
+}
+
+.thirty {
+	width: 30%;
+}
+
+.forty {
+	width: 40%;
+}
+
+.fifty {
+	width: 50%;
+}
+
+.sixty {
+	width: 60%;
+}
+
+.seventy {
+	width: 70%;
+}
+
+.eighty {
+	width: 80%;
+}
+
+.ninety {
+	width: 90%;
+}
+
+.hundo {
+	width: 100%;
+}
+
+.btn {
+	display: block;
+	margin: 10px 0;
+	padding: 3px;
+	width: 5.5em;
+	height: 1.5em;
+	font-size: .9em;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	border: none;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 3px black;
+}
+
+.btn-dflt {
+	background: linear-gradient(lightgray, gray);
+	color: black;
+}
+
+.btn-imp {
+	background: linear-gradient(lightgray, red 30%);
+	color: white;
+}
+
+.btn-pop {
+	background: linear-gradient(lightgray, blue 30%);
+	color: white;
+}
+
+.btn-gold {
+	background: linear-gradient(ivory, gold 30%);
+	color: black;
+	width: 6em;
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.center {
+	margin: 0 center;
+}
+
+.notif {
+	padding: 5px;
+}
