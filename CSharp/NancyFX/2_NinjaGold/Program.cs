@@ -29,6 +29,7 @@ namespace NinjaGold
         public static void Main(string[] args)
         {
             IWebHost host = new WebHostBuilder()
+                .UseIISIntegration()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseKestrel()
                 .UseStartup<Startup>()
