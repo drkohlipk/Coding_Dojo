@@ -10,6 +10,9 @@
 
   },
   "dependencies": {
+    /***************************Adds SQL Connection******************************/
+    "MySqlConnector": "0.1.0-alpha12",
+    /***************************Adds SQL Connection******************************/
 
     /********************************Adds Nancy**********************************/
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",

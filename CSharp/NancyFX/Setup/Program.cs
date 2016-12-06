@@ -1,4 +1,5 @@
 ﻿using System;
+using DbConnection;
 
 /******************Add these for Nancy*******************/
 using System.IO;
@@ -19,6 +20,14 @@ namespace ChangeMe //Change this to something useful!
                 .Build();
             host.Run();
         /********************Add for Nancy********************/
+
+        /**********************Access DB**********************/
+        string Query = "SELECT * FROM users";
+        List<Dictionary<string, object>> users = DbConnector.ExecuteQuery(Query);
+        //OR
+        string Query = $"INSERT INTO users (name, email, created_at) VALUES ('{NameVariable}', '{EmailVariable}', NOW())";
+        DbConnector.ExecuteQuery(Query);
+        /**********************Access DB**********************/
         }
     }
 }
