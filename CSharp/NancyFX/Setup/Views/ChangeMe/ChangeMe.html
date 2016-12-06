@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Add description here">
+	<title>ChangeMe</title>
+	<!--Add Corresponding stylesheet-->
+	<link rel="stylesheet" href="/Content/yourstyles.css">
+	<!--Add Corresponding stylesheet-->
+</head>
+<body>
+	<!--Use with bound iterable-->
+	@Each
+		@Current
+	@EndEach
+	<!--Use with bound iterable-->
+
+	<!--Use with ViewBag-->
+	@If.Context.ViewBag.show <!--Boolean to show element using ViewBag-->
+		@ViewBag.poke
+	@EndIf
+	<!--Use with ViewBag-->
+</body>
+</html>

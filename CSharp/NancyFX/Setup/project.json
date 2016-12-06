@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true,
+
+    /*************************Allows views and content***************************/
+    "copyToOutput": ["Views/<folder name corresponding to module>/*", "Content/*"]
+    /*************************Allows views and content***************************/
+
+  },
+  "dependencies": {
+
+    /********************************Adds Nancy**********************************/
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+    "Microsoft.AspNetCore.Owin": "1.0.0",
+    "Nancy": "2.0.0-barneyrubble",
+    /********************************Adds Nancy**********************************/
+
+    /***************************Adds Console Feedback****************************/
+    "Microsoft.Extensions.Logging.Console": "1.0.0",
+    /***************************Adds Console Feedback****************************/
+
+    /**************************Adds Session Variable*****************************/
+    "Nancy.Session.InMemory": "0.9.1-pre",
+    "Nancy.Session.Persistable": "0.9.1-pre",
+    "FSharp.Core": "4.0.1.7-alpha",
+    /**************************Adds Session Variable*****************************/
+
+    /**************************Adds JSON Integration*****************************/
+    "Newtonsoft.Json": "9.0.1",
+    /**************************Adds JSON Integration*****************************/
+
+    /**************This was moved here from frameworks dependencies**************/
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.1.0"
+    }
+    /**************This was moved here from frameworks dependencies**************/
+
+  },
+  "frameworks": {
+    "netcoreapp1.1": {
+      "imports": "dnxcore50"
+    }
+  },
+
+  /******************************Adds Watcher Tool*******************************/
+  "tools": {
+    "Microsoft.Dotnet.Watcher.Tools": "1.0.0-preview2-final"
+  }
+  /******************************Adds Watcher Tool*******************************/
+
+}
