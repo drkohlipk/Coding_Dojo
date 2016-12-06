@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo C#/NancyFX assignment PokeInfo">
+	<title>PokeInfo</title>
+	<link rel="stylesheet" href="/Content/css_boilerplate.css">
+</head>
+<body>
+	<main class="eighty center">
+		<section class="hundo center">
+			@Each
+				@Current
+			@EndEach
+		</section>
+	</main>
+	<div class="twenty center">
+		@If.Context.ViewBag.show
+			@ViewBag.poke
+		@EndIf
+	</div>
+</body>
+</html>
