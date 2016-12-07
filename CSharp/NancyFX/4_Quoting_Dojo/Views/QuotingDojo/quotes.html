@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo C#/NancyFX assignment Quoting Dojo">
+	<title>Quoting Dojo</title>
+	<link rel="stylesheet" href="/Content/css_boilerplate.css">
+	<style media="screen">
+		main {
+			height: 600px;
+		}
+	</style>
+</head>
+<body>
+	<main class="sixty center">
+		<h1>@ViewBag.header</h1>
+		@If.Context.ViewBag.show
+			<div id="quoteContainer">
+				@Each
+					@Current
+				@EndEach
+			</div><!-- end_of_quoteContainer-->
+		@EndIf
+		<a id="back" class="btn btn-pop" href="/">Enter a Quote!</a>
+	</main>
+</body>
+</html>

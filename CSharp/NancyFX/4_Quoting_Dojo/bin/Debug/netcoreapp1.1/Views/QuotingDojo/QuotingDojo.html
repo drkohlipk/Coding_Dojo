@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo C#/NancyFX assignment Quoting Dojo">
+	<title>Quoting Dojo</title>
+	<link rel="stylesheet" href="/Content/css_boilerplate.css">
+</head>
+<body>
+	<main class="sixty center">
+		<h1>Welcome to Quoting Dojo!</h1>
+		@If.Context.ViewBag.showErrors
+			<div class="notif thirty center">
+				@Each
+					@Current
+				@EndEach
+			</div><!-- end_of_notif-->
+		@EndIf
+		<form class="eighty center" action="/quotes" method="post">
+			<label class="twenty" for="name">Your name: </label>
+			<input class="seventy" type="text" name="name" placeholder="Bob Thebuilder">
+			<label class="twenty" for="quote">Your quote: </label>
+			<textarea class="seventy" name="quote" rows="8" cols="80" placeholder="Put your quote here...must be shorter than 1000 characters"></textarea>
+			<input class="btn btn-pop" type="submit" name="addQuote" value="Add My Quote!">
+			<a class="btn btn-dflt" href="/quotes">Skip To Quotes!</a>
+		</form>
+	</main>
+</body>
+</html>

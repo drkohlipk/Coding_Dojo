@@ -29,10 +29,10 @@ sList.prototype.reverse = function() {
 			after = current.next;
 		current.next = null;
 		while (after) {
-			var temp = current;
+			this.head = current;
 			current = after;
 			after = current.next;
-			current.next = temp;
+			current.next = this.head;
 		}
 		this.head = current;
 		return this;
