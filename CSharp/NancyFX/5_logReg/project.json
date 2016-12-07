@@ -5,7 +5,7 @@
     "emitEntryPoint": true,
 
     /*************************Allows views and content***************************/
-    "copyToOutput": ["Views/<folder name corresponding to module>/*", "Content/*"]
+    "copyToOutput": ["Views/LogReg/*", "Content/*"]
     /*************************Allows views and content***************************/
 
   },
@@ -33,10 +33,6 @@
     "Nancy.Session.Persistable": "0.9.1-pre",
     "FSharp.Core": "4.0.1.7-alpha",
     /**************************Adds Session Variable*****************************/
-
-    /**************************Adds JSON Integration*****************************/
-    "Newtonsoft.Json": "9.0.1",
-    /**************************Adds JSON Integration*****************************/
 
     /**************This was moved here from frameworks dependencies**************/
     "Microsoft.NETCore.App": {

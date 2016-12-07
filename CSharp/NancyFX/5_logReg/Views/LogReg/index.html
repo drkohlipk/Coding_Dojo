@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo C#/NancyFX Login and Registration assignment">
+	<title>Login and Registration</title>
+	<link rel="stylesheet" href="/Content/css_boilerplate.css">
+</head>
+<body>
+	<main class="eighty center">
+		<section class="fifty">
+			<h1>Registration</h1>
+			@If.Context.ViewBag.showReg
+				<ul class="notif seventy center">
+					@Each
+						@Current
+					@EndEach
+				</ul><!-- end_of_notif-->
+			@EndIf
+			<form id="register" class="hundo" action="/register" method="post">
+				<label class="thirty" for="firstName">First Name: </label>
+				<input id="first" class="sixty" type="text" name="firstName">
+				<label class="thirty" for="lastName">Last Name: </label>
+				<input class="sixty" type="text" name="lastName">
+				<label class="thirty" for="email">Email Address: </label>
+				<input class="sixty" type="text" name="email">
+				<label class="thirty" for="password">Password: </label>
+				<input id="password" class="sixty" type="password" name="password" onkeyup="checkPword()" onkeydown="checkPword()">
+				<label class="thirty" for="confirm">Confirm Password: </label>
+				<input id="confirm" class="sixty" type="password" name="confirm" onkeyup="checkConf()" onkeydown="checkConf()">
+				<input class="btn btn-pop" type="submit" name="submit" value="Register">
+			</form>
+		</section>
+		<section>
+			<h1>Login</h1>
+			@If.Context.ViewBag.showLog
+				<ul class="notif">
+					@Each
+						@Current
+					@EndEach
+				</ul><!-- end_of_notif-->
+			@EndIf
+			<form id="login" class="hundo" action="/login" method="post">
+				<label class="thirty" for="email">Email Address: </label>
+				<input class="sixty" type="text" name="email">
+				<label class="thirty" for="password">Password: </label>
+				<input class="sixty" type="password" name="password">
+				<input class="btn btn-pop" type="submit" name="submit" value="Login">
+			</form>
+		</section>
+	</main>
+	<script type="text/javascript">
+		var first = document.getElementById('first'),
+		pword = document.getElementById('password'),
+		conf = document.getElementById('confirm'),
+		pwordReg = /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{:;'?/><.;,])(?!.*\s).*$/;
+		function checkPword() { //allows the password error box to be dynamically rendered and adds a red or green border to the password input based on the password entered matching the given regex
+			if (pword.value.match(pwordReg)) {
+				pword.style.border = "3px solid green";
+			} else {
+				pword.style.border = "3px solid red";
+			}
+		}
+		function checkConf() { //outlines the confirm password input based on it matching the password input
+			if (conf.value == pword.value && conf.value.match(pwordReg)) {
+				conf.style.border = "3px solid green";
+			} else {
+				conf.style.border = "3px solid red";
+			}
+		}
+		first.focus(); //on page load, puts the cursor in the register first name input field
+	</script>
+</body>
+</html>
