@@ -10,12 +10,14 @@ namespace YourNamespace //Change this to match the app namespace!
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc();
+			services.AddSession();
 		}
 
 		public void Configure(IApplicationBuilder App)
 		{
 			App.UseStaticFiles();
 			App.UseMvc();
+			App.UseSession();
 		}
 	}
 }

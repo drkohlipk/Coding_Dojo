@@ -1,6 +1,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+/**********************Enables Session********************/
+using Microsoft.AspNetCore.Http;
+/**********************Enables Session********************/
 
 namespace YourNamespace.Controllers
 {
@@ -27,5 +30,13 @@ namespace YourNamespace.Controllers
 		// {
 		// ...
 		// }
+		// ...
+		// HttpContext.Session.SetString("Key", "Value");
+		// ...
+		// HttpContext.Session.GetString("Key");
+		// ...
+		// HttpContext.Session.SetInt32("OtherKey", 123);
+		// ...
+		// HttpContext.Session.GetInt32("OtherKey");
 	}
 }

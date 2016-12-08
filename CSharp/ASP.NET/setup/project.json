@@ -21,8 +21,12 @@
     /******************Adds ASP.NET Core MVC******************/
 
     /******Allows serving of static files(CSS/JS/images)******/
-    "Microsoft.AspNetCore.StaticFiles": "1.0.0"
+    "Microsoft.AspNetCore.StaticFiles": "1.0.0",
     /******Allows serving of static files(CSS/JS/images)******/
+
+    /*********************Enables Session*********************/
+    "Microsoft.AspNetCore.Session": "1.0.0"
+    /*********************Enables Session*********************/
 
   },
   "frameworks": {
