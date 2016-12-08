@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo C#/ASP.NET Core MVC assignment Dojo Survey">
+	<title>Dojo Survey</title>
+	<link rel="stylesheet" href="~/css/css_boilerplate.css">
+</head>
+<body>
+	<main class="sixty center">
+		<div class="ninety">
+			<h1>Submitted Info:</h1>
+			<div class="left forty">
+				<p>Name:</p>
+				<p>Dojo Location:</p>
+				<p>Favorite Language:</p>
+				<p>Comment:</p>
+			</div><!-- end_of_left forty-->
+			<div class="right sixty">
+				<p>@ViewBag.Name</p>
+				<p>@ViewBag.Location</p>
+				<p>@ViewBag.Language</p>
+				<p>@ViewBag.Comment</p>
+			</div><!-- end_of_right sixty-->
+			<a class="btn btn-dflt right" href="/">Go Back</a>
+		</div>
+	</main>
+</body>
+</html>

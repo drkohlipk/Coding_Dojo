@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo C#/ASP.NET Core MVC assignment Dojo Survey">
+	<title>Dojo Survey</title>
+	<link rel="stylesheet" href="~/css/css_boilerplate.css">
+</head>
+<body>
+	<main class="sixty center">
+		<form class="ninety" action="result" method="post">
+			<label class="forty" for="name">Your Name: </label>
+			<input class="sixty" type="text" name="name" value="">
+			<label class="forty" for="location">Dojo Location: </label>
+			<select class="sixty" name="location">
+				<option value="siliconValley" selected>Silicon Valley</option>
+				<option value="seattle">Seattle</option>
+				<option value="losAngeles">Los Angeles</option>
+				<option value="dallas">Dallas</option>
+				<option value="washingtonDC">Washington DC</option>
+				<option value="chicago">Chicago</option>
+				<option value="berkeley">Berkeley</option>
+				<option value="orangeCounty">Orange County</option>
+			</select>
+			<label class="forty" for="language">Favorite Language: </label>
+			<select class="sixty" name="language">
+				<option value="html">HTML</option>
+				<option value="css">CSS</option>
+				<option value="javascript">JavaScript</option>
+				<option value="python">Python</option>
+				<option value="mySql">MYSQL</option>
+				<option value="cSharp" selected>C#</option>
+				<option value="ruby">Ruby</option>
+				<option value="swift">Swift</option>
+				<option value="php">PHP</option>
+			</select>
+			<label class="hundo" for="comment">Comment (optional):</label>
+			<textarea class="hundo" name="comment" rows="8" cols="80"></textarea>
+			<input class="btn btn-pop right" type="submit" name="submit" value="Submit">
+		</form>
+	</main>
+</body>
+</html>

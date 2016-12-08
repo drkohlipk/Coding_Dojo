@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true,
+
+    /*****************Allows serving of pages*****************/
+    "preserveCompilationContext": true
+    /*****************Allows serving of pages*****************/
+
+  },
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.1.0"
+    },
+
+    /******************Adds ASP.NET Core MVC******************/
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
+    /******************Adds ASP.NET Core MVC******************/
+
+    /******Allows serving of static files(CSS/JS/images)******/
+    "Microsoft.AspNetCore.StaticFiles": "1.0.0"
+    /******Allows serving of static files(CSS/JS/images)******/
+
+  },
+  "frameworks": {
+    "netcoreapp1.1": {
+      "imports": "dnxcore50"
+    }
+  },
+
+  /******************************Adds Watcher Tool*******************************/
+  "tools": {
+    "Microsoft.Dotnet.Watcher.Tools": "1.0.0-preview2-final"
+  }
+  /******************************Adds Watcher Tool*******************************/
+}
