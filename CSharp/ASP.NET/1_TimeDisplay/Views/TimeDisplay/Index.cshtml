@@ -52,11 +52,11 @@
 				timeContent = formatTime(current), //formats the time
 				dateContent = formatDate(current); //formats the date
             time.innerHTML = timeContent; //changes the time value in the h1 dynamically
-			if (timeContent == '00:00:00') {
+			if (timeContent == '12:00:00 AM') {
 				date.innerHTML = dateContent; //changes the date value in the h1 dynamically at midnight
 			}
         }
-		
+
 		setInterval(function(){ //sets an interval time to reload the h1 elements every second
 			reload();
 		}, 1000);
