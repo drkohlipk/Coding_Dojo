@@ -9,6 +9,14 @@ namespace YourNamespace.Controllers
 {
 	public class HelloController : Controller
 	{
+		/*****************Added as part of DB Config********************/
+		private readonly QuoteFactory quoteFactory;
+		public HelloController(QuoteFactory quote)
+		{
+			quoteFactory = quote;
+		}
+		/*****************Added as part of DB Config********************/
+		
 		[HttpGet]
 		[Route("RouteName")]
 		public IActionResult Index()

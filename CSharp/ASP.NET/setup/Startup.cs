@@ -1,23 +1,23 @@
-//Need to create this to tell app to use ASP.NET Core MVC
+/*********************Add this to Startup!!**********************/
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
 
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Builder;
+public IConfiguration Configuration { get; private set; }
 
-namespace YourNamespace //Change this to match the app namespace!
+public Startup(IHostingEnvironment env)
 {
-	public class Startup
-	{
-		public void ConfigureServices(IServiceCollection services)
-		{
-			services.AddMvc();
-			services.AddSession();
-		}
+    var builder = new ConfigurationBuilder()
+    .SetBasePath(env.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
+    Configuration = builder.Build();
+}
 
-		public void Configure(IApplicationBuilder App)
-		{
-			App.UseStaticFiles();
-			App.UseMvc();
-			App.UseSession();
-		}
-	}
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add framework services.
+    ...
+	services.AddScoped<QuoteFactory>();
+    services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
+    ...
 }
