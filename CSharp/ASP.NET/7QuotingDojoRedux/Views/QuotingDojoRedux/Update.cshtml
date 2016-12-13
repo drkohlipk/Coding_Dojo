@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Quoting Dojo - Update a Quote!";
+}
+<h1>Update Quote!</h1>
+@if (ViewBag.Errors != null)
+{
+    <ul class="notif sixty center">
+	@foreach(string error in ViewBag.Errors)
+	{
+		<li>@error</li>
+	}
+    </ul>
+}
+<form class="ninety" action="/updateQuote" method="post">
+    <input type="hidden" name="id" value="@ViewBag.id">
+    <label class="twenty" for="Name">Your name:</label>
+    <input class="eighty" type="text" name="Name" value="@ViewBag.name">
+    <label class="twenty" for="QuoteText">Your quote:</label>
+    <textarea class="eighty" name="QuoteText" rows="8" cols="80">@ViewBag.quote</textarea>
+    <div class="hundo" id="buttonHolder">
+        <input class="btn btn-pop" type="submit" name="submit" value="Update Quote!">
+        <a class="btn btn-dflt" href="/Quotes">Back to Quotes!</a>
+    </div><!-- end_of_buttonHolder-->
+</form>

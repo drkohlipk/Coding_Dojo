@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Quoting Dojo - Quotes";
+}
+@if (ViewBag.quoteShow)
+{
+    <h1>Here Are the Awesome Quotes!</h1>
+    <div id="quoteContainer">
+        @foreach (var quote in ViewBag.quotes)
+        {
+            <div class="seventy center quote">
+                <p><em>&quot;@quote.QuoteText&quot;</em></p>
+                <p>&#45;@quote.Name at @quote.Created_At</p>
+                <p>@quote.Likes&nbsp;&nbsp;&nbsp;<a href="like/@quote.Id">Like this!</a></p>
+                <p><a href="update/@quote.Id">update</a> / <a href="delete/@quote.Id">delete</a></p>
+            </div>
+        }
+    </div><!-- end_of_quoteBox-->
+    <a id="back" class="btn btn-pop" href="/">Enter a Quote!</a>
+}
+else
+{
+    <h1>There Aren't Any Quotes Yet :-(</h1>
+    <a id="back" class="btn btn-pop" href="/">Enter a Quote!</a>
+}
