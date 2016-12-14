@@ -21,7 +21,7 @@ namespace QuotingDojoRedux.Controllers
         private static string whichErr = null; //string to figure out which notification div to expose
         private static User currUser = null; //user object to store user information for the logged in user
 
-        [HttpGetAttribute]
+        [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
@@ -39,7 +39,7 @@ namespace QuotingDojoRedux.Controllers
             return View(); //render the index page
         }
 
-        [HttpPostAttribute]
+        [HttpPost]
         [Route("register")]
         public IActionResult Register(User NewUser)
         {
@@ -57,8 +57,7 @@ namespace QuotingDojoRedux.Controllers
                 {
                     PasswordHasher<User> Hasher = new PasswordHasher<User>(); //create a new PasswordHasher object
                     NewUser.password = Hasher.HashPassword(NewUser, NewUser.password); //set the NewUser's password attribute to a hashed version of the entered password
-                    userFactory.Add(NewUser); //send the NewUser object (with populated information) to the userFactory to add to the DB
-                    currUser = NewUser; //set currUser to the NewUser object with the hashed password
+                    currUser = userFactory.Add(NewUser); //send the NewUser object (with populated information) to the userFactory to add to the DB
                     return RedirectToAction("Success"); //return to the Success page
                 }
             }
@@ -77,7 +76,7 @@ namespace QuotingDojoRedux.Controllers
             return RedirectToAction("Index"); //return the user to Index
         }
 
-        [HttpPostAttribute]
+        [HttpPost]
         [Route("login")]
         public IActionResult Login(LogUser NewLogUser)
         {
@@ -117,8 +116,8 @@ namespace QuotingDojoRedux.Controllers
             }
             return RedirectToAction("Index"); //return the user to Index
         }
-
-        [HttpGetAttribute]
+        
+        [HttpGet]
         [Route("success")]
         public IActionResult Success()
         {
@@ -126,35 +125,23 @@ namespace QuotingDojoRedux.Controllers
             {
                 return RedirectToAction("Index"); //return the user to Index
             }
-            else //if there IS user information stored in currUser...
-            {
-                ViewBag.name = currUser.first_name; //set ViewBag.name equal to the first name of the user set in currUser
-                return View("Success"); //render the Success page
-            }
-        }
-
-        [HttpGetAttribute]
-        [Route("logout")]
-        public IActionResult Logout()
-        {
-            currUser = null; //reset currUser
-            return RedirectToAction("Index"); //return the user to Index
-        }
-
-        /************************quoting Dojo stuff******************************/
-        public IActionResult Index()
-        {
             if (errors.Count > 0) //if there are errors in the errors list...
             {
-                ViewBag.Errors = errors; //send those errors to the index page
+                ViewBag.Errors = errors; //send those errors to the addquote page
             }
-            return View();
+            ViewBag.name = currUser.first_name; //set ViewBag.name equal to the first name of the user set in currUser
+            ViewBag.userID = currUser.userid;
+            return View("AddQuote");
         }
 
         [HttpGet]
-        [Route("Quotes")]
+        [Route("quotes")]
         public IActionResult Quotes()
         {
+            if (currUser == null) //if there is no user information stored in currUser...
+            {
+                return RedirectToAction("Index"); //return the user to Index
+            }
             errors.Clear(); //start off by clearing the errors list
             List<Quote> allQuotes = (List<Quote>)quoteFactory.FindAll(); //generate a list of Quote objects and store all quotes in the DB in it
             if (allQuotes.Count > 0) //if there are quotes in the DB...
@@ -166,6 +153,7 @@ namespace QuotingDojoRedux.Controllers
             {
                 ViewBag.quoteShow = false; //don't allow the quoteContainer to be viewed and set default h1
             }
+            ViewBag.UserId = currUser.userid; //send the user id to the front end
             return View("Quotes");
         }
         
@@ -173,6 +161,10 @@ namespace QuotingDojoRedux.Controllers
         [Route("addQuote")]
         public IActionResult addQuote(Quote NewQuote) //receives a NewQuote object as an argument AS LONG AS ALL NAMES OF INPUTS AND MODEL KEYS MATCH!!
         {
+            if (currUser == null) //if there is no user information stored in currUser...
+            {
+                return RedirectToAction("Success"); //return the user to Success
+            }
             errors.Clear(); //clear out all errors to begin
             if (ModelState.IsValid) //if the data entered in the inputs meets the min requirements as set forth in models...
             {
@@ -189,30 +181,28 @@ namespace QuotingDojoRedux.Controllers
                         errors.Add(errorMess); //add that message to the errors list
                     }
                 }
-                return RedirectToAction("Index"); //return the user to Index
+                return RedirectToAction("Success"); //return the user to Success
             }
         }
 
         [HttpGet]
-        [RouteAttribute("like/{id}")]
-        public IActionResult like(int id)
-        {
-            quoteFactory.LikeByID(id); //send the id of the quote to like to the quoteFactory to update the DB
-            return RedirectToAction("Quotes"); //return the user to Quotes
-        }
-
-        [HttpGet]
-        [RouteAttribute("update/{id}")]
+        [Route("update/{id}")]
         public IActionResult update(int id)
         {
+            if (currUser == null) //if there is no user information stored in currUser...
+            {
+                return RedirectToAction("Index"); //return the user to Index
+            }
             if (errors.Count > 0) //if there are errors in the error list...
             {
                 ViewBag.Errors = errors; //send those errors to the Update page
             }
             Quote upQuote = (Quote)quoteFactory.FindByID(id); //create a new Quote object to store the retrieved quote in (based on id) IMPORTANT: make sure the columns in your DB table match the object keys you defined in your Quote class!!
-            ViewBag.name = upQuote.Name; //send the quote name to Update in ViewBag
-            ViewBag.quote = upQuote.QuoteText; //send the quote text to Update in ViewBag
-            ViewBag.id = upQuote.Id; //send the quote id to Update in ViewBag
+            if (currUser.userid != upQuote.user_id) { //if the user isn't the original creator of the quote...
+                return RedirectToAction("Quotes"); //return the user to the quotes page
+            }
+            ViewBag.quote = upQuote.quotetext; //send the quote text to Update in ViewBag
+            ViewBag.id = upQuote.quoteid; //send the quote id to Update in ViewBag
             return View("Update");
         }
 
@@ -220,6 +210,13 @@ namespace QuotingDojoRedux.Controllers
         [Route("updateQuote")]
         public IActionResult updateQuote(Quote NewQuote) //receive a Quote object as a parameter based on the information in the input fields
         {
+            if (currUser == null) //if there is no user information stored in currUser...
+            {
+                return RedirectToAction("Index"); //return the user to Index
+            }
+            if (currUser.userid != NewQuote.user_id) { //if the user isn't the one who created the quote to update...
+                return RedirectToAction("Quotes"); //return the user to the Quotes page
+            }
             errors.Clear(); //start by clearing the errors list
             if (ModelState.IsValid) //if the information entered matches the min reqs in your models...
             {
@@ -236,18 +233,32 @@ namespace QuotingDojoRedux.Controllers
                         errors.Add(errorMess); //add that message to the errors list
                     }
                 }
-                return RedirectToAction("Update", new {id = NewQuote.Id}); //return the user to the Update page with the arg of the quote id
+                return RedirectToAction("Update", new {id = NewQuote.quoteid}); //return the user to the Update page with the arg of the quote id
             }
         }
 
         [HttpGet]
-        [RouteAttribute("delete/{id}")]
+        [Route("delete/{id}")]
         public IActionResult delete(int id)
         {
+            if (currUser == null) //if there is no user information stored in currUser...
+            {
+                return RedirectToAction("Index"); //return the user to Index
+            }
+            Quote delQuote = (Quote)quoteFactory.FindByID(id);
+            if (currUser.userid != delQuote.user_id) { //if the logged in user isn't the one that created this quote...
+                return RedirectToAction("Quotes"); //return the user to the Quotes page
+            }
             quoteFactory.DeleteByID(id); //delete the quote from the DB based on the id
             return RedirectToAction("Quotes"); //return the user to the Quotes page
         }
 
-        /************************quoting Dojo stuff******************************/
+        [HttpGet]
+        [Route("logout")]
+        public IActionResult Logout()
+        {
+            currUser = null; //reset currUser
+            return RedirectToAction("Index"); //return the user to Index
+        }
     }
 }

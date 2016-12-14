@@ -13,6 +13,7 @@ namespace YourNamespace //Change this to match the app namespace!
         {
         /********************Add for ASP.NET Core MVC********************/
             IWebHost host = new WebHostBuilder()
+                .UseIISIntegration() ////add this for Azure deployment
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseKestrel()
                 .UseStartup<Startup>()

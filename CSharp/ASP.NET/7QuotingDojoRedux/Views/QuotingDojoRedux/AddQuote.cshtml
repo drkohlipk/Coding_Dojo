@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "Quoting Dojo - Add a Quote!";
 }
-<h1>Welcome to QuotingDojo!</h1>
+<h1>Welcome to QuotingDojo @ViewBag.name!</h1>
 @if (ViewBag.Errors != null)
 {
     <ul class="notif sixty center">
@@ -11,13 +11,12 @@
 	}
     </ul>
 }
-<form class="ninety" action="addQuote" method="post">
-    <label class="twenty" for="Name">Your name:</label>
-    <input class="eighty" type="text" name="Name">
-    <label class="twenty" for="QuoteText">Your quote:</label>
-    <textarea class="eighty" name="QuoteText" rows="8" cols="80"></textarea>
+<form class="ninety center" action="/addQuote" method="post">
+    <input type="hidden" name="user_id" value="@ViewBag.userID">
+    <label class="twenty" for="quotetext">Your quote:</label>
+    <textarea class="eighty" name="quotetext" rows="8" cols="80"></textarea>
     <div class="hundo" id="buttonHolder">
         <input class="btn btn-pop" type="submit" name="submit" value="Add My Quote!">
-        <a class="btn btn-dflt" href="Quotes">Skip to Quotes!</a>
+        <a class="btn btn-dflt" href="/quotes">Skip to Quotes!</a>
     </div><!-- end_of_buttonHolder-->
 </form>

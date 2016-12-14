@@ -8,17 +8,25 @@
         @foreach (var quote in ViewBag.quotes)
         {
             <div class="seventy center quote">
-                <p><em>&quot;@quote.QuoteText&quot;</em></p>
-                <p>&#45;@quote.Name at @quote.Created_At</p>
-                <p>@quote.Likes&nbsp;&nbsp;&nbsp;<a href="like/@quote.Id">Like this!</a></p>
-                <p><a href="update/@quote.Id">update</a> / <a href="delete/@quote.Id">delete</a></p>
+                <p><em>&quot;@quote.quotetext&quot;</em></p>
+                <p>&#45;@quote.user.first_name at @quote.updated_at.ToString("h:mm tt MMM dd, yyyy")</p>
+                @if (ViewBag.UserId == quote.user_id)
+                {
+                    <p><a href="update/@quote.quoteid">update</a> / <a href="delete/@quote.quoteid">delete</a></p>
+                }
             </div>
         }
     </div><!-- end_of_quoteBox-->
-    <a id="back" class="btn btn-pop" href="/">Enter a Quote!</a>
+    <div id="buttonHolder">
+        <a id="back" class="btn btn-pop center" href="/success">Enter a Quote!</a>
+        <a id="logout" class="btn btn-dflt center" href="/logout">Logout</a>
+    </div><!-- end_of_buttonHolder-->
 }
 else
 {
     <h1>There Aren't Any Quotes Yet :-(</h1>
-    <a id="back" class="btn btn-pop" href="/">Enter a Quote!</a>
+    <div id="buttonHolder">
+        <a id="back" class="btn btn-pop center" href="/success">Enter a Quote!</a>
+        <a id="logout" class="btn btn-dflt center" href="/logout">Logout</a>
+    </div><!-- end_of_buttonHolder-->
 }

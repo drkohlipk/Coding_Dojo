@@ -1,23 +1,12 @@
-
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace QuotingDojoRedux.Models
 {
 	public abstract class BaseEntity {}
-	public class Quote : BaseEntity
-	{
-		//These must match your DB column names and the names of the input fields that you use in your cshtml files in order for everything to marry up properly
-		public int Id { get; set; }
-		public string Name { get; set; }
-		[Required(ErrorMessage = "Quote cannot be left blank.")]
-		public string QuoteText { get; set; }
-		public int Likes { get; set; }
-		public string Created_At{ get; set; }
-	}
 	public class User : BaseEntity
 	{
-		//These must match your DB column names and the names of the input fields that you use in your cshtml files in order for everything to marry up properly
-		public int Id { get; set; }
+		public int userid { get; set; }
 		[Required(ErrorMessage = "First name cannot be left blank.")]
 		[MinLength(2,ErrorMessage = "First name must be at least 2 characters in length.")]
 		public string first_name { get; set; }
@@ -33,13 +22,10 @@ namespace QuotingDojoRedux.Models
 		public string password { get; set; }
 		[Required(ErrorMessage = "Confirm password cannot be left blank.")]
 		public string confirm { get; set; }
-	}
-
-	public class LogUser : BaseEntity 
-	{ //creates class to validate the login fields against
-		[Required(ErrorMessage = "Email address cannot be left blank")]
-		public string email { get; set; }
-		[Required(ErrorMessage = "Password cannot be left blank")]
-		public string password { get; set; }
+		public ICollection<Quote> quotes { get; set; }
+		public User()
+		{
+			quotes = new List<Quote>();
+		}
 	}
 }

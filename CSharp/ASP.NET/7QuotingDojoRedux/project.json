@@ -13,7 +13,8 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "MySql.Data.Core": "7.0.4-IR-191",
     "Dapper": "1.50.2",
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0"
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0"
   },
 
   "frameworks": {
@@ -26,7 +27,19 @@
     "debugType": "portable"
   },
 
+  "publishOptions": {
+      "include": [
+          "wwwroot",
+          "Views",
+          "web.config"
+      ]
+  },
+
+  "scripts": {
+      "postpublish": "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
+  },
+
   "tools": {
-    "Microsoft.Dotnet.Watcher.Tools": "1.0.0-preview2-final"
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
   }
 }
