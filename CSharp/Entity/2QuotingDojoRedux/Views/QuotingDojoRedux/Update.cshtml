@@ -1,0 +1,19 @@
+@model QuotingDojoRedux.Models.UpquoteViewModel
+@{
+    ViewData["Title"] = "Quoting Dojo - Update a Quote!";
+}
+<h1>Update Quote!</h1>
+<form class="ninety center" asp-controller="QuotingDojoRedux" asp-action="updateQuote" method="post" role="form">
+    @if (ViewBag.QuoteErrors != null)
+	{
+		<div class="notif eighty center" asp-validation-summary="All"></div>
+	}
+    <input asp-for="userid">
+    <input asp-for="quoteid">
+    <label class="twenty" asp-for="quotetext"></label>
+    <textarea class="eighty" asp-for="quotetext" rows="8" cols="80"></textarea>
+    <div class="hundo" id="buttonHolder">
+        <input class="btn btn-pop" type="submit" name="submit" value="Update Quote!">
+        <a class="btn btn-dflt" asp-controller="QuotingDojoRedux" asp-action="quotes">Back to Quotes!</a>
+    </div><!-- end_of_buttonHolder-->
+</form>
