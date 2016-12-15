@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 
-public IConfiguration Configuration { get; private set; }
+public IConfiguration Configuration { get; private set; } //put this inside of the Startup class
 
 public Startup(IHostingEnvironment env)
 {
