@@ -1,19 +1,19 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using QuotingDojoRedux.Models;
 using Microsoft.EntityFrameworkCore;
+using QuotingDojoRedux.Models;
 
 namespace QuotingDojoRedux.Controllers
 {
     public class QuotingDojoReduxController : Controller
     {
-        private QuotingDojoContext _context;
-        public QuotingDojoReduxController(QuotingDojoContext context)
+        private QuotingDojoContext _context; //create private class to hold our context object
+        public QuotingDojoReduxController(QuotingDojoContext context) //on controller instantiation...
         {
-            _context = context;
+            _context = context; //populate the private context object with a services context object
         }
         private static User currUser = null; //user object to store user information for the logged in user
 
@@ -21,8 +21,8 @@ namespace QuotingDojoRedux.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            ViewBag.LogView = new LogViewModel();
-            ViewBag.RegView = new RegViewModel();
+            ViewBag.LogView = new LogViewModel(); //pass an empty LogViewModel to the front end
+            ViewBag.RegView = new RegViewModel(); //pas an empty RegViewModel to the front end
             return View(); //render the index page
         }
 
@@ -32,16 +32,16 @@ namespace QuotingDojoRedux.Controllers
         {
             if (ModelState.IsValid) //if the data entered in the inputs meets the min requirements as set forth in the User class in models...
             {
-                User checkUser = _context.Users.SingleOrDefault(user => user.email == model.email);
+                User checkUser = _context.Users.SingleOrDefault(user => user.email == model.email); //attempt to retrieve a user based on the e-mail entered...
                 if (checkUser != null) //if a user is retrieved based on the entered email address..
                 {
-                    ViewBag.DupeReg = "User already exists, please log in."; //add this error to the errors list
-                    return View("Index");
+                    ViewBag.DupeReg = "User already exists, please log in."; //pass this error to the front end
+                    return View("Index"); //return the user to the Index page with error...
                 }
                 else //if a user is not retrieved...
                 {
                     PasswordHasher<User> Hasher = new PasswordHasher<User>(); //create a new PasswordHasher object
-                    User NewUser = new User
+                    User NewUser = new User //create a new user object with the appropriate corresponding information from the view model
                     {
                         first_name = model.first_name,
                         last_name = model.last_name,
@@ -50,15 +50,15 @@ namespace QuotingDojoRedux.Controllers
                         created_at = DateTime.Now,
                         updated_at = DateTime.Now
                     };
-                    NewUser.password = Hasher.HashPassword(NewUser, NewUser.password);
-                    _context.Users.Add(NewUser);
-                    _context.SaveChanges();
-                    currUser = _context.Users.SingleOrDefault(user => user.email == model.email);
+                    NewUser.password = Hasher.HashPassword(NewUser, NewUser.password); //hash the password
+                    _context.Users.Add(NewUser); //add the user to the database
+                    _context.SaveChanges(); //save the changes
+                    currUser = _context.Users.SingleOrDefault(user => user.email == model.email); //retrieve the user from the database and store them in currUser (do this to get their user id)
                     return RedirectToAction("Success"); //return to the Success page
                 }
             }
-            ViewBag.RegErrors = true;
-            return View("Index", model); //return the user to Index
+            ViewBag.RegErrors = true; //set regerrors to true to display the error box
+            return View("Index", model); //return the user to Index with the RegViewModel and errors
         }
 
         [HttpPost]
@@ -71,13 +71,13 @@ namespace QuotingDojoRedux.Controllers
                 var Hasher = new PasswordHasher<User>(); //create a new object to check a hashed password against
                 if (checkUser == null) //if a user is not retrieved based on the entered email address...
                 {
-                    ViewBag.DupeLog = "Username or password incorrect."; //add this error to the errors list
-                    return View("Index");
+                    ViewBag.DupeLog = "Username or password incorrect."; //store this error in ViewBag
+                    return View("Index"); //send user with error back to the Index page
                 }
                 else if (Hasher.VerifyHashedPassword(checkUser, checkUser.password, model.logpassword) == 0) //if the password entered doesn't match the password in the DB...
                 {
-                    ViewBag.DupeLog = "Username or password incorrect."; //add this error to the errors list
-                    return View("Index");
+                    ViewBag.DupeLog = "Username or password incorrect."; //store this error in ViewBag
+                    return View("Index"); //send user with error back to the Index page
                 }
                 else //if a user is retrieved and the password is correct...
                 {
@@ -85,7 +85,7 @@ namespace QuotingDojoRedux.Controllers
                     return RedirectToAction("Success"); //return to the Success page
                 }
             }
-            ViewBag.LogErrors = true;
+            ViewBag.LogErrors = true; //unhide the errors on the login portion of the page
             return View("Index",model); //return the user to Index
         }
         
@@ -98,8 +98,8 @@ namespace QuotingDojoRedux.Controllers
                 return RedirectToAction("Index"); //return the user to Index
             }
             ViewBag.name = currUser.first_name; //set ViewBag.name equal to the first name of the user set in currUser
-            ViewBag.userID = currUser.userid;
-            return View("AddQuote",new QuoteViewModel());
+            ViewBag.userID = currUser.userid; //set the user id to the user id of the current user
+            return View("AddQuote",new QuoteViewModel()); //return the Addquote page with the quote view model
         }
 
         [HttpGet]
@@ -134,20 +134,20 @@ namespace QuotingDojoRedux.Controllers
             }
             if (ModelState.IsValid) //if the data entered in the inputs meets the min requirements as set forth in models...
             {
-                Quote NewQuote = new Quote
+                Quote NewQuote = new Quote //create a new quote object based on the quoteviewmodel
                 {
                     quotetext = model.quotetext,
                     userid = currUser.userid,
                     created_at = DateTime.Now,
                     updated_at = DateTime.Now
                 };
-                _context.Add(NewQuote); //send the NewQuote object (with populated information) to the quoteFactory to add to the DB
-                _context.SaveChanges();
+                _context.Add(NewQuote); //send the NewQuote object (with populated information) to context to add to the DB
+                _context.SaveChanges(); //save the changes to the DB
                 return RedirectToAction("Quotes"); //return to the Quote page
             }
-            ViewBag.QuoteErrors = true;
+            ViewBag.QuoteErrors = true; //show the quote errors notification box
             ViewBag.name = currUser.first_name; //set ViewBag.name equal to the first name of the user set in currUser
-            ViewBag.userID = currUser.userid;
+            ViewBag.userID = currUser.userid; //send the current user id to the front end in ViewBag
             return View("AddQuote", model); //return the user to Success
         }
 
@@ -163,13 +163,13 @@ namespace QuotingDojoRedux.Controllers
             if (currUser.userid != upQuote.userid) { //if the user isn't the original creator of the quote...
                 return RedirectToAction("Quotes"); //return the user to the quotes page
             }
-            UpquoteViewModel upquote = new UpquoteViewModel
+            UpquoteViewModel upquote = new UpquoteViewModel //create a new updated quote object with the quote information
             {
                 quotetext = upQuote.quotetext,
                 userid = currUser.userid,
                 quoteid = id
             };
-            return View("Update", upquote);
+            return View("Update", upquote); //render the update quote page with the created quote object
         }
 
         [HttpPost]
@@ -185,13 +185,13 @@ namespace QuotingDojoRedux.Controllers
             }
             if (ModelState.IsValid) //if the information entered matches the min reqs in your models...
             {
-                Quote upQuote =  _context.Quotes.SingleOrDefault(quote => quote.quoteid == model.quoteid);
-                upQuote.quotetext = model.quotetext;
-                upQuote.updated_at = DateTime.Now;
-                _context.SaveChanges(); //update the quote based on the information entered using quoteFactory
+                Quote upQuote =  _context.Quotes.SingleOrDefault(quote => quote.quoteid == model.quoteid); //retrieve the particular quote's information from the DB
+                upQuote.quotetext = model.quotetext; //update the quote information based on the updated quote from the form
+                upQuote.updated_at = DateTime.Now; //change the updated_at information for the quote
+                _context.SaveChanges(); //save the changes in the DB
                 return RedirectToAction("Quotes"); //return the user to the Quotes page
             }
-            ViewBag.QuoteErrors = true;
+            ViewBag.QuoteErrors = true; //unhide the error box on the quotes page
             return View("Update", model); //return the user to the Update page with the arg of the quote id
         }
 
@@ -207,8 +207,8 @@ namespace QuotingDojoRedux.Controllers
             if (currUser.userid != delQuote.userid) { //if the logged in user isn't the one that created this quote...
                 return RedirectToAction("Quotes"); //return the user to the Quotes page
             }
-            _context.Quotes.Remove(delQuote);
-            _context.SaveChanges(); //delete the quote from the DB based on the id
+            _context.Quotes.Remove(delQuote); //delete the respective quote from the the DB
+            _context.SaveChanges(); //save the changes in the DB
             return RedirectToAction("Quotes"); //return the user to the Quotes page
         }
 
