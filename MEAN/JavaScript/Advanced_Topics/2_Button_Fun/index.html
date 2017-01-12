@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN stack assignment Button Fun">
+	<title>Button Fun</title>
+	<link rel="stylesheet" href="css_boilerplate.css">
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<style media="screen">
+		button.btn {
+			margin-left: 50%;
+			transform: translateX(-50%);
+			transition: .7s;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<main class="center twenty">
+	</main>
+	<script type="text/javascript">
+		var main = document.getElementsByTagName('main'),
+			button = document.getElementsByTagName('button'),
+			count = 0,
+			holder = {};
+		function swapColor(item, i) {
+			switch (item.style.backgroundColor) {
+				case 'blue':
+					item.style.backgroundColor = 'red';
+					holder[i] = 'red';
+					break;
+				case 'red':
+					item.style.backgroundColor = 'blue';
+					holder[i] = 'blue';
+					break;
+				case 'green':
+					if (holder[i] == 'blue') holder[i] = 'red';
+					else if (holder[i] == 'red') holder[i] = 'blue';
+					break;
+			}
+		};
+		function addBtn() {
+			main[0].innerHTML += `<button class='btn' type='button' name='button'>Click me!</button>`;
+			button[count].style.backgroundColor = 'blue';
+			holder[count] = 'blue';
+			console.log(holder);
+			for (let i = 0; i < button.length; i++) {
+				button[i].onclick = function(e) {swapColor(e.target, i)};
+				button[i].addEventListener("mouseover", function(e) {e.target.style.backgroundColor = 'green'});
+				button[i].addEventListener("mouseout", function(e) {e.target.style.backgroundColor = holder[i]});
+			}
+			count++;
+		}
+		addBtn();
+		window.addEventListener("keydown", function(e) {
+			if (e.key == 'Enter') {
+				addBtn();
+			}
+		});
+	</script>
+</body>
+</html>

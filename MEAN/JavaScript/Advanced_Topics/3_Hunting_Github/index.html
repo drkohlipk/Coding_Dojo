@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN stack assignment Hunting Github">
+	<title>Hunting Github</title>
+	<link rel="stylesheet" href="css_boilerplate.css">
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<style media="screen">
+		button.btn {
+			margin-left: 50%;
+			transform: translateX(-50%);
+			width: 7em;
+		}
+		#name {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<main class="center twenty">
+		<button id="getData" class="btn btn-pop" type="button" name="button">Get Name!</button>
+		<h1 id="name"></h1>
+	</main>
+	<script type="text/javascript">
+	const displayName = data => {
+		$('#name').text(data.name);
+	}
+
+	$('#getData').click(() => {
+		return new Promise((resolve, reject) => {
+			$.get("https://api.github.com/users/drkohlipk")
+				.done((data) => resolve(data))
+				.fail((xhr, status, err) => reject(status + err.message))
+			}
+		)
+			.then(displayName)
+			.catch((err) => {
+				console.log(err);
+			}
+		)
+	})
+	</script>
+</body>
+</html>

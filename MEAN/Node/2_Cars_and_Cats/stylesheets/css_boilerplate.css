@@ -1,0 +1,167 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+main {
+	border: 1px solid gray;
+	box-shadow: 1px 1px 5px gray;
+	margin: 50px auto;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+}
+
+table {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: gray;
+	padding: 3px;
+	border: 1px solid black;
+}
+
+td {
+	border: 1px solid black;
+	padding: 3px;
+	text-align: center;
+}
+
+form {
+	margin: 10px auto;
+	padding: 20px;
+}
+
+label, input {
+	display: inline-block;
+	vertical-align: bottom;;
+	margin: 5px 0;
+}
+
+input {
+	padding: 3px;
+}
+
+img {
+	width: 45%;
+	height; auto;
+	display: inline-block;
+	vertical-align: top;
+	margin: 5px;
+}
+
+.imgHldr {
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+
+.ten {
+	width: 9%;
+}
+
+.twenty {
+	width: 19%;
+}
+
+.thirty {
+	width: 29%;
+}
+
+.forty {
+	width: 39%;
+}
+
+.fifty {
+	width: 49%;
+}
+
+.sixty {
+	width: 59%;
+}
+
+.seventy {
+	width: 69%;
+}
+
+.eighty {
+	width: 79%;
+}
+
+.ninety {
+	width: 89%;
+}
+
+.hundo {
+	width: 99%;
+}
+
+.btn {
+	display: block;
+	margin: 10px 0;
+	width: 5.5em;
+	height: 1.5em;
+	font-size: .9em;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 3px black;
+}
+
+.btn-dflt {
+	background: linear-gradient(lightgray, gray);
+	color: black;
+	padding: 3px;
+	text-align: center;
+}
+
+.btn-imp {
+	background: linear-gradient(lightgray, red 30%);
+	color: white;
+	padding: 3px;
+	text-align: center;
+}
+
+.btn-pop {
+	background: linear-gradient(lightgray, blue 30%);
+	color: white;
+	padding: 3px;
+	text-align: center;
+}
+
+.red {
+	background-color: red;
+	color: white;
+}
+
+.green {
+	background-color: green;
+	color: black;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.center {
+	margin: 0 center;
+}
+
+.notif {
+	padding: 5px;
+}
