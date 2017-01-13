@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN Assignment - Pokemon Battle"/>
+	<title>Pokemon Battle</title>
+	<link rel="stylesheet" href="css_boilerplate.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="main.js"></script>
+	<style>
+		main {
+			text-align: center;
+		}
+
+		#ajax, h1, #start {
+			margin-top: 50px;
+			margin-left: 50%;
+			transform: translateX(-50%);
+		}
+
+		#ajax, #start {
+			width: 8em;
+		}
+
+		#imgHldr {
+			display: none;
+		}
+
+		section {
+			display: inline-block;
+		}
+
+		.poke {
+			display: inline-block;
+			transition: 1.2s;
+			border: 1px solid white;
+		}
+
+		.poke:hover {
+			border: 1px solid black;
+			box-shadow: 1px 1px 5px lightgray;
+		}
+	</style>
+</head>
+<body>
+	<main class="forty center">
+		<button id="start" class="btn btn-pop">Start Game!</button>
+		<!-- <button id="ajax" class="btn btn-pop">Poke Battle!</button> -->
+		<h1 class="center"></h1>
+		<div id="imgHldr" class="hundo">
+			<section id="pl1" class="fifty">
+				<h3>Player1</h3>
+
+			</section>
+			<section id="pl2" class="fifty">
+				<h3>Player2</h3>
+
+			</section>
+		</div><!-- end_of_imgHldr-->
+	</main>
+</body>
+</html>
