@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment Survey Form">
+	<title>Survey Form</title>
+	<link type="text/css" rel="stylesheet" href="css/css_boilerplate.css">
+</head>
+<body>
+	<main class="center forty">
+		<form class="center ninety" action="/info" method="POST">
+			<label class="forty" for="name">Your Name:</label>
+			<input class="sixty" type="text" name="name">
+			<label class="forty" for="location">Dojo Location:</label>
+			<select class="sixty" name="location">
+				<% for (var x in selections[0]) { %>
+				<option value="<%= selections[0][x] %>"><%= selections[0][x] %></option>
+				<% } %>
+			</select>
+			<label class="forty" for="language">Favorite Language:</label>
+			<select class="sixty" name="language">
+				<% for (var x in selections[1]) { %>
+				<option value="<%= selections[1][x] %>"><%= selections[1][x] %></option>
+				<% } %>
+			</select>
+			<label class="hundo" for="comment">Comment (optional):</label>
+			<textarea class="hundo" rows="8" cols="40"></textarea>
+		</form>
+	</main>
+</body>
+</html>
