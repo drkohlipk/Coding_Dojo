@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment Survey Form">
+	<title>Survey Form</title>
+	<link type="text/css" rel="stylesheet" href="css/css_boilerplate.css">
+	<style>
+		div {
+			display: inline-block;
+		}
+
+		h1 {
+			text-decoration: underline;
+			margin-bottom: 15px;
+		}
+
+		#labels {
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<main class="center forty">
+		<h1>Submitted Information:</h1>
+		<div id="labels" class="fifty">
+			<p>Your Name:</p>
+			<p>Dojo Location:</p>
+			<p>Favorite Language:</p>
+			<p>Comment:</p>
+		</div>
+		<div class="fifty">
+			<p><%= data.name %></p>
+			<p><%= data.location %></p>
+			<p><%= data.language %></p>
+			<p><%= data.comment %></p>
+		</div>
+	</main>
+</body>
+</html>

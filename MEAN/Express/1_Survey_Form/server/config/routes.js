@@ -1,24 +1,15 @@
-import express from 'express';
-import path from 'path';
-import bp from 'body-parser';
+const routes = require('express').Router();
 
-export default () => {
-	var app = express();
-	console.log('well, this loaded!');
+routes.get('/', (req, res) => {
+	let selections = [
+		['Silicon Valley', 'Seattle', 'Los Angeles', 'Dallas', 'Washington, DC', 'Chicago', 'Berkeley', 'Orange County'],
+		['Javascript', 'C#', 'Python', 'Ruby', 'Swift', 'HTML', 'CSS']
+	];
+	res.render('index', {selections: selections});
+});
 
-	app.get('/', (req, res) => {
-		console.log('yooooo');
-		res.render('index');
-	});
+routes.post('/info', (req, res) => {
+	res.render('info', {data: req.body});
+});
 
-	app.post('/info', (req, res) => {
-		console.log('Form data:', req.body);
-		res.redirect('/');
-	});
-
-	app.get('/css_boilerplate', (req, res) => {
-		console.log('yooooo');
-		res.render('css_boilerplate.css');
-	});
-	
-};
+module.exports = routes;

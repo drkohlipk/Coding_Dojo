@@ -41,7 +41,7 @@ label, input {
 	margin: 5px 0;
 }
 
-input {
+input, textarea {
 	padding: 3px;
 }
 
