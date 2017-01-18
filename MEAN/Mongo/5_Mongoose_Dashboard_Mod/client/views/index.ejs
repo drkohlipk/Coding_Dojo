@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN Stack assignment Mongoose Dashboard">
+	<title>Velociraptor Dashboard - Home</title>
+	<link rel="stylesheet" href="/css_boilerplate.css">
+</head>
+<body>
+	<main class="fifty center">
+		<table class="eighty center">
+			<h3>All of our Velociraptors:</h3>
+			<thead>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Number of Claws</th>
+				<th>Edit</th>
+			</thead>
+			<% for (var i in dinos) { %>
+				<tr>
+					<td><%= dinos[i].name %></td>
+					<td><%= dinos[i].age %></td>
+					<td><%= dinos[i].number_of_claws %></td>
+					<td><a href="/velociraptors/<%= dinos[i]._id %>">view</a> / <a href="/velociraptors/destroy/<%= dinos[i]._id %>">delete</a></td>
+				</tr>
+			<% } %>
+		</table>
+		<a class="btn btn-pop" href="/velociraptors/new">Add Dino</a>
+	</main>
+</body>
+</html>

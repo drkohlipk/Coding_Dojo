@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment Message Board">
+	<title>Message Board</title>
+	<link rel="stylesheet" href="/css_boilerplate.css">
+</head>
+<body>
+	<main class="seventy center">
+		<header>
+			<h1>The Dojo Message Board</h1>
+		</header>
+		<section>
+			<form class="eighty" action="/message" method="post">
+				<label for="name">Name:</label>
+				<input type="text" name="name">
+				<label for="message">Message:</label>
+				<textarea class="hundo" name="message" rows="8" cols="80"></textarea>
+				<input class="btn btn-pop" type="submit" name="submit" value="Post Message">
+			</form>
+			<% for (var i in messages) { %>
+				<div class="message">
+					<h3>Name: <%= messages[i].name %></h3>
+					<p>Message: <%= messages[i].message %></p>
+					<% for (var j = 0; j < messages[i].comments.length; j++) { %>
+						<div class="comment">
+							<h5>Name: <%= messages[i].comments[j].name %></h5>
+							<p>Comment: <%= messages[i].comments[j].comment %></p>
+						</div><!-- end_of_comment-->
+					<% } %>
+					<form class="eighty" action="/comment/<%= messages[i]._id %>" method="post">
+						<label for="name">Name:</label>
+						<input type="text" name="name">
+						<label for="comment">Comment:</label>
+						<textarea class="hundo" name="comment" rows="8" cols="80"></textarea>
+						<input class="btn btn-pop" type="submit" name="submit" value="Post Comment">
+					</form>
+				</div><!-- end_of_message-->
+			<% } %>
+		</section>
+	</main>
+</body>
+</html>

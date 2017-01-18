@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN stack assignment Quoting Dojo Redux">
+	<title>Quoting Dojo Redux - Post</title>
+	<link rel="stylesheet" href="/css_boilerplate.css" >
+</head>
+<body>
+	<main class="fifty center">
+		<h1>Here are the awesome quotes!</h1>
+		<div id="quoteBox" class="ninety center">
+			<% var options = {
+				hour: "2-digit",
+				minute: "2-digit",
+				month: "long",
+				day: "numeric",
+				year: "numeric"
+			}%>
+			<% for (var i in quotes) { %>
+				<div class="quote">
+					<h4>&quot;<%= quotes[i].quote %>&quot;</h4>
+					<p>- <%= quotes[i].poster %> at <%= quotes[i].time.toLocaleDateString("en-us", options) %></p>
+					<p> <%= quotes[i].likes %> likes --- <a href="/like/<%= quotes[i]._id %>">like this</a></p>
+				</div><!-- end_of_quote-->
+			<% } %>
+		</div><!-- end_of_quoteBox-->
+		<a class="btn btn-pop" id="makeQuote" href="/">Make a quote!</a>
+	</main>
+</body>
+</html>

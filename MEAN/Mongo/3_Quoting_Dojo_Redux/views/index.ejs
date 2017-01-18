@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN stack assignment Quoting Dojo Redux">
+	<title>Quoting Dojo Redux - Post</title>
+	<link rel="stylesheet" href="/css_boilerplate.css" >
+</head>
+<body>
+	<main class="fifty center">
+		<h1>Welcome to QuotingDojo!</h1>
+		<form class="ninety center" action="/quotes" method="post">
+			<label class="thirty" for="name">Your name:</label>
+			<input id="name" class="seventy" type="text" name="name" placeholder="Bobby">
+			<label class="thirty" for="quote">Your quote:</label>
+			<textarea class="seventy" name="quote" rows="8" cols="80" placeholder="Bro, quotes are SO awesome!"></textarea>
+			<input class="btn btn-pop left" type="submit" name="submit" value="Add my quote!">
+			<a class="btn btn-dflt right" href="/quotes">Skip to quotes!</a>
+		</form>
+	</main>
+	<script type="text/javascript">
+		var nameBox = document.getElementById('name');
+		nameBox.focus();
+	</script>
+</body>
+</html>

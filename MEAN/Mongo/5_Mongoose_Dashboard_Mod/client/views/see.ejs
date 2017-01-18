@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN Stack assignment Mongoose Dashboard">
+	<title>Velociraptor Dashboard - New</title>
+	<link rel="stylesheet" href="/css_boilerplate.css">
+</head>
+<body>
+	<main class="fifty center">
+		<h3>Velociraptor: <%= dino.name %></h3>
+		<div class="center seventy">
+			<p class="thirty">Age:</p>
+			<p class="seventy"><%= dino.age %></p>
+			<p class="thirty">Number of Claws:</p>
+			<p class="seventy"><%= dino.number_of_claws %></p>
+		</div>
+		<a class="btn btn-pop" href="/velociraptors/edit/<%= dino._id %>">Edit Dino</a>
+		<a class="btn btn-dflt" href="/">Home</a>
+	</main>
+</body>
+</html>
