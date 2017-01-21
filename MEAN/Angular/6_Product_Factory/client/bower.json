@@ -1,0 +1,20 @@
+{
+  "name": "Product Factory",
+  "homepage": "https://github.com/drkohlipk/Coding_Dojo",
+  "authors": [
+    "PJ"
+  ],
+  "description": "Coding Dojo MEAN assignment Product Factory",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1"
+  }
+}

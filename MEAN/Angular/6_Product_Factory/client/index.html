@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="productApp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment Product Factory">
+	<title>Product Factory</title>
+	<link rel="stylesheet" href="/css_boilerplate.css">
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="controllers/productController.js"></script>
+	<script type="text/javascript" src="factories/productFactory.js"></script>
+</head>
+<body>
+	<main class="sixty center" ng-controller="productController as pC">
+		<form class="ninety" ng-submit="createProduct()">
+			<label class="thirty" for="name">Product Name:</label>
+			<input id="cursor" class="fifty" type="text" name="name" ng-model="product.name">
+			<label class="thirty" for="price">Product Price:</label>
+			<input class="fifty" type="number" min="0" step="0.01" name="price" ng-model="product.price">
+			<input class="btn btn-pop" type="submit" name="submit" value="Add Product">
+		</form>
+		<table class="ninety">
+			<thead>
+				<th class="forty">Name <span ng-hide="order == '-name'" ng-click="changeOrder('-name')">&and;</span><span ng-show="order == '-name'" ng-click="changeOrder('name')">&or;</span></th>
+				<th class="twenty">Price <span ng-hide="order == '-price'" ng-click="changeOrder('-price')">&and;</span><span ng-show="order == '-price'" ng-click="changeOrder('price')">&or;</span></th>
+				<th class="forty">Actions</th>
+			</thead>
+			<tr ng-repeat="product in products | orderBy: order">
+				<td>{{ product.name }}</td>
+				<td>${{ product.price }}</td>
+				<td><button class="btn btn-imp" type="button" name="delete" ng-click="deleteProduct(product)">Delete Product</button></td>
+			</tr>
+		</table>
+	</main>
+</body>
+</html>
