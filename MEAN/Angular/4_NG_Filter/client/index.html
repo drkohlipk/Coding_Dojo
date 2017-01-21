@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment ng-filter">
+	<title>NG-Filter</title>
+	<link rel="stylesheet" href="./css_boilerplate.css">
+	<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+	<script type="text/javascript" src="./controllers/colorController.js"></script>
+</head>
+<body>
+	<main class="seventy center" ng-controller="colorController">
+		<input id="colorInp" class="twenty" type="text" placeholder="Search colors" ng-model="colorText">
+		<table>
+			<thead>
+				<th>Color name</th>
+				<th>HEX</th>
+				<th>Color</th>
+			</thead>
+			<tr ng-repeat="color in colors | filter: colorText">
+				<td>{{ color.name }}</td>
+				<td>{{ color.hex }}</td>
+				<td class="color" style="background-color: {{color.hex}};"></td>
+			</tr>
+		</table>
+	</main>
+</body>
+</html>

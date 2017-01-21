@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment Controller and Directives">
+	<title>Controller and Directives</title>
+	<link rel="stylesheet" href="./css_boilerplate.css">
+	<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+	<script type="text/javascript" src="./controllers/divController.js"></script>
+</head>
+<body>
+	<main class="fifty center" ng-controller="divController">
+		<form class="seventy">
+			<label class="twenty" for="food">Favorite Food:</label>
+			<input id="foodText" class="fifty" type="text" name="food" ng-model="foodText">
+			<button class="btn btn-pop" ng-click="addToList()">Add Food</button>
+			<p>Currently Typing: <span ng-bind="foodText"></span></p>
+		</form>
+		<div id="rightSide" class="thirty">
+			<input class="hundo" type="text" name="filter" placeholder="filter..." ng-model="searchText">
+			<div id="foodBox" ng-init="foods=foodList">
+				<p ng-repeat="food in foods | filter:searchText">{{ food }}</p>
+			</div>
+		</div><!--rightSide-->
+	</main>
+</body>
+</html>

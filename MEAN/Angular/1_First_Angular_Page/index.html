@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment First Angular Page">
+	<title>First Angular Page</title>
+	<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+	<script type="text/javascript" src="./controllers/divController.js"></script>
+</head>
+<body>
+	<div ng-controller="divController">
+		<h1>Hello!  My name is {{myName}}, my favorite Language is {{myFavoriteLanguage}}, because the {{myFavoriteJSLibrary}} library is awesome!</h1>
+		<h1>Hello!  My name is <span ng-bind=myName></span>, my favorite Language is <span ng-bind=myFavoriteLanguage></span>, because the <span ng-bind=myFavoriteJSLibrary></span> library is awesome!</h1>
+	</div>
+</body>
+</html>

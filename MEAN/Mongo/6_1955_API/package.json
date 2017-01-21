@@ -1,0 +1,18 @@
+{
+  "name": "1955",
+  "version": "1.0.0",
+  "description": "Coding Dojo MEAN stack assignment 1955",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PJ",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.7",
+    "path": "^0.12.7"
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment Controlling Users">
+	<title>Controlling Users</title>
+	<link rel="stylesheet" href="./css_boilerplate.css">
+	<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+	<script type="text/javascript" src="./controllers/personController.js"></script>
+</head>
+<body>
+	<main class="sixty center" ng-controller="personController">
+		<form class="eighty" ng-submit="addUser()">
+			<label class="thirty" for="firstName">First Name:</label>
+			<input id="cursor" class="seventy" type="text" name="firstName" ng-model="personInp.firstName">
+			<label class="thirty" for="lastName">Last Name:</label>
+			<input class="seventy" type="text" name="lastName" ng-model="personInp.lastName">
+			<label class="thirty" for="language">Favorite Language:</label>
+			<input class="seventy" type="text" name="language" ng-model="personInp.language">
+			<input class="btn btn-pop" type="submit" name="submit" value="Create User">
+		</form>
+		<input id="searchBox" class="twenty center" type="text" name="search" placeholder="Search Users" ng-model="searchText">
+		<table class="eighty">
+			<thead>
+				<th>First Name <span ng-hide="order == '-firstName'" ng-click="changeOrder('-firstName')">&and;</span><span ng-show="order == '-firstName'" ng-click="changeOrder('firstName')">&or;</span></th>
+				<th>Last Name <span ng-hide="order == '-lastName'" ng-click="changeOrder('-lastName')">&and;</span><span ng-show="order == '-lastName'" ng-click="changeOrder('lastName')">&or;</span></th>
+				<th>Favorite Language <span ng-hide="order == '-language'" ng-click="changeOrder('-language')">&and;</span><span ng-show="order == '-language'" ng-click="changeOrder('language')">&or;</span></th>
+				<th>Actions</th>
+			</thead>
+			<tr ng-repeat="person in people | filter: searchText | orderBy: order track by $index">
+				<td>{{ person.firstName }}</td>
+				<td>{{ person.lastName }}</td>
+				<td>{{ person.language }}</td>
+				<td><button class="btn btn-imp" type="button" name="button" ng-click="deleteUser($index)">Delete User</button></td>
+			</tr>
+		</table>
+	</main>
+	<script type="text/javascript">
+		document.getElementById('cursor').focus();
+	</script>
+</body>
+</html>
