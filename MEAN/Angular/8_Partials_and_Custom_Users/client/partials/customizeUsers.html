@@ -1,0 +1,23 @@
+<form class="ninety" ng-submit="createUser()">
+    <label class="forty" for="firstName">First Name:</label>
+    <input id="cursor" class="forty" type="text" name="firstName" ng-model="newUser.firstName">
+    <label class="forty" for="lastName">Last Name:</label>
+    <input class="forty" type="text" name="lastName" ng-model="newUser.lastName">
+    <label class="forty" for="language">Favorite Language:</label>
+    <input class="forty" type="text" name="language" ng-model="newUser.language">
+    <input class="btn btn-pop" type="submit" name="submit" value="Create User">
+</form>
+<table class="ninety">
+    <thead>
+        <th class="twenty">First Name <span ng-hide="order == '-firstName'" ng-click="changeOrder('-firstName')">&and;</span><span ng-show="order == '-firstName'" ng-click="changeOrder('firstName')">&or;</span></th>
+        <th class="twenty">Last Name <span ng-hide="order == '-lastName'" ng-click="changeOrder('-lastName')">&and;</span><span ng-show="order == '-lastName'" ng-click="changeOrder('lastName')">&or;</span></th>
+        <th class="thirty">Favorite Language <span ng-hide="order == '-language'" ng-click="changeOrder('-language')">&and;</span><span ng-show="order == '-language'" ng-click="changeOrder('language')">&or;</span></th>
+        <th class="thirty">Actions</th>
+    </thead>
+    <tr ng-repeat="user in users | orderBy: order">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.language }}</td>
+        <td><button class="btn btn-imp" type="button" name="delete" ng-click="deleteUser(user)">Delete User</button></td>
+    </tr>
+</table>

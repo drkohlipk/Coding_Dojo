@@ -1,0 +1,15 @@
+<form class="ninety" ng-submit="addTeam()">
+	<label class="thirty" for="name">Name:</label>
+	<input id="teamCursor" class="forty" type="text" name="name" ng-model="team.name">
+	<input class="btn btn-pop" type="submit" name="submit" value="Add Team">
+</form>
+<table class="ninety">
+	<thead>
+		<th class="fifty">Name <span ng-hide="order == '-name'" ng-click="changeOrder('-name')">&and;</span><span ng-show="order == '-name'" ng-click="changeOrder('name')">&or;</span></th>
+		<th class="fifty">Actions</th>
+	</thead>
+	<tr ng-repeat="team in teams | orderBy: order">
+		<td>{{ team.name }}</td>
+		<td><button class="btn btn-imp" type="button" name="button" ng-click="deleteTeam(team)">Remove Team</button></td>
+	</tr>
+</table>

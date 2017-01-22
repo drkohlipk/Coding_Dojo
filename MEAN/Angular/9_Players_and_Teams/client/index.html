@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Coding Dojo MEAN assignment Players and Teams">
+	<title>Players and Teams</title>
+	<link rel="stylesheet" href="/static/css/css_boilerplate.css">
+	<script type="text/javascript" src="/angular/angular.min.js"></script>
+	<script type="text/javascript" src="/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="/app.js"></script>
+	<script type="text/javascript" src="/controllers/PlayersController.js"></script>
+	<script type="text/javascript" src="/factories/playerFactory.js"></script>
+	<script type="text/javascript" src="/controllers/TeamsController.js"></script>
+	<script type="text/javascript" src="/factories/teamFactory.js"></script>
+	<script type="text/javascript" src="/controllers/AssociationsController.js"></script>
+</head>
+<body>
+	<h1><a href="#!/players">Players</a> | <a href="#!/teams">Teams</a> | <a href="#!/associations">Associations</a></h1>
+	<main class="sixty center" ng-view>
+
+	</main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "Players and Teams",
+  "homepage": "https://github.com/drkohlipk/Coding_Dojo",
+  "authors": [
+    "PJ"
+  ],
+  "description": "Coding Dojo MEAN assignment Players and Teams",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-route": "^1.6.1"
+  }
+}

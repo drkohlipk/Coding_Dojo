@@ -1,0 +1,19 @@
+<form class="ninety" ng-submit="makeAssociation()">
+	<select class="thirty" ng-model="selectPlayer" ng-options="player.name for player in players">
+	</select>
+	<select class="thirty" ng-model="selectTeam" ng-options="team.name for team in teams">
+	</select>
+	<input id="assocBtn" class="forty btn btn-pop" type="submit" name="submit" value="Assign Player to Team">
+</form>
+<table class="ninety">
+	<thead>
+		<th class="thirty">Name <span ng-hide="order == '-name'" ng-click="changeOrder('-name')">&and;</span><span ng-show="order == '-name'" ng-click="changeOrder('name')">&or;</span></th>
+		<th class="thirty">Team <span ng-hide="order == '-team'" ng-click="changeOrder('-team')">&and;</span><span ng-show="order == '-team'" ng-click="changeOrder('team')">&or;</span></th>
+		<th class="forty"></th>
+	</thead>
+	<tr ng-repeat="association in associations | orderBy: order">
+		<td>{{ association.name }}</td>
+		<td>{{ association.team.name }}</td>
+		<td><button class="btn btn-imp" type="button" name="button" ng-click="clearTeam(association)">Clear Assignment</button></td>
+	</tr>
+</table>

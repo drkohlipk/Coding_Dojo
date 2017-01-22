@@ -1,0 +1,12 @@
+<table class="ninety">
+    <thead>
+        <th class="thirty">First Name <span ng-hide="order == '-firstName'" ng-click="changeOrder('-firstName')">&and;</span><span ng-show="order == '-firstName'" ng-click="changeOrder('firstName')">&or;</span></th>
+        <th class="thirty">Last Name <span ng-hide="order == '-lastName'" ng-click="changeOrder('-lastName')">&and;</span><span ng-show="order == '-lastName'" ng-click="changeOrder('lastName')">&or;</span></th>
+        <th class="forty">Favorite Language <span ng-hide="order == '-language'" ng-click="changeOrder('-language')">&and;</span><span ng-show="order == '-language'" ng-click="changeOrder('language')">&or;</span></th>
+    </thead>
+    <tr ng-repeat="user in users | orderBy: order">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.language }}</td>
+    </tr>
+</table>

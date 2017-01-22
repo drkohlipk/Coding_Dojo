@@ -1,0 +1,6 @@
+<h3>Users</h3>
+<div class="users fifty" ng-repeat = "user in users track by $index">
+  <p class="fifty">Name: {{user.name}}</p>
+  <button class="btn btn-dflt right" ng-click = "show($index)">Edit User</button>
+</div>
+<a id="newBtn" class="btn btn-pop" ng-href = '#!/new'>Create User</a>
