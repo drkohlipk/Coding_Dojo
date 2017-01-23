@@ -1,0 +1,11 @@
+<div id="showBox" class="ninety center">
+	<p class="thirty"><strong>First Name:</strong></p>
+	<p class="seventy">{{ friend.firstName }}</p>
+	<p class="thirty"><strong>Last name:</strong></p>
+	<p class="seventy">{{ friend.lastName }}</p>
+	<p class="thirty"><strong>Birthday:</strong></p>
+	<p class="seventy">{{ friend.birthday | date:'MM/dd/yyyy' }}</p>
+	<a class="btn btn-pop" href="#!/">Home</a>
+	<button class="btn btn-dflt" type="button" ng-click="editFriend(friend._id)">Edit</button>
+	<button class="btn btn-imp" type="button" ng-click="deleteFriend(friend._id)">Delete</button>
+</div><!-- end_of_ninety center-->

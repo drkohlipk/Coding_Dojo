@@ -1,0 +1,21 @@
+{
+  "name": "File Structure and Simple Server",
+  "homepage": "https://github.com/drkohlipk/Coding_Dojo",
+  "authors": [
+    "PJ"
+  ],
+  "description": "Coding Dojo MEAN assignment File Structure and Simple Server",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-route": "^1.6.1"
+  }
+}

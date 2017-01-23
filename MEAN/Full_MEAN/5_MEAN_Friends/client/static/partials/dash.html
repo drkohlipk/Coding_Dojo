@@ -1,0 +1,18 @@
+<div id="topBar" class="ninety center">
+    <input id="dashCursor" class="thirty center" type="text" placeholder="Search Friends" ng-model="searchText">
+    <a id="newBtn" class="btn btn-pop right" href="#!/new">New Friend</a>
+</div><!-- end_of_topBar-->
+<table class="ninety center">
+    <thead>
+        <th class="thirty">Name <span ng-hide="order == '-lastName'" ng-click="changeOrder('-lastName')">&and;</span><span ng-show="order == '-lastName'" ng-click="changeOrder('lastName')">&or;</span></th>
+        <th class="twenty">Show</th>
+        <th class="twenty">Update</th>
+        <th class="twenty">Delete</th>
+    </thead>
+    <tr ng-repeat="friend in friends | orderBy: order | filter: searchText">
+        <td>{{ friend.firstName }} {{ friend.lastName }}</td>
+        <td><button class="btn btn-pop" type="button" ng-click="showFriend(friend._id)">Show</button></td>
+        <td><button class="btn btn-dflt" type="button" ng-click="editFriend(friend._id)">Edit</button></td>
+        <td><button class="btn btn-imp" type="button" ng-click="deleteFriend(friend._id)">Delete</button></td>
+    </tr>
+</table>

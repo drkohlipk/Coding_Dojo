@@ -1,0 +1,22 @@
+<form class="ninety" name="updateForm" ng-submit="updateFriend()">
+	<div class="notif sixty center" >
+		<div ng-messages="updateForm.firstName.$error">
+			<p ng-message="minlength">Friend First Name is too short.</p>
+			<p ng-message="required">Friend First Name is required.</p>
+		</div>
+		<div ng-messages="updateForm.lastName.$error">
+			<p ng-message="minlength">Friend Last Name is too short.</p>
+			<p ng-message="required">Friend Last Name is required.</p>
+		</div>
+		<div ng-messages="updateForm.birthday.$error">
+			<p ng-message="required">Friend Birthday is required.</p>
+		</div>
+	</div><!-- end_of_notif-->
+	<label class="forty" for="firstName">First Name:</label>
+	<input class="sixty" type="text" name="firstName" ng-model="updateFriend.firstName" ng-minlength="2" required placeholder="{{friend.firstName}}">
+	<label class="forty" for="lastName">Last Name:</label>
+	<input class="sixty" type="text" name="lastName" ng-model="updateFriend.lastName" ng-minlength="2" required placeholder="{{friend.lastName}}">
+	<label class="forty" for="birthday">Birthday:</label>
+	<input id="datePicker" class="sixty" type="date" name="birthday" ng-model="updateFriend.birthday">
+	<input class="btn btn-pop" type="submit" name="submit" value="Update">
+</form>

@@ -1,0 +1,23 @@
+<form class="ninety" name="newForm" ng-submit="createFriend()">
+	<div class="notif sixty center" >
+		<div ng-messages="newForm.firstName.$error">
+			<p ng-message="minlength">Friend First Name is too short.</p>
+			<p ng-message="required">Friend First Name is required.</p>
+		</div>
+		<div ng-messages="newForm.lastName.$error">
+			<p ng-message="minlength">Friend Last Name is too short.</p>
+			<p ng-message="required">Friend Last Name is required.</p>
+		</div>
+		<div ng-messages="newForm.birthday.$error">
+			<p ng-message="required">Friend Birthday is required.</p>
+		</div>
+	</div><!-- end_of_notif-->
+	<label class="forty" for="firstName">First Name:</label>
+	<input id="newCursor" class="sixty" type="text" ng-minlength="2" required name="firstName" ng-model="newFriend.firstName">
+	<label class="forty" for="lastName">Last Name:</label>
+	<input class="sixty" type="text" name="lastName" ng-minlength="2" required ng-model="newFriend.lastName">
+	<label class="forty" for="birthday">Birthday:</label>
+	<input class="sixty" type="date" name="birthday" ng-model="newFriend.birthday" required>
+	<input class="btn btn-pop" type="submit" name="submit" value="Create">
+	<a class="btn btn-dflt" href="#!/">Home</a>
+</form>
