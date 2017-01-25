@@ -1,0 +1,10 @@
+<form class="fifty" ng-click="login()">
+	<div class="notif seventy" ng-show="errors.length > 0">
+		<ul>
+			<li ng-repeat="error in errors">{{ error }}</li>
+		</ul>
+	</div><!-- end_of_notif-->
+	<label class="twenty" for="username">Username:</label>
+	<input id="cursorUN" class="eighty" type="text" name="username" ng-model="user.username">
+	<input class="btn btn-pop" type="submit" name="submit" value="Submit">
+</form>

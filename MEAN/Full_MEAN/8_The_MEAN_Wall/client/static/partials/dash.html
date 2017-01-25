@@ -1,0 +1,26 @@
+<header class="hundo">
+	<h1>Full MEAN Wall</h1>
+	<h2>Welcome {{ username }}!</h2>
+	<button class="btn btn-imp" type="button" name="logout" ng-click="logout()">Logout</button>
+</header>
+<section id="makeMessage" class="ninety">
+	<h3>Post a message:</h3>
+	<form class="hundo" ng-submit="makeMessage()">
+		<textarea class="hundo" name="message" rows="8" cols="80" ng-model="messageForm.message"></textarea>
+		<input class="btn btn-pop" type="submit" name="submit" value="Post a Message">
+	</form>
+</section>
+<section id="wall" class="ninety">
+	<div class="ninety message" ng-repeat="message in messages | orderBy: '-createdAt'">
+		<h4>{{ message.username }} - {{ message.createdAt | date: 'h:mm a M/d/yy' }}</h4>
+		<p>&quot;{{ message.message }}&quot;</p>
+		<div class="eighty comment" ng-repeat="comment in message.comments | orderBy: '-createdAt'">
+			<h5>{{ comment.username }} - {{ comment.createdAt | date: 'h:mm a M/d/yy' }}</h5>
+			<p>&quot;{{ comment.comment }}&quot;</p>
+		</div><!-- end_of_comment-->
+		<form class="hundo" ng-submit="createComment(commentForm, message._id)">
+			<textarea class="hundo" name="comment" rows="8" cols="80" ng-model="commentForm.comment"></textarea>
+			<input class="btn btn-pop" type="submit" name="submit" value="Post a Comment">
+		</form>
+	</div><!-- end_of_message-->
+</section>
