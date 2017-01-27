@@ -1,0 +1,27 @@
+<h1>Welcome, {{ name[0].toUpperCase() + name.slice(1) }}!</h1>
+<input class="right twenty" type="text" placeholder="filter..." ng-model="filterText">
+<table class="hundo">
+    <thead>
+        <th class="twenty">Category <span ng-hide="order == '-_category.name'" ng-click="changeOrder('-_category.name')">&and;</span><span ng-show="order == '-_category.name'" ng-click="changeOrder('_category.name')">&or;</span></th>
+        <th class="fifty">Topic <span ng-hide="order == '-question'" ng-click="changeOrder('-question')">&and;</span><span ng-show="order == '-question'" ng-click="changeOrder('question')">&or;</span></th>
+        <th class="twenty">User Name <span ng-hide="order == '-name'" ng-click="changeOrder('-name')">&and;</span><span ng-show="order == '-name'" ng-click="changeOrder('name')">&or;</span></th>
+        <th class="ten">Posts <span ng-hide="order == '-posts'" ng-click="changeOrder('-posts')">&and;</span><span ng-show="order == '-posts'" ng-click="changeOrder('posts')">&or;</span></th>
+    </thead>
+    <tr ng-repeat="question in questions | filter: filterText | orderBy: order">
+        <td>{{ question._category.name }}</td>
+        <td>{{ question.question }}</td>
+        <td>{{ question._user.name }}</td>
+        <td>{{ question.answers.length }}</td>
+    </tr>
+</table>
+<form class="eighty" ng-submit="createQuestion()">
+    <h2>Add a New Topic</h2>
+    <label class="thirty" for="question">Topic:</label>
+    <input class="seventy" type="text" name="question" ng-model="newQuest.question">
+    <label class="thirty" for="description">Description:</label>
+    <textarea class="seventy" type="text" name="question" rows="6" cols="80" ng-model="newQuest.description"></textarea>
+    <label class="thirty" for="category">Category:</label>
+    <select class="thirty" ng-options="category.name for category in categories">
+    </select>
+    <input class="btn btn-pop right" type="submit" name="submit" value="Submit">
+</form>

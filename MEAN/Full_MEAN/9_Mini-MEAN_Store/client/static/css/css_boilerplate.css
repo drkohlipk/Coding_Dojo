@@ -14,9 +14,50 @@ main {
 
 header {
 	border-bottom: 1px solid gray;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 	margin-bottom: 20px;
 	text-align: center;
+}
+
+section, aside {
+	display: inline-block;
+	vertical-align: top;
+}
+
+section {
+	text-align: center;
+}
+
+aside {
+	text-align: left;
+}
+
+aside > form {
+	margin: 0;
+	padding: 0;
+}
+
+aside > form > h2 {
+	font-size: 1em;
+	text-decoration: underline;
+	margin-bottom: 10px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	display: inline-block;
+	vertical-align: top;
+}
+
+li::after {
+	content: '|';
+}
+
+li:last-child::after {
+	content: none;
 }
 
 table {
@@ -120,6 +161,7 @@ input, textarea {
 	color: white;
 	padding: 3px;
 	text-align: center;
+	margin: 5px auto;
 }
 
 .btn-pop {
@@ -157,6 +199,106 @@ input, textarea {
 	color: red;
 }
 
+.notif ul {
+	list-style-type: circle;
+}
+
 .notif li {
-	margin-left: 30px;
+	display: block;
+	font-size: .9em;
+	margin: 5px 0;
+}
+
+.notif li::after {
+	content: none;
+}
+
+.linkify {
+	color: blue;
+	text-decoration: underline;
+}
+
+.linkify:hover {
+	cursor: pointer;
+}
+
+.prod {
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid white;
+	transition: .3s;
+	margin: 5px;
+	height: 170px;
+	position: relative;
+}
+
+.prod:hover {
+	cursor: pointer;
+}
+
+.prod > img {
+	width: auto;
+	height: 100px;
+}
+
+.prodDesc {
+	display: none;
+	position: absolute;
+	top: -5%;
+	width: 150px;
+	height: auto;
+	padding: 5px;
+	background-color: white;
+	z-index: 4;
+	text-align: center;
+	border: 3px solid gray;
+	transition: .3s;
+}
+
+.prodDesc::after {
+	width: 10px;
+	height: 10px;
+	content: '';
+	background-color: white;
+	left: 45%;
+	transform: rotate(45deg);
+	position: absolute;
+	display: none;
+	z-index: 5;
+	border-bottom: 3px solid gray;
+	border-right: 3px solid gray;
+	transition: .3s;
+}
+
+.prod:hover .prodDesc, .prodDesc::after {
+	display: block;
+}
+
+.expand {
+	margin-top: 20px;
+	display: block;
+}
+
+#prodFilter {
+	border-bottom: 1px solid gray;
+	padding-bottom: 20px;
+	margin-bottom: 22px;
+}
+
+#prodFilter > button {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#dashWall {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#dashWall section {
+	margin: 20px 0;
+}
+
+#formContainer {
+	text-align: left;
 }

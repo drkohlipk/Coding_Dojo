@@ -1,0 +1,34 @@
+<div class="hundo" id="dashContainer" ng-controller="dashController">
+	<aside class="twenty">
+		<div id="prodFilter" class="hundo">
+			<input id="prodCursor" class="hundo" type="text" name="search" placeholder="Search..." ng-model="searchText">
+			<button class="btn btn-dflt" ng-click="search()">Filter</button>
+			<button class="btn btn-dflt" ng-click="reset()">Reset</button>
+		</div><!-- end_of_prodFilter-->
+	</aside>
+	<div id="dashWall" class="eighty">
+		<section class="hundo" ng-controller="prodController">
+			<article class="prod twenty" ng-repeat="product in products | filter: dashFiltered | limitTo: 5">
+				<img src="{{ product.img }}" alt="{{ product.name }}">
+				<h3>{{ product.name }}</h3>
+				<p>({{ product.qty }} left)</p>
+				<div class="prodDesc">
+					<p>{{ product.desc }}</p>
+				</div><!-- end_of_prodDesc-->
+			</article>
+			<a class="expand" href="#!/products">show all products...</a>
+		</section>
+		<section class="hundo" ng-controller="orderController">
+			<h2>Recent Orders</h2>
+			<article class="order twenty" ng-repeat="order in orders | filter: dashFiltered | limitTo: 3 | orderBy: '-createdAt'">
+				<p>{{ order.customer.firstName }} purchased {{ order.qty }} {{ order.product.name }}... ({{ order.createdAt | date: 'medium' }})</p>
+			</article>
+			<a class="expand" href="#!/orders">show all orders...</a>
+		</section>
+		<section class="hundo" ng-controller="customerController">
+			<h2>New Customers</h2>
+			<p ng-repeat="customer in customers | filter: dashFiltered | limitTo: 3 | orderBy: 'createdAt'">{{ customer.firstName }} {{ customer.lastName }} joined the store. ({{ customer.createdAt | date: 'medium' }})</p>
+			<a class="expand" href="#!/customers">show all customers...</a>
+		</section>
+	</div>
+</div><!-- end_of_dashContainer-->

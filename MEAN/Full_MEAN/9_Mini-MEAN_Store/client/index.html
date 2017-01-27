@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='app'>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,17 @@
 	<script type="text/javascript" src="/factories/prodFactory.js" charset="utf-8"></script>
 </head>
 <body>
-	<main class="eighty" ng-view>
+	<main class="eighty">
+		<header>
+			<ul>
+				<li><a href="#!/">Dashboard</a>&nbsp;</li>
+				<li><a href="#!/products">Products</a>&nbsp;</li>
+				<li><a href="#!/orders">Orders</a>&nbsp;</li>
+				<li><a href="#!/customers">Customers</a>&nbsp;</li>
+			</ul>
+		</header>
+		<section class="hundo" ng-view>
+		</section>
 	</main>
 </body>
 </html>

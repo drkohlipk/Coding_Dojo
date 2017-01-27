@@ -1,0 +1,40 @@
+<div id="orderContainer" ng-controller="orderController as oC">
+	<div id="formContainer">
+		<form class="sixty" ng-submit="makeOrder()">
+			<h2>Add a New Order</h2>
+			<div class="eighty notif center">
+				<ul>
+					<li ng-repeat="error in errors">{{ error }}</li>
+				</ul>
+			</div>
+			<label class="twenty" for="customer">Customer</label>
+			<select class="eighty" name="customer" ng-model="oC.selected._customer" ng-controller="customerController">
+				<option ng-repeat="customer in customers" value="{{ customer._id }}">{{ customer.firstName }} {{ customer.lastName }}</option>
+			</select>
+			<div class="hundo" ng-controller="prodController as pC">
+				<label class="twenty" for="order">Order</label>
+				<select id="qtySel" class="sixty" ng-options="product.name for product in products track by product" name="order" ng-model="oC.selected.product" ng-change="oC.getQty()">
+				</select>
+				<select class="twenty" ng-model="oC.selected.qty" ng-disabled="oC.qtyInp">
+					<option ng-repeat="n in oC.prodQty" value="{{ n }}">{{ n }}</option>
+				</select>
+			</div>
+			<input class="btn btn-pop" type="submit" name="submit" value="Order">
+		</form>
+	</div><!-- end_of_formContainer-->
+	<input class="twenty right" type="text" name="search" placeholder="filter..." ng-model="filterText">
+	<table class="hundo">
+		<thead>
+			<th class="thirty">Customer Name</th>
+			<th class="twenty">Product</th>
+			<th class="ten">Quantity</th>
+			<th class="thirty">Date</th>
+		</thead>
+		<tr ng-repeat="order in orders | filter: filterText">
+			<td>{{ order._customer.firstName }} {{ order._customer.lastName }}</td>
+			<td>{{ order._product.name }}</td>
+			<td>{{ order.qty }}</td>
+			<td>{{ order.createdAt | date: 'medium' }}</td>
+		</tr>
+	</table>
+</div><!-- end_of_orderContainer-->

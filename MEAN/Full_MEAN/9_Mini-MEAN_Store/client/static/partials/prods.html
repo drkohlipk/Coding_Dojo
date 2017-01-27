@@ -1,0 +1,36 @@
+<aside class="twenty">
+	<div id="prodFilter" class="hundo">
+		<input id="prodCursor" class="hundo" type="text" name="search" placeholder="Search..." ng-model="searchText">
+		<button class="btn btn-dflt" ng-click="search()">Filter</button>
+		<button class="btn btn-dflt" ng-click="reset()">Reset</button>
+	</div><!-- end_of_prodFilter-->
+	<form class="hundo" ng-submit="makeProd()">
+		<h2>Add a New Product</h2>
+		<div class="notif ninety center">
+			<ul>
+				<li ng-repeat="error in errors">{{ error }}</li>
+			</ul>
+		</div><!-- end_of_notif-->
+		<label class="hundo" for="name">Name:</label>
+		<input class="hundo" type="text" name="name" placeholder="Product name" ng-model="prod.name">
+		<label class="hundo" for="img">Image (URL):</label>
+		<input class="hundo" type="text" name="img" placeholder="http://" ng-model="prod.img">
+		<label class="hundo" for="desc">Description:</label>
+		<textarea class="hundo" name="name" rows="8" cols="80" ng-model="prod.desc"></textarea>
+		<label class="hundo" for="qty">Initial Quantity:</label>
+		<input class="hundo" type="number" min="1" max="500" name="qty" ng-model="prod.qty">
+		<input class="btn btn-pop" type="submit" name="submit" value="Create">
+	</form>
+</aside>
+<section class="eighty">
+	<article class="prod twenty" ng-repeat="product in products | filter: filtered | limitTo: prodLimit">
+		<img src="{{ product.img }}" alt="{{ product.name }}">
+		<h3>{{ product.name }}</h3>
+		<p>({{ product.qty }} left)</p>
+		<div class="prodDesc">
+			<p>{{ product.desc }}</p>
+		</div><!-- end_of_prodDesc-->
+	</article>
+	<a class="expand linkify" ng-show="prod == 'expand'" ng-click="expandProds('prod')">show more...</a>
+	<a class="expand linkify" ng-show="prod == 'retract'" ng-click="retractProds('prod')">show less...</a>
+</section>

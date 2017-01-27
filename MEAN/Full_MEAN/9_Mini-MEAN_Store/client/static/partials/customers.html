@@ -1,0 +1,28 @@
+<div id="formContainer">
+	<form class="sixty" ng-submit="makeCustomer()">
+		<h2>Add a New Customer</h2>
+		<div class="notif hundo center">
+			<ul>
+				<li ng-repeat="error in errors">{{ error }}</li>
+			</ul>
+		</div><!-- end_of_notif-->
+		<label class="twenty" for="firstName">First Name:</label>
+		<input id="custCursor" class="eighty" type="text" name="firstName" ng-model="cust.firstName">
+		<label class="twenty" for="lastName">Last Name:</label>
+		<input class="eighty" type="text" name="lastName" ng-model="cust.lastName">
+		<input class="btn btn-pop" type="submit" name="submit" value="Add">
+	</form>
+</div><!-- end_of_formContainer-->
+<input class="twenty right" type="text" name="search" placeholder="filter..." ng-model="filterText">
+<table class="hundo">
+	<thead>
+		<th class="forty">Customer Name</th>
+		<th class="forty">Created Date</th>
+		<th class="twenty">Actions</th>
+	</thead>
+	<tr ng-repeat="customer in customers | filter: filterText">
+		<td>{{ customer.firstName }} {{ customer.lastName }}</td>
+		<td>{{ customer.createdAt | date: 'medium'}}</td>
+		<td><button class="btn btn-imp" type="button" name="button">Remove</button></td>
+	</tr>
+</table>
