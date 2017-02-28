@@ -1,5 +1,4 @@
 import java.util.LinkedHashMap;
-import java.lang.Math;
 import static java.lang.System.out;
 
 class change {

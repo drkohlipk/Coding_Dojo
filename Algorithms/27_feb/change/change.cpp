@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 map<string, int> make_change(int value)
 {
 	vector<int> coins;
