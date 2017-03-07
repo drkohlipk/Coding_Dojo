@@ -1,0 +1,26 @@
+package helpers;
+
+import static java.lang.System.out;
+
+public class SList {
+	Node head;
+
+	public SList() {
+		this.head = null;
+	}
+
+	public void addFront(int val) {
+		Node tempNode = new Node(val);
+		tempNode.next = this.head;
+		this.head = tempNode;
+	}
+
+	public void printList() {
+		Node current = this.head;
+
+		while (current != null) {
+			out.println(current.value);
+			current = current.next;
+		}
+	}
+}
