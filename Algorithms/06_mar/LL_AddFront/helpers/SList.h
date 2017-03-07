@@ -17,6 +17,8 @@ public:
 
 	void addFront(int val);
 
+	node * removeFront();
+
 	void printList();
 
 	~SList();

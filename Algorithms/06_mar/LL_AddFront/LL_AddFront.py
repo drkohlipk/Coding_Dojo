@@ -7,6 +7,12 @@ class SList:
 		myNode.next = self.head
 		self.head = myNode
 
+	def removeFront(self):
+		tempNode = self.head
+		self.head = tempNode.next
+		tempNode.next = None
+		return tempNode
+
 	def printList(self):
 		curr = self.head
 		while (curr):
@@ -24,5 +30,8 @@ myList.addFront(4)
 myList.addFront(6)
 myList.addFront(8)
 
+myList.printList()
+
+myList.removeFront()
 
 myList.printList()

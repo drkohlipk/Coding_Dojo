@@ -16,6 +16,13 @@ class SList {
 		this.head = tempNode;
 	}
 
+	removeFront() {
+		let tempNode = this.head;
+		this.head = tempNode.next;
+		tempNode.next = null;
+		return tempNode;
+	}
+
 	printList() {
 		let currNode = this.head;
 
@@ -31,5 +38,9 @@ var myList = new SList();
 myList.addFront(4);
 myList.addFront(6);
 myList.addFront(8);
+
+myList.printList();
+
+myList.removeFront();
 
 myList.printList();

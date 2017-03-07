@@ -15,6 +15,13 @@ public class SList {
 		this.head = tempNode;
 	}
 
+	public Node removeFront() {
+		Node tempNode = this.head;
+		this.head = tempNode.next;
+		tempNode.next = null;
+		return tempNode;
+	}
+
 	public void printList() {
 		Node current = this.head;
 

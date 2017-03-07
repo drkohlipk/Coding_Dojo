@@ -10,5 +10,9 @@ int main(int argc, char const *argv[]) {
 
 	myList.printList();
 
+	myList.removeFront();
+
+	myList.printList();
+
 	return 0;
 }

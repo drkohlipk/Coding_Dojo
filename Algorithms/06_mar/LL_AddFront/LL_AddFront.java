@@ -11,5 +11,9 @@ public class LL_AddFront {
 		myList.addFront(8);
 
 		myList.printList();
+
+		myList.removeFront();
+
+		myList.printList();
 	}
 }

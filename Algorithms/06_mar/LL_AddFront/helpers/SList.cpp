@@ -16,6 +16,14 @@ void SList::addFront(int val)
 	head = temp;
 }
 
+node * SList::removeFront()
+{
+	node * temp = head;
+	head = temp -> next;
+	temp -> next = NULL;
+	return temp;
+}
+
 void SList::printList()
 {
 	node * curr = head;
