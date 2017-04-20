@@ -31,13 +31,13 @@ $(document).ready(() => {
 					}
 				}
 			};
-			// this.battle = () => {
-			// 	if (player1.hand[0].attack > player2.hand[0].attack) {
-			// 		$('main h1').text('Player 1 wins!');
-			// 	} else {
-			// 		$('main h1').text('Player 2 wins!');
-			// 	}
-			// };
+			this.battle = () => {
+				if (player1.hand[0].attack > player2.hand[0].attack) {
+					$('main h1').text('Player 1 wins!');
+				} else {
+					$('main h1').text('Player 2 wins!');
+				}
+			};
 		}
 	}
 
